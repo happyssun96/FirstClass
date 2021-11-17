@@ -15,7 +15,9 @@
 이선우<br/></p>
 
 <h2>오늘 점심 메뉴</h2>
-<p align = "center">윤성민 : 떡볶이</p>
+<p align = "center">윤성민 : 떡볶이<br/>
+이대근 : 중국집 <br />
 
+</p>
 </body>
 </html>
