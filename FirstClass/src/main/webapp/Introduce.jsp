@@ -12,6 +12,10 @@
 <p align="center">이대근<br/>
 윤병훈<br/>
 윤성민<br/>
-이선우</p>
+이선우<br/></p>
+
+<h2>오늘 점심 메뉴</h2>
+<p align = "center">윤성민 : 떡볶이</p>
+
 </body>
 </html>
