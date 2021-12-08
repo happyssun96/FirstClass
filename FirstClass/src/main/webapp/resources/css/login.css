@@ -1,5 +1,5 @@
 body {
-	background: #90e086;
+	background: rgb(255, 255, 255);
 	font-family: arial;
 }
 
@@ -80,6 +80,20 @@ body {
 	cursor: pointer;
 }
 
+.login-form .register-btn {
+	background: #5bc439;
+	padding: 11px 50px;
+	border-color: #5bc439;
+	color: #fff;
+	text-align: center;
+	margin: 0 auto;
+	font-size: 20px;
+	border: 1px solid #5bc439;
+	border-radius: 44px;
+	width: 100%;
+	height: 56px;
+}
+
 .login-form .reset-psw {
 	float: left;
 	width: 100%;
@@ -90,12 +104,24 @@ body {
 	margin-top: 11px;
 }
 
-.login-form .social-icon button {
+.login-form .social-icon button.twitter {
 	font-size: 20px;
 	color: white;
 	height: 50px;
 	width: 50px;
-	background: #f24c4c;
+	background: #00acee;
+	border-radius: 60%;
+	margin: 0px 10px;
+	border: none;
+	cursor: pointer;
+}
+
+.login-form .social-icon button.facebook {
+	font-size: 20px;
+	color: white;
+	height: 50px;
+	width: 50px;
+	background: #3b5998;
 	border-radius: 60%;
 	margin: 0px 10px;
 	border: none;

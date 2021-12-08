@@ -27,15 +27,15 @@
       
       <div class="seperator"><br/>
       	<p style="color: #666">계정이 없나요?</p>	
-      <button class="login-btn">회원가입</button> 	
+      <button class="register-btn">회원가입</button> 	
       </div>
       
       <div class="seperator"><b>or</b></div>
       <p>Sign in with your social media account</p>
       <!-- Social login buttons -->
       <div class="social-icon">
-        <button type="button"><i class="fa fa-twitter"></i></button>
-        <button type="button"><i class="fa fa-facebook"></i></button>
+        <button type="button" class="twitter"><i class="fa fa-twitter"></i></button>
+         <button type="button" class="facebook"><i class="fa fa-facebook"></i></button>
       </div>
     </form>
   </div>
