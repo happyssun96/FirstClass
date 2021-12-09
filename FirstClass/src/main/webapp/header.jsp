@@ -27,7 +27,7 @@
         <a href="./index.jsp" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Contact</a>
+        <a href="./LoginForm.jsp" class="nav-link">Login</a>
       </li>
     </ul>
 
