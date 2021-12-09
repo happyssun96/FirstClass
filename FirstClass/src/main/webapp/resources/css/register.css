@@ -49,6 +49,17 @@ body {
 	padding-left: 75px;
 }
 
+.register-form select {
+	width: 100%;
+	padding: 5px;
+	height: 56px;
+	border-radius: 74px;
+	border: 1px solid #ccc;
+	box-sizing: border-box;
+	font-size: 15px;
+	padding-left: 75px;
+}
+
 .register-form .gender {
 	width: 35%;
 	margin: 0 auto;
@@ -117,12 +128,24 @@ body {
 	margin-top: 11px;
 }
 
-.register-form .social-icon button {
+.register-form .social-icon button.twitter {
 	font-size: 20px;
 	color: white;
 	height: 50px;
 	width: 50px;
-	background: #f24c4c;
+	background: #00acee;
+	border-radius: 60%;
+	margin: 0px 10px;
+	border: none;
+	cursor: pointer;
+}
+
+.register-form .social-icon button.facebook {
+	font-size: 20px;
+	color: white;
+	height: 50px;
+	width: 50px;
+	background: #3b5998;
 	border-radius: 60%;
 	margin: 0px 10px;
 	border: none;

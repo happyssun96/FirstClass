@@ -32,11 +32,15 @@
         <input type="text" name="age" placeholder="나이">
         <span class="input-icon"><i class="fa fa-list-ol"></i></span>
       </div>
-      <div>
-        남성 <span class="input-icon"><i class="fa fa-mars"></i></span>
-        <input class="gender" type="radio" name="gender" value="M">
-        여성 <span class="input-icon"><i class="fa fa-venus"></i></span>
-        <input class="gender" type="radio" name="gender" value="F"><br/>
+      <div class="form-group">
+        
+        <select name = "gender">
+        	<option value='' selected>성별</option>
+  			<option value='M'>남성<span class="input-icon"><i class="fa fa-mars"></i></span></option>
+ 			<option value='F'>여성<span class="input-icon"><i class="fa fa-venus"></i></span></option>
+        
+        </select>
+        
        </div>
       <button class="register-btn">회원가입</button>      
       </form>
@@ -50,8 +54,8 @@
       <p>Sign up with your social media account</p>
       <!-- Social register buttons -->
       <div class="social-icon">
-        <button type="button"><i class="fa fa-twitter"></i></button>
-        <button type="button"><i class="fa fa-facebook"></i></button>
+        <button type="button" class="twitter"><i class="fa fa-twitter"></i></button>
+        <button type="button" class="facebook"><i class="fa fa-facebook"></i></button>
       </div>
     
   </div>
