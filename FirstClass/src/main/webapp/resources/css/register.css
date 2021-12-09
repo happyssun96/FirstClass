@@ -60,6 +60,10 @@ body {
 	padding-left: 75px;
 }
 
+.fa option {
+	font-weight: 900;
+}
+
 .register-form .gender {
 	width: 35%;
 	margin: 0 auto;

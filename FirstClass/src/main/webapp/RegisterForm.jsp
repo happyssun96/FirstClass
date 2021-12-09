@@ -16,7 +16,9 @@
 <div class="register-form">
     <form action="./addCtr.do" method="post">
       <h1><a href="./index.jsp" class="brand-link">
-      <img src="resources/images/watermelon.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8; height: 80px;"></h1></h1>
+      <img src="resources/images/watermelon.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8; height: 80px;">
+      </a>
+      </h1>
       <div class="form-group">
         <input type="email" name="email" placeholder="이메일 주소">
         <span class="input-icon"><i class="fa fa-envelope"></i></span>
@@ -35,12 +37,12 @@
       </div>
       <div class="form-group">
         
-        <select name = "gender">
+        <select name="gender" class="fa">
         	<option value='' selected>성별</option>
-  			<option value='M'>남성<span class="input-icon"><i class="fa fa-mars"></i></span></option>
- 			<option value='F'>여성<span class="input-icon"><i class="fa fa-venus"></i></span></option>
-        
-        </select>
+  			<option value='fa fa-mars'>&#xf222;남성</option>
+ 			<option value='fa fa-venus'>&#xf221;여성</option>
+ 			
+ 			</select>
         
        </div>
       <button class="register-btn">회원가입</button>      
