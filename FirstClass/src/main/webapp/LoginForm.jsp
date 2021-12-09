@@ -13,7 +13,8 @@
 <body>
 <div class="login-form">
     <form action="loginCtr.do" method="post">
-      <h1>Login</h1>
+      <h1><a href="./index.jsp" class="brand-link">
+      <img src="resources/images/watermelon.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8; height: 80px;"></h1>
       <div class="form-group">
         <input type="email" name="email" placeholder="이메일 주소">
         <span class="input-icon"><i class="fa fa-envelope"></i></span>
