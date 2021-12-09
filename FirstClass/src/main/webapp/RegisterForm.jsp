@@ -30,7 +30,7 @@
       </div>
       <div class="form-group">
         <input type="text" name="age" placeholder="나이">
-        <span class="input-icon"><i class="fa fa-sort-numeric-up-alt"></i></span>
+        <span class="input-icon"><i class="fa fa-list-ol"></i></span>
       </div>
       <div>
         남성 <span class="input-icon"><i class="fa fa-mars"></i></span>
@@ -39,6 +39,12 @@
         <input class="gender" type="radio" name="gender" value="F"><br/>
        </div>
       <button class="register-btn">회원가입</button>      
+      </form>
+      
+      <div class="seperator"><br/>
+      	<p style="color: #666">계정이 있나요?</p>	
+      <button class="login-btn" onclick="location.href='./LoginForm.jsp'">로그인</button> 	
+      </div>
       
       <div class="seperator"><b>or</b></div>
       <p>Sign up with your social media account</p>
@@ -47,7 +53,7 @@
         <button type="button"><i class="fa fa-twitter"></i></button>
         <button type="button"><i class="fa fa-facebook"></i></button>
       </div>
-    </form>
+    
   </div>
   
 </body>

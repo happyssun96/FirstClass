@@ -24,10 +24,11 @@
       </div>      
       <button class="login-btn">Login</button>      
       <a class="reset-psw" href="#">비밀번호를 잊었나요?</a>
+      </form>
       
       <div class="seperator"><br/>
       	<p style="color: #666">계정이 없나요?</p>	
-      <button class="register-btn">회원가입</button> 	
+      <button class="register-btn" onclick="location.href='./RegisterForm.jsp'">회원가입</button> 	
       </div>
       
       <div class="seperator"><b>or</b></div>
@@ -37,7 +38,7 @@
         <button type="button" class="twitter"><i class="fa fa-twitter"></i></button>
          <button type="button" class="facebook"><i class="fa fa-facebook"></i></button>
       </div>
-    </form>
+    
   </div>
 
 </body>

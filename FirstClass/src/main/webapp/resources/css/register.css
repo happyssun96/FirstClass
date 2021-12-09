@@ -90,7 +90,21 @@ body {
 	width: 100%;
 	height: 56px;
 	cursor: pointer;
-	margin-top: 30px;
+	margin-top: 10px;
+}
+
+.register-form .login-btn {
+	background: #5bc439;
+	padding: 11px 50px;
+	border-color: #5bc439;
+	color: #fff;
+	text-align: center;
+	margin: 0 auto;
+	font-size: 20px;
+	border: 1px solid #5bc439;
+	border-radius: 44px;
+	width: 100%;
+	height: 56px;
 }
 
 .register-form .reset-psw {
