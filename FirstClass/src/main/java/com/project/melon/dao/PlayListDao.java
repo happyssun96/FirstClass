@@ -1,5 +1,5 @@
 package com.project.melon.dao;
 
-public class SubscribeDAO {
+public class PlayListDao {
 
 }
