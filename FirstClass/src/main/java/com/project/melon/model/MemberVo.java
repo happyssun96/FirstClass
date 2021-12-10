@@ -16,6 +16,31 @@ public class MemberVo {
 	private String gender = "";
 	private String createDate = null;
 	private String modifyDate = null;
+	
+	
+	public MemberVo() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	
+	public MemberVo(int member_no, String email, String password, String auth, int memberClass, String nickName,
+			int cash, int age, String gender, String createDate, String modifyDate) {
+		super();
+		this.member_no = member_no;
+		this.email = email;
+		this.password = password;
+		this.auth = auth;
+		this.memberClass = memberClass;
+		this.nickName = nickName;
+		this.cash = cash;
+		this.age = age;
+		this.gender = gender;
+		this.createDate = createDate;
+		this.modifyDate = modifyDate;
+	}
+
+
 	public int getMember_no() {
 		return member_no;
 	}
