@@ -139,10 +139,11 @@
                     </thead>
                     <tbody>
                     <tr>
-                      <td><a href="#">1</a></td>
-                      <td>
+                      <td>1</td>
+                      <td><a href="./songDetailPage.jsp">
                       	<img class="img slider__img" style="width: 65px; height: 65px;"
                       		src="resources/images/covers/showme10_1.jpeg" alt="cover">
+                      		</a>
                       </td>
                       <td>리무진 (Feat. MINO) (Prod. GRAY)</td>
 <!--                       <td><span class="badge badge-success">BE'O (비오)</span></td> -->
