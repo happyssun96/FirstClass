@@ -1,5 +1,5 @@
 package com.project.melon.service;
 
-public class MemberService {
+public interface MemberService {
 
 }

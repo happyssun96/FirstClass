@@ -1,5 +1,5 @@
 package com.project.melon.service;
 
-public class PlayListService {
+public interface PlayListService {
 
 }
