@@ -1,7 +1,6 @@
 package com.project.melon.model;
 
 
-import java.util.Date;
 
 public class MemberVo {
 	/* Value Object*/

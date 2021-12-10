@@ -18,10 +18,15 @@
 	</sql>
 
    <resultMap type="memberVo" id="memberResultMap">
-      <id column="MNO" property="no"/>
-      <result column="MNAME" property="name"/>
+      <id column="MEMBER_NO" property="member_no"/>
       <result column="EMAIL" property="email"/>
-      <result column="PWD" property="password"/>
+      <result column="PASSWORD" property="password"/>
+      <result column="AUTH" property="auth"/>
+      <result column="CLASS" property="memberClass"/>
+      <result column="NICKNAME" property="nickName"/>
+      <result column="CASH" property="cash"/>
+      <result column="AGE" property="age"/>
+      <result column="GENDER" property="gender"/>
       <result column="CRE_DATE" property="createDate"/>
       <result column="MOD_DATE" property="modifyDate"/>
    </resultMap>
