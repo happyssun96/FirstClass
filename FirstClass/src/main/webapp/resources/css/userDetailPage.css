@@ -1,18 +1,18 @@
 .user-detail-page table{
 	font-size: 20px;
-	width: 20%;
+	
 }
 
 .user-detail-page td{
-	padding: 30px;
+	padding: 20px;
+	font-size: 17px;
+	width: 500px;
 }
 
 .user-detail-page th{
-	padding: 30px;
+	padding: 20px;
+	background-color: #645f5f4f;
 }
 
-.user-detail-page button{
-	margin-left : 20px;
-	margin-top : 100px;
-}
+
 

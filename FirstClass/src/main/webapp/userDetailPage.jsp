@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>회원상세정보</title>
@@ -23,7 +24,7 @@
   <jsp:include page="nav.jsp" />
 
   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
+  <div class="content-wrapper" style="margin-left: 300px;">
     <!-- Content Header (Page header) -->
     <div class="content-header">
       <div class="container-fluid">
@@ -33,14 +34,14 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="./index.jsp">Home</a></li>
+              <li class="breadcrumb-item"><a href="./index.jsp"><i class="fas fa-home"></i></a></li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
 	<div>
-		<table>
+		<table border="1">
 			
 			<tbody>
 			 	<tr>
@@ -50,7 +51,17 @@
          		
         		<tr>
          			<th>닉네임</th>
-         			<td>워터멜론</td>				
+         			<td>수박남</td>				
+      			</tr>
+      			
+      			<tr>
+         			<th>등급</th>
+         			<td>골드회원</td>				
+      			</tr>
+      			
+      			<tr>
+         			<th>보유 캐시</th>
+         			<td>18000 캐시</td>				
       			</tr>
       			
       			<tr>
@@ -64,6 +75,11 @@
          		</tr>
          		
          		<tr>
+         			<th>구독여부</th>
+         			<td>1개월 구독중</td>
+         		</tr>
+         		
+         		<tr>
          			<th>가입일</th>
          			<td>2021-12-10 14:38</td>
          		</tr>
@@ -74,9 +90,16 @@
          		</tr>
      			      			
       		</tbody>
+      		
 		</table>
+		
+		<br>
 		<button class="btn btn-primary">프로필 수정</button>
+		&nbsp;&nbsp;&nbsp;
+		<button class="btn btn-primary">내 플레이리스트 가기</button>				
 	</div>
+	
+	
   </div>
   <!-- /.content-wrapper -->
 
