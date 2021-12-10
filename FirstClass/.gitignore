@@ -5,6 +5,11 @@
 /.springBeans
 /songs/
 *.mp3
+
+*.jpg
+*.jpeg
+*.png
+
 # System / Log files
 *.DS_Store
 *.log

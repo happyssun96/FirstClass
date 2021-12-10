@@ -44,74 +44,76 @@
     <section class="content">
       <div class="container-fluid">
         <!-- Info boxes -->
-        <div class="row">
-          <div class="col-12 col-sm-6 col-md-3">
-            <div class="info-box">
-              <span class="info-box-icon bg-info elevation-1"><i class="fas fa-cog"></i></span>
+        
+<!--         <div class="row"> -->
+<!--           <div class="col-12 col-sm-6 col-md-3"> -->
+<!--             <div class="info-box"> -->
+<!--               <span class="info-box-icon bg-info elevation-1"><i class="fas fa-cog"></i></span> -->
 
-              <div class="info-box-content">
-                <span class="info-box-text">CPU Traffic</span>
-                <span class="info-box-number">
-                  10
-                  <small>%</small>
-                </span>
-              </div>
-              <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-          </div>
-          <!-- /.col -->
-          <div class="col-12 col-sm-6 col-md-3">
-            <div class="info-box mb-3">
-              <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-thumbs-up"></i></span>
+<!--               <div class="info-box-content"> -->
+<!--                 <span class="info-box-text">CPU Traffic</span> -->
+<!--                 <span class="info-box-number"> -->
+<!--                   10 -->
+<!--                   <small>%</small> -->
+<!--                 </span> -->
+<!--               </div> -->
+<!--               /.info-box-content -->
+<!--             </div> -->
+<!--             /.info-box -->
+<!--           </div> -->
+<!--           /.col -->
+<!--           <div class="col-12 col-sm-6 col-md-3"> -->
+<!--             <div class="info-box mb-3"> -->
+<!--               <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-thumbs-up"></i></span> -->
 
-              <div class="info-box-content">
-                <span class="info-box-text">Likes</span>
-                <span class="info-box-number">41,410</span>
-              </div>
-              <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-          </div>
-          <!-- /.col -->
+<!--               <div class="info-box-content"> -->
+<!--                 <span class="info-box-text">Likes</span> -->
+<!--                 <span class="info-box-number">41,410</span> -->
+<!--               </div> -->
+<!--               /.info-box-content -->
+<!--             </div> -->
+<!--             /.info-box -->
+<!--           </div> -->
+<!--           /.col -->
 
-          <!-- fix for small devices only -->
-          <div class="clearfix hidden-md-up"></div>
+<!--           fix for small devices only -->
+<!--           <div class="clearfix hidden-md-up"></div> -->
 
-          <div class="col-12 col-sm-6 col-md-3">
-            <div class="info-box mb-3">
-              <span class="info-box-icon bg-success elevation-1"><i class="fas fa-shopping-cart"></i></span>
+<!--           <div class="col-12 col-sm-6 col-md-3"> -->
+<!--             <div class="info-box mb-3"> -->
+<!--               <span class="info-box-icon bg-success elevation-1"><i class="fas fa-shopping-cart"></i></span> -->
 
-              <div class="info-box-content">
-                <span class="info-box-text">Sales</span>
-                <span class="info-box-number">760</span>
-              </div>
-              <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-          </div>
-          <!-- /.col -->
-          <div class="col-12 col-sm-6 col-md-3">
-            <div class="info-box mb-3">
-              <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
+<!--               <div class="info-box-content"> -->
+<!--                 <span class="info-box-text">Sales</span> -->
+<!--                 <span class="info-box-number">760</span> -->
+<!--               </div> -->
+<!--               /.info-box-content -->
+<!--             </div> -->
+<!--             /.info-box -->
+<!--           </div> -->
+<!--           /.col -->
+<!--           <div class="col-12 col-sm-6 col-md-3"> -->
+<!--             <div class="info-box mb-3"> -->
+<!--               <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span> -->
 
-              <div class="info-box-content">
-                <span class="info-box-text">New Members</span>
-                <span class="info-box-number">2,000</span>
-              </div>
-              <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-          </div>
-          <!-- /.col -->
-        </div>
+<!--               <div class="info-box-content"> -->
+<!--                 <span class="info-box-text">New Members</span> -->
+<!--                 <span class="info-box-number">2,000</span> -->
+<!--               </div> -->
+<!--               /.info-box-content -->
+<!--             </div> -->
+<!--             /.info-box -->
+<!--           </div> -->
+<!--           /.col -->
+<!--         </div> -->
+
         <!-- /.row -->
 
         <div class="row">
           <div class="col-md-12">
           <div class="card">
               <div class="card-header border-transparent">
-                <h3 class="card-title">Latest Orders</h3>
+                <h3 class="card-title">오늘의 Top 5</h3>
 
                 <div class="card-tools">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -128,69 +130,76 @@
                   <table class="table m-0">
                     <thead>
                     <tr>
-                      <th>Order ID</th>
-                      <th>Item</th>
-                      <th>Status</th>
-                      <th>Popularity</th>
+                      <th>RANK</th>
+                      <th>COVER</th>
+                      <th>NAME</th>
+                      <th>ARTIST</th>
+                      <th>ALBUM</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr>
-                      <td><a href="pages/examples/invoice.html">OR9842</a></td>
-                      <td>Call of Duty IV</td>
-                      <td><span class="badge badge-success">Shipped</span></td>
+                      <td><a href="#">1</a></td>
                       <td>
-                        <div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div>
+                      	<img class="img slider__img" style="width: 65px; height: 65px;"
+                      		src="resources/images/covers/showme10_1.jpeg" alt="cover">
+                      </td>
+                      <td>리무진 (Feat. MINO) (Prod. GRAY)</td>
+<!--                       <td><span class="badge badge-success">BE'O (비오)</span></td> -->
+                      <td>BE'O (비오)</td>
+                      <td>
+                        <div class="sparkbar" data-color="#00a65a" data-height="20">쇼미더머니 10 Episode 3</div>
                       </td>
                     </tr>
                     <tr>
-                      <td><a href="pages/examples/invoice.html">OR1848</a></td>
-                      <td>Samsung Smart TV</td>
-                      <td><span class="badge badge-warning">Pending</span></td>
+                      <td><a href="#">2</a></td>
                       <td>
-                        <div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div>
+                      	<img class="img slider__img" style="width: 65px; height: 65px;"
+                      		src="resources/images/covers/showme10_2.jpg" alt="cover">
+                      </td>
+                      <td>회전목마 (Feat. Zion.T, 원슈타인) (Prod. Slom)</td>
+                      <td>sokodomo</td>
+                      <td>
+                        <div class="sparkbar" data-color="#f39c12" data-height="20">쇼미더머니 10 Episode 2</div>
                       </td>
                     </tr>
                     <tr>
-                      <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                      <td>iPhone 6 Plus</td>
-                      <td><span class="badge badge-danger">Delivered</span></td>
+                      <td><a href="#">3</a></td>
                       <td>
-                        <div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63</div>
+                      	<img class="img slider__img" style="width: 65px; height: 65px;"
+                      		src="resources/images/covers/showme10_1.jpeg" alt="cover">
+                      </td>
+                      <td>만남은 쉽고 이별은 어려워 (Feat. Leellamarz) (Prod. TOIL)</td>
+                      <td>베이식 (Basick)</td>
+                      <td>
+                        <div class="sparkbar" data-color="#f39c12" data-height="20">쇼미더머니 10 Episode 3</div>
                       </td>
                     </tr>
                     <tr>
-                      <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                      <td>Samsung Smart TV</td>
-                      <td><span class="badge badge-info">Processing</span></td>
+                     <td><a href="#">4</a></td>
                       <td>
-                        <div class="sparkbar" data-color="#00c0ef" data-height="20">90,80,-90,70,-61,83,63</div>
+                      	<img class="img slider__img" style="width: 65px; height: 65px;"
+                      		src="resources/images/covers/strawberrymoon.jpg" alt="cover">
+                      </td>
+                      <td>strawberry moon</td>
+                      <td>아이유</td>
+                      <td>
+                        <div class="sparkbar" data-color="#f39c12" data-height="20">strawberry moon</div>
                       </td>
                     </tr>
                     <tr>
-                      <td><a href="pages/examples/invoice.html">OR1848</a></td>
-                      <td>Samsung Smart TV</td>
-                      <td><span class="badge badge-warning">Pending</span></td>
+                      <td><a href="#">5</a></td>
                       <td>
-                        <div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div>
+                      	<img class="img slider__img" style="width: 65px; height: 65px;"
+                      		src="resources/images/covers/eleven.jpeg" alt="cover">
+                      </td>
+                      <td>ELEVEN</td>
+                      <td>IVE (아이브)</td>
+                      <td>
+                        <div class="sparkbar" data-color="#f39c12" data-height="20">ELEVEN</div>
                       </td>
                     </tr>
-                    <tr>
-                      <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                      <td>iPhone 6 Plus</td>
-                      <td><span class="badge badge-danger">Delivered</span></td>
-                      <td>
-                        <div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63</div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td><a href="pages/examples/invoice.html">OR9842</a></td>
-                      <td>Call of Duty IV</td>
-                      <td><span class="badge badge-success">Shipped</span></td>
-                      <td>
-                        <div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div>
-                      </td>
-                    </tr>
+                    
                     </tbody>
                   </table>
                 </div>
