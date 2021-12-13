@@ -6,8 +6,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<body>
+<body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 
+<div class="wrapper">
 	<jsp:include page="header.jsp"/>
 
 	<jsp:include page="nav.jsp" />
@@ -15,19 +16,8 @@
 	 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1>E-commerce</h1>
-          </div>
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">E-commerce</li>
-            </ol>
-          </div>
-        </div>
-      </div><!-- /.container-fluid -->
+      
+      <!-- /.container-fluid -->
     </section>
 
     <!-- Main content -->
@@ -46,6 +36,12 @@
                 		alt="Product Image">
                 </div>
               </div>
+              <div class="mt-4 product-share" style="padding-left: 13rem;">
+                <a href="#" class="text-gray">
+                  <i class="fas fa-play-circle fa-2x"></i>
+                </a>
+                
+              </div>
             </div>
             <div class="col-12 col-sm-6">
               <h3 class="my-3">쇼미더머니 10 Episode 3</h3>
@@ -54,7 +50,7 @@
              <div class="card card-primary">
 
               <div class="card-body">
-                <strong><i class="fas fa-book mr-1"></i>아티스트</strong>
+                <strong><i class="fa fa-user mr-1"></i> 아티스트</strong>
 
                 <p class="text-muted">
                 Various Artists
@@ -62,13 +58,13 @@
                 
                 <hr>
                 
-                <strong><i class="fas fa-map-marker-alt mr-1"></i>장르/스타일</strong>
+                <strong><i class="fas fa-guitar mr-1"></i> 장르/스타일</strong>
 
                 <p class="text-muted">랩/힙합/가요</p>
 
                 <hr>
 
-                <strong><i class="fas fa-pencil-alt mr-1"></i>기획사</strong>
+                <strong><i class="fas fa-building mr-1"></i> 기획사</strong>
 
                 <p class="text-muted">
                   Stone Music Entertainment
@@ -76,7 +72,7 @@
 
                 <hr>
 
-                <strong><i class="far fa-file-alt mr-1"></i>발매일</strong>
+                <strong><i class="fas fa-record-vinyl mr-1"></i> 발매일</strong>
 
                 <p class="text-muted">2021.11.13</p>
               </div>
@@ -106,8 +102,11 @@
       <!-- /.card -->
 
     </section>
+    
+    </div>
     <!-- /.content -->
     
+    <jsp:include page="footer.jsp" />
   </div>
 	
 
