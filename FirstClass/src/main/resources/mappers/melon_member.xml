@@ -1,3 +1,109 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="mappers.melon_member"></mapper>
+<mapper namespace="com.edu.member">
+
+   <resultMap type="memberVo" id="memberResultMap">
+      <id column="MNO" property="member_no" />
+      <result column="PWD" property="password" />
+      <result column="EMAIL" property="email" />
+      <result column="AUTH" property="auth" />
+      <result column="MEMBERCLASS" property="memberClass" />
+      <result column="NICKNAME" property="nickName" />
+      <result column="CASH" property="cash" />
+      <result column="AGE" property="age" />
+      <result column="GENDER" property="gender" />
+      <result column="CRE_DATE" property="createDate"
+         javaType="java.util.Date" />
+      <result column="MOD_DATE" property="modifyDate"
+         javaType="java.util.Date" />
+   </resultMap>
+
+
+
+<!--    <select id="memberSelectList" resultMap="memberResultMap">
+      SELECT MNO, MNAME,
+      EMAIL, CRE_DATE
+      FROM MEMBER
+      ORDER BY MNO DESC
+   </select> -->
+	
+	<select id = "emailChk" resultType = "int">
+		SELECT COUNT(*) FROM MEMBER
+		WHERE EMAIL = #{email};	
+	</select>		
+	
+	<select id="nickNameChk">
+		SELECT COUNT(*) FROM MEMBER
+		WHERE NICKNAME = #{nickName};
+	</select>
+	
+   <select id="memberSelectList" parameterType="map" resultMap="memberResultMap">
+      SELECT MEMBER.RNUM, MEMBER.MNO, MEMBER.AUTH, MEMBER.NICKNAME, MEMBER.EMAIL, MEMBER.CRE_DATE
+      FROM (   SELECT ROWNUM RNUM, M.MNO, M.AUTH, M.NICKNAME, M.EMAIL, M.CRE_DATE
+              FROM    (   SELECT MNO, AUTH, NICKNAME, EMAIL, CRE_DATE
+                          FROM MEMBER 
+                             <if test="searchOption == 'all'">
+                                WHERE NICKNAME LIKE '%'||#{keyword}||'%'
+                                      OR EMAIL LIKE '%'||#{keyword}||'%'
+                             </if>
+                             
+                             <if test="searchOption == 'name'">
+                                WHERE NICKNAME LIKE '%'||#{keyword}||'%'
+                             </if>
+                             
+                             <if test="searchOption == 'email'">
+                                WHERE EMAIL LIKE '%'||#{keyword}||'%'
+                             </if>
+                          ORDER BY AUTH, CRE_DATE) M
+           ) MEMBER 
+      WHERE MEMBER.RNUM BETWEEN #{start} AND #{end}
+   </select>
+
+   <select id="memberExist" parameterType="map"
+      resultMap="memberResultMap">
+      SELECT NICKNAME, EMAIL
+      FROM MEMBER
+      WHERE EMAIL = #{email}
+      AND PWD = #{password}
+      <!-- CTRL + SHIFT + X = 대문자변환 -->
+   </select>
+
+   <insert id="memberInsertOne" parameterType="memberVo">
+      INSERT INTO MEMBER
+      (MNO, EMAIL, PWD, MNAME, CRE_DATE, MOD_DATE)
+      VALUES(MEMBER_MNO_SEQ.NEXTVAL, #{email}, #{password}, #{name},
+      SYSDATE, SYSDATE)
+   </insert>
+
+   <select id="memberSelectOne" parameterType="int"
+      resultMap="memberResultMap">
+      SELECT MNO, AUTH, NICKNAME, EMAIL, MEMBERCLASS, CRE_DATE
+      FROM MEMBER
+      WHERE MNO = #{no}
+   </select>
+
+   <update id="memberUpdateOne" parameterType="memberVo">
+      UPDATE MEMBER
+      SET 	AUTH = #{auth}, MEMBERCLASS = #{memberClass},
+      		EMAIL = #{email}, PWD = #{password},
+         	NICKNAME = #{nickname}, MOD_DATE = SYSDATE
+      WHERE MNO = #{no}
+   </update>
+
+   <delete id="memberDeleteOne" parameterType="int">
+      DELETE FROM MEMBER
+      WHERE MNO = #{value}
+   </delete>
+	
+	
+	
+   <select id="memberSelectTotalCount" resultType="java.lang.Integer">
+		SELECT * FROM MEMBER
+		ORDER BY AUTH DESC, CRE_DATE
+   </select>
+
+
+
+
+
+</mapper>

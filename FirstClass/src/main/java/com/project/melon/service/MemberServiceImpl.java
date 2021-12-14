@@ -25,6 +25,49 @@ public class MemberServiceImpl implements MemberService{
 		// TODO Auto-generated method stub
 		return memberDao.memberExist(email, password);
 	}
+
+	@Override
+	public int emailChk(MemberVO memberVo) {
+		// TODO Auto-generated method stub
+		return memberDao.emailChk(memberVo);
+	}
+
+	@Override
+	public int nickNameChk(MemberVO memberVo) {
+		// TODO Auto-generated method stub
+		return memberDao.nickNameChk(memberVo);
+	}
+
+	@Override
+	public int memberInsertOne(MemberVO memberVo) {
+		// TODO Auto-generated method stub
+		return memberDao.memberInsertOne(memberVo);
+	}
+
+
+	@Override
+	public int memberSelectTotalCount() {
+		// TODO Auto-generated method stub
+		return memberDao.memberSelectTotalCount();
+	}
+
+	@Override
+	public MemberVO memberSelectOne(int no) {
+		// TODO Auto-generated method stub
+		return memberDao.memberSelectOne(no);
+	}
+
+	@Override
+	public int memberUpdateOne(MemberVO memberVo) {
+		// TODO Auto-generated method stub
+		return memberDao.memberUpdateOne(memberVo);
+	}
+
+	@Override
+	public void memberDeleteOne(int no) {
+		// TODO Auto-generated method stub
+		memberDao.memberDeleteOne(no);
+	}
 	
 	
 	

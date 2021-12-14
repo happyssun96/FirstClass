@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -84,14 +85,63 @@ public class MemberController {
 			return "member/MemberForm";
 		}
 	
+		//이메일 중복체크
+		@RequestMapping(value = "/emailChk.do", method = RequestMethod.POST)
+		public int emailChk(MemberVO memberVo, Model model) {
+			
+			int resultEmail = memberService.emailChk(memberVo);
+			
+			return resultEmail;
+		}
+		
+		//닉네임 중복체크
+		@RequestMapping(value = "/nickNameChk.do", method = RequestMethod.POST)
+		public int nickNameChk(MemberVO memberVo, Model model) {
+			
+			int resultNickName = memberService.nickNameChk(memberVo);
+			
+			return resultNickName;
+		}
+
 		//회원가입 데이터통신 및 처리를 위한 구문
-		@RequestMapping(value = "/member/addCtr.do", method = RequestMethod.POST) //전달받은 구문에서 get으로 되어있지만 회원가입시의 정보가 뜰 수 있으므로 post방식으로 변경
+		@RequestMapping(value = "/member/addCtr.do", method = RequestMethod.POST)
 		public String memberAdd(MemberVO memberVo, Model model) {
 			
 			logger.info("MemberController! memberAdd" + memberVo);
 			
+			int resultEmail = memberService.emailChk(memberVo);
+			int resultNickName = memberService.nickNameChk(memberVo);
+			try {
+				//이메일 중복이 있을때
+				if (resultEmail == 1) {
+					//이메일 에러 페이지로
+					return "auth/emailErr";
+				}
+				//이메일에 중복이없을때
+				else if (resultEmail == 0) {
+					
+					//닉네임에 중복이 있을때
+					if (resultNickName == 1) {
+						//닉네임 에러 페이지로
+						return "auth/nickNameErr";
+					}
+					
+					//닉네임, 이메일 모두 중복이 없을때
+					else if (resultNickName == 0) {
+						//저장
+						memberService.memberInsertOne(memberVo);
+						//로그인 페이지로
+					}
+				}
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
 			
+			//실행이 완료되었다면 로그인 페이지로
 			return "redirect:/login.do";
+			
+			
 		}
 
 	
