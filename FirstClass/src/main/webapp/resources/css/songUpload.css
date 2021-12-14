@@ -1,0 +1,106 @@
+body {
+	background: #ffffff;
+	font-family: arial;
+}
+
+.songUpload-form h1 {
+	font-size: 36px;
+	text-align: center;
+	/* 	color: #45aba6; */
+	color: #666;
+	margin-bottom: 30px;
+	font-weight: normal;
+}
+
+.songUpload-form {
+	background: #fff;
+	width: 450px;
+	border-radius: 6px;
+	margin: 0 auto;
+	display: table;
+	padding: 15px 20px 20px;
+	box-sizing: border-box;
+}
+
+.form-group {
+	float: left;
+	width: 100%;
+	margin: 0 0 15px;
+	position: relative;
+}
+
+.songUpload-form input {
+	width: 100%;
+	padding: 5px;
+	height: 56px;
+	border-radius: 74px;
+	border: 1px solid #ccc;
+	box-sizing: border-box;
+	font-size: 15px;
+	padding-left: 75px;
+}
+
+.fa option {
+	font-weight: 900;
+}
+
+.songUpload-form .form-group .input-icon {
+	font-size: 15px;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: flex;
+	align-items: center;
+	position: absolute;
+	border-radius: 25px;
+	bottom: 0;
+	height: 100%;
+	padding-left: 35px;
+	color: #666;
+}
+
+.songUpload-form .songUpload-btn {
+	background: #f24c4c;
+	padding: 11px 50px;
+	border-color: #f24c4c;
+	color: #fff;
+	text-align: center;
+	margin: 0 auto;
+	font-size: 20px;
+	border: 1px solid #f24c4c;
+	border-radius: 44px;
+	width: 100%;
+	height: 56px;
+	cursor: pointer;
+	margin-top: 10px;
+}
+
+.songUpload-form .reset-psw {
+	float: left;
+	width: 100%;
+	text-decoration: none;
+	color: #666;
+	font-size: 14px;
+	text-align: center;
+	margin-top: 11px;
+}
+
+.songUpload-form button:hover {
+	opacity: 0.9;
+}
+
+.songUpload-form p {
+	float: left;
+	width: 100%;
+	text-align: center;
+	font-size: 16px;
+	margin: 0 0 10px;
+}
+
+@media screen and (max-width:767px) {
+	.songUpload-form {
+		width: 90%;
+		padding: 15px 15px 30px;
+	}
+}

@@ -32,6 +32,9 @@
       <li class="nav-item d-none d-sm-inline-block">
         <a href="./LoginForm.jsp" class="nav-link">Login</a>
       </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="./songUploadForm.jsp" class="nav-link">Music Upload</a>
+      </li>
     </ul>
 
     <!-- Right navbar links -->
