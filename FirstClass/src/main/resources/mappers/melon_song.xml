@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.melon.song">
+
+   <resultMap type="songVo" id="songResultMap">
+      <id column="SONG_NO" property="songNo"/>
+      <result column="SONG_NAME" property="songName"/>
+      <result column="ARTIST" property="artist"/>
+      <result column="ALBUM_NAME" property="albumName"/>
+      <result column="PUBLISHER" property="publisher"/>
+      <result column="RELEASE_DATE" property="releaseDate"/>
+      <result column="SONG_MODIFY_DATE" property="modifyDate"/>
+      <result column="MUSIC_RESOURCE_PATH" property="musicResourcePath"/>
+      <result column="ALBUM_IMAGE_PATH" property="albumImagePath"/>
+   </resultMap>
+   
+<!--    <select id="memberSelectList" resultMap="memberResultMap"> -->
+<!--       SELECT MNO, MNAME, EMAIL, CRE_DATE -->
+<!--       FROM MEMBER -->
+<!--       ORDER BY MNO DESC -->
+<!--    </select> -->
+
+		<select id="addSong" parameterType = "songVo" 
+			resultMap="songResultMap">
+			INSERT INTO SONG
+			VALUE(SONG_NO, SONG_NAME, ARTIST, ALBUM_NAME
+			    , PUBLISHER, RELEASE_DATE, SONG_MODIFY_DATE
+			    , MUSIC_RESOURCE_PATH, ALBUM_IMAGE_PATH)
+			VALUES(SEQ_SONG_SNO.NEXTVAL, #{songName}, #{artist},
+			 #{albumName}, #{publisher}, SYSDATE, SYSDATE, #{musicResourcePath}, #{albumImagePath})
+		</select>
+
+</mapper>

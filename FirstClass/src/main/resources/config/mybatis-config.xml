@@ -6,6 +6,7 @@
 
 	<typeAliases>
 		<typeAlias type="com.project.melon.model.MemberVo" alias="memberVo"/>
+		<typeAlias type="com.project.melon.model.SongVo" alias="songVo" />
 	</typeAliases>
 
 </configuration>

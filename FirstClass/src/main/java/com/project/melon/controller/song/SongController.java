@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.project.melon.model.MemberVo;
+import com.project.melon.model.SongVo;
 import com.project.melon.service.SongService;
 import com.project.melon.service.SubscribeService;
 
@@ -68,33 +69,59 @@ public class SongController {
 	}
 	
 	@RequestMapping(value = "song/uploadMusicCtr.do", method= { RequestMethod.POST })
-	public String uploadMusicCtr( MultipartFile uploadSongFile
-			, MultipartFile uploadSongImageFile 
-			, String songName, String songArtist,  String albumName, String publisher)
+	public String uploadMusicCtr(SongVo songVo, MultipartFile uploadSongFile
+			, MultipartFile uploadSongImageFile )
 	{
+//	public String uploadMusicCtr( MultipartFile uploadSongFile
+//			, MultipartFile uploadSongImageFile 
+//			, String songName, String songArtist,  String albumName, String publisher)
+//	{
 		logger.info("Welcome SongController! uploadMusicCtr \n uploadSongFile =" + uploadSongFile
-				+ "\n uploadImageFile = " + uploadSongImageFile + "\n "
-						+ "\n songName =" + songName
-				+ "\n songArtist =" + songArtist + "\n albumName =" + albumName 
-				+ "\n publisher =" + publisher);
-		songName += ".mp3";
-		albumName += ".jpg";
-		logger.info("Song file name : " + uploadSongFile.getOriginalFilename());
-		logger.info("Song file type : " + uploadSongFile.getContentType());
-		logger.info("Song file size : " + uploadSongFile.getSize());
+				+ "\n uploadImageFile = " + uploadSongImageFile + "\n songVo =" + songVo);
+//						+ "\n songName =" + songName
+//				+ "\n songArtist =" + songArtist + "\n albumName =" + albumName 
+//				+ "\n publisher =" + publisher);
 		
-		logger.info("Album file name : " + uploadSongImageFile.getOriginalFilename());
-		logger.info("Album file type : " + uploadSongImageFile.getContentType());
-		logger.info("Album file size : " + uploadSongImageFile.getSize());		
+//		logger.info("Song file name : " + uploadSongFile.getOriginalFilename());
+//		logger.info("Song file type : " + uploadSongFile.getContentType());
+//		logger.info("Song file size : " + uploadSongFile.getSize());
+//		
+//		logger.info("Album file name : " + uploadSongImageFile.getOriginalFilename());
+//		logger.info("Album file type : " + uploadSongImageFile.getContentType());
+//		logger.info("Album file size : " + uploadSongImageFile.getSize());		
 		
 		String uploadSongFolder = "C://upload//song";
 		String uploadSongImageFolder = "C://upload//image";
 		
-		File uploadSong = new File(uploadSongFolder, songName);
-		File uploadSongImage = new File(uploadSongImageFolder, albumName);
+//		파일 확장자 분리 (결과값 .xxx)
+		String songFileType = uploadSongFile.getContentType();
+		songFileType = "." + songFileType.split("/")[1];
+		String songImageFileType = uploadSongImageFile.getContentType();
+		songImageFileType = "." + songImageFileType.split("/")[1];
+		logger.info("Stype = " + songFileType);
+		logger.info("Stype = " + songImageFileType);
+		
+		String fullSongName = songVo.getSongName() + songFileType;
+		String fullSongImageName = songVo.getAlbumName()  + songImageFileType;
+//		
+		File uploadSong = new File(uploadSongFolder, fullSongName);
+		File uploadSongImage = new File(uploadSongImageFolder, fullSongImageName);
+//		
+		String songFullPath = uploadSongFolder + "//" + fullSongName;
+		String songImageFullPath = uploadSongImageFolder + "//" + fullSongImageName;
+		logger.info("SFP =" + songFullPath + "\n SIFP =" + songImageFullPath);
+		
+		songVo.setMusicResourcePath(songFullPath);
+		songVo.setAlbumImagePath(songImageFullPath);
+		
+		logger.info("SFPVo =" + songVo.getMusicResourcePath());
+		logger.info("SIFPVo =" + songVo.getAlbumImagePath()); 
+//
 		try {
 			uploadSongFile.transferTo(uploadSong);
 			uploadSongImageFile.transferTo(uploadSongImage);
+			logger.info("upload complete!!");
+			songService.addSong(songVo);
 		} catch (IllegalStateException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -107,44 +134,44 @@ public class SongController {
 		return "redirect:/uploadMusic.do";
 	}
 	
-	/* 음원 파일 업로드 */
-	@PostMapping("song/uploadSongAjaxAction.do")
-	public void uploadSongAjaxActionPOST(MultipartFile uploadSongFile) {
-		
-		logger.info("uploadSongAjaxActionPOST..........");
-		String uploadFolder = "C://upload";
-		
-		String uploadFileName = uploadSongFile.getOriginalFilename();
-		
-		
-		String uuid = UUID.randomUUID().toString();
-		
-		uploadFileName = uuid + "_" + uploadFileName;
-		File saveFile = new File(uploadFolder, uploadFileName);
-		
-		try {
-			uploadSongFile.transferTo(saveFile);
-		} catch (IllegalStateException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-	}
+//	/* 음원 파일 업로드 */
+//	@PostMapping("song/uploadSongAjaxAction.do")
+//	public void uploadSongAjaxActionPOST(MultipartFile uploadSongFile) {
+//		
+//		logger.info("uploadSongAjaxActionPOST..........");
+//		String uploadFolder = "C://upload";
+//		
+//		String uploadFileName = uploadSongFile.getOriginalFilename();
+//		
+//		
+//		String uuid = UUID.randomUUID().toString();
+//		
+//		uploadFileName = uuid + "_" + uploadFileName;
+//		File saveFile = new File(uploadFolder, uploadFileName);
+//		
+//		try {
+//			uploadSongFile.transferTo(saveFile);
+//		} catch (IllegalStateException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		
+//	}
 	
-	/* 앨범 이미지 파일 업로드 */
-	@PostMapping("song/uploadSongImageAjaxAction.do")
-	public void uploadSongImageAjaxActionPOST(MultipartFile uploadFile) {
-		
-		logger.info("uploadAjaxActionPOST..........");
-		logger.info("파일 이름 : " + uploadFile.getOriginalFilename());
-		logger.info("파일 타입 : " + uploadFile.getContentType());
-		logger.info("파일 크기 : " + uploadFile.getSize());
-	
-		
-	}
+//	/* 앨범 이미지 파일 업로드 */
+//	@PostMapping("song/uploadSongImageAjaxAction.do")
+//	public void uploadSongImageAjaxActionPOST(MultipartFile uploadFile) {
+//		
+//		logger.info("uploadAjaxActionPOST..........");
+//		logger.info("파일 이름 : " + uploadFile.getOriginalFilename());
+//		logger.info("파일 타입 : " + uploadFile.getContentType());
+//		logger.info("파일 크기 : " + uploadFile.getSize());
+//	
+//		
+//	}
 	
 //	@RequestMapping(value = "song/DeleteMusicCtr.do", method=RequestMethod.GET)
 //	public String deleteMusic(int songNo, HttpSession session)

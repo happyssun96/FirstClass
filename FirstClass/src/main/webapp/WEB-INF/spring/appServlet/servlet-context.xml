@@ -10,7 +10,7 @@
 	<context:component-scan base-package="com.project.melon" />
 	
 	<mvc:annotation-driven />
-	
+<!-- 	<mvc: -->
 	<mvc:resources location="/WEB-INF/resources" 
 		mapping="/resources/**"	/>
 	
