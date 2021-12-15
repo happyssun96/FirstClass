@@ -1,5 +1,10 @@
 package com.project.melon.dao;
 
-public class PlayListDAO {
+import com.project.melon.model.PlayListVO;
 
+public interface PlayListDAO {
+	
+	public int playListInsertOne(PlayListVO playListVo);
+	
+	public void playListDeleteOne(int no);
 }

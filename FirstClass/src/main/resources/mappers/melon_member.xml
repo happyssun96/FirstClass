@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.edu.member">
+<mapper namespace="com.project.melon">
 
    <resultMap type="memberVo" id="memberResultMap">
-      <id column="MNO" property="member_no" />
+      <id column="MEMBER_NO" property="member_no" />
       <result column="PWD" property="password" />
       <result column="EMAIL" property="email" />
       <result column="AUTH" property="auth" />
@@ -32,15 +32,15 @@
 		WHERE EMAIL = #{email};	
 	</select>		
 	
-	<select id="nickNameChk">
+	<select id="nickNameChk" resultType = "int">
 		SELECT COUNT(*) FROM MEMBER
 		WHERE NICKNAME = #{nickName};
 	</select>
 	
    <select id="memberSelectList" parameterType="map" resultMap="memberResultMap">
-      SELECT MEMBER.RNUM, MEMBER.MNO, MEMBER.AUTH, MEMBER.NICKNAME, MEMBER.EMAIL, MEMBER.CRE_DATE
-      FROM (   SELECT ROWNUM RNUM, M.MNO, M.AUTH, M.NICKNAME, M.EMAIL, M.CRE_DATE
-              FROM    (   SELECT MNO, AUTH, NICKNAME, EMAIL, CRE_DATE
+      SELECT MEMBER.RNUM, MEMBER.MEMBER_NO, MEMBER.AUTH, MEMBER.NICKNAME, MEMBER.EMAIL, MEMBER.CRE_DATE
+      FROM (   SELECT ROWNUM RNUM, M.MEMBER_NO, M.AUTH, M.NICKNAME, M.EMAIL, M.CRE_DATE
+              FROM    (   SELECT MEMBER_NO, AUTH, NICKNAME, EMAIL, CRE_DATE
                           FROM MEMBER 
                              <if test="searchOption == 'all'">
                                 WHERE NICKNAME LIKE '%'||#{keyword}||'%'
@@ -70,16 +70,16 @@
 
    <insert id="memberInsertOne" parameterType="memberVo">
       INSERT INTO MEMBER
-      (MNO, EMAIL, PWD, MNAME, CRE_DATE, MOD_DATE)
-      VALUES(MEMBER_MNO_SEQ.NEXTVAL, #{email}, #{password}, #{name},
+      (MEMBER_NO, EMAIL, PWD, NICKNAME, CRE_DATE, MOD_DATE)
+      VALUES(MNO_SEQ.NEXTVAL, #{email}, #{password}, #{NICKNAME},
       SYSDATE, SYSDATE)
    </insert>
 
    <select id="memberSelectOne" parameterType="int"
       resultMap="memberResultMap">
-      SELECT MNO, AUTH, NICKNAME, EMAIL, MEMBERCLASS, CRE_DATE
+      SELECT MEMBER_NO, AUTH, NICKNAME, EMAIL, MEMBERCLASS, CRE_DATE
       FROM MEMBER
-      WHERE MNO = #{no}
+      WHERE MEMBER_NO = #{no}
    </select>
 
    <update id="memberUpdateOne" parameterType="memberVo">
@@ -87,12 +87,12 @@
       SET 	AUTH = #{auth}, MEMBERCLASS = #{memberClass},
       		EMAIL = #{email}, PWD = #{password},
          	NICKNAME = #{nickname}, MOD_DATE = SYSDATE
-      WHERE MNO = #{no}
+      WHERE MEMBER_NO = #{no}
    </update>
 
    <delete id="memberDeleteOne" parameterType="int">
       DELETE FROM MEMBER
-      WHERE MNO = #{value}
+      WHERE MEMBER_NO = #{value}
    </delete>
 	
 	
