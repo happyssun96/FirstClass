@@ -1,5 +1,5 @@
 package com.project.melon.model;
 
-public class MainVo {
+public class PurchaseListVO {
 
 }
