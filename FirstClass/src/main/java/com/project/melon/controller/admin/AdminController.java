@@ -14,14 +14,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.project.melon.controller.member.MemberController;
 import com.project.melon.model.MemberVO;
 import com.project.melon.service.MemberServiceImpl;
 import com.project.melon.util.Paging;
 
 public class AdminController {
 	private static final Logger logger
-	= LoggerFactory.getLogger(MemberController.class);
+	= LoggerFactory.getLogger(AdminController.class);
 
 	@Autowired
 	private MemberServiceImpl memberService;

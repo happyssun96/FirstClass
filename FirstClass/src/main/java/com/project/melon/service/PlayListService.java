@@ -1,5 +1,10 @@
 package com.project.melon.service;
 
-public interface PlayListService {
+import com.project.melon.model.PlayListVO;
 
+public interface PlayListService {
+	
+	public int playListInsertOne(PlayListVO playListVo);
+	
+	public void playListDeleteOne(int no);	
 }

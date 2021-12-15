@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.melon">
+
+	 <resultMap type="playListVo" id="playListResultMap">
+		<id column="PLAYLIST_NO" property="playList_no" />
+	    <result column="MEMBER_NO" property="member_no" />
+	    <result column="SONG_NO" property="song_no" />
+	 </resultMap>
+
+	 <insert id="playListInsertOne" parameterType="playListVo">
+      INSERT INTO PLAYLIST
+      (PLAYLIST_NO, MEMBER_NO, SONG_NO)
+      VALUES(PNO_SEQ.NEXTVAL, #{member_no}, #{song_no})		
+	 </insert>	
+	 
+
+	 <delete id="playListDeleteOne" parameterType="int">
+      DELETE FROM PLAYLIST
+      WHERE PLAYLIST_NO = #{value}
+     </delete>
+	 
+
+
+</mapper>
