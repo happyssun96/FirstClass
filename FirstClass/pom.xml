@@ -39,6 +39,14 @@
 			</exclusions>
 		</dependency>
 		<!-- Jsoup -->
+		
+<!-- 		원격 서버에 파일을 올리기 위한 라이브러리 -->
+		<dependency>
+    <groupId>com.jcraft</groupId>
+    <artifactId>jsch</artifactId>
+    <version>0.1.54</version>
+		</dependency>
+
 
 		<dependency>
 			<groupId>org.jsoup</groupId>
