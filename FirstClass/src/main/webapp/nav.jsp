@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,11 +22,27 @@
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="image">
+        
+        <div class="info">
+          <a href="./userDetailPage.jsp" class="d-block">
+
+          <c:if test="${sessionScope.member.email ne null}">
+          
+          <div class="image">
           <img src="resources/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
-        <div class="info">
-          <a href="./userDetailPage.jsp" class="d-block">Alexander Pierce</a>
+        
+		<span>
+			${member.nickName}님 어서오세요!			
+		</span>
+		</c:if>
+          </a>
+          <hr>
+        <c:if test="${sessionScope.member.email ne null}">
+        	<a href="<%=request.getContextPath()%>/logout.do"
+			style="color: white;">로그아웃</a>
+        </c:if>
+          
         </div>
       </div>
 
