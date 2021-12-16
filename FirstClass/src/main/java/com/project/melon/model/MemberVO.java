@@ -1,8 +1,9 @@
 package com.project.melon.model;
 
+
+
 public class MemberVO {
-	
-	/* Value Object */
+	/* Value Object*/
 	private int member_no = 0;
 	private String email = "";
 	private String password = "";
@@ -15,10 +16,12 @@ public class MemberVO {
 	private String createDate = null;
 	private String modifyDate = null;
 	
+	
 	public MemberVO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
 	
 	public MemberVO(int member_no, String email, String password, String auth, int memberClass, String nickName,
 			int cash, int age, String gender, String createDate, String modifyDate) {
@@ -35,7 +38,8 @@ public class MemberVO {
 		this.createDate = createDate;
 		this.modifyDate = modifyDate;
 	}
-	
+
+
 	public int getMember_no() {
 		return member_no;
 	}
@@ -102,16 +106,17 @@ public class MemberVO {
 	public void setModifyDate(String modifyDate) {
 		this.modifyDate = modifyDate;
 	}
-	
 	@Override
 	public String toString() {
-		return "MemberVO [member_no=" + member_no + ", email=" + email + ", password=" + password + ", auth=" + auth
+		return "MemberVo [member_no=" + member_no + ", email=" + email + ", password=" + password + ", auth=" + auth
 				+ ", memberClass=" + memberClass + ", nickName=" + nickName + ", cash=" + cash + ", age=" + age
 				+ ", gender=" + gender + ", createDate=" + createDate + ", modifyDate=" + modifyDate + "]";
 	}
-
+	
+	
 	
 	
 	
 	
 }
+
