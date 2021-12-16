@@ -54,9 +54,8 @@ public class MemberController {
 				
 				//회원종류(관리자, 유저)에 따라 로그인
 				if (memberVo.getAuth().equals("admin")) {
-					
 					//주소창의 경우 앞에 / 하지 않을 경우 잘못된 주소로 이동할 것 같아 추가
-					return "redirect:/admin.jsp";
+					return "redirect:/adminPage.jsp";
 				}else {
 					return "redirect:/index.jsp";
 				}

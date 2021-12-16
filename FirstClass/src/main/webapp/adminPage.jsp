@@ -85,8 +85,8 @@
 			      </c:when>
 			   </c:choose>
 	     	 </select>
-	     
 	    	<input type="text" placeholder="검색할 내용을 입력하세요.&nbsp; (&nbsp;ex&nbsp;.&nbsp;유저 정보, 음원 정보&nbsp;)" style="width:730px; height:60px; background: #E5E1E1; border: none; border-radius: 2.0em; padding-inline-end: 44px; padding-inline-start: 52px; margin-left: 10px;">   	
+	    	
 	    </form>
     </div>
     
@@ -112,11 +112,11 @@
 					 		<th>가입일</th>
 					 		<th>수정일</th>
 					 	</tr>
-					 	<tr>
-					 		<td>1</td>
-					 		<td>waterM@naver.com</td>
-					 		<td>수박남</td>
-					 		<td>관리자</td>
+					 	<tr onclick="location.href='./adminDetailPage.jsp'" style="cursor: pointer;">
+					 		<td>${member.member_no}</td>
+					 		<td>${member.email}</td>
+					 		<td>${member.nickName}</td>
+					 		<td>${member.auth}</td>
 					 		<td>골드회원</td>
 					 		<td>10000원</td>
 					 		<td>25</td>
@@ -126,7 +126,7 @@
 					 		<td>2021.12.15</td>
 					 	</tr>
 					 	<tr>
-					 		<td>2</td>
+					 		<td>3</td>
 					 		<td>Melon@naver.com</td>
 					 		<td>멜론녀</td>
 					 		<td>일반</td>

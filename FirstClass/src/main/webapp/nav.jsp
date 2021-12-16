@@ -21,43 +21,64 @@
     <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
-      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        
-        <div class="info">
-        
-        <a href="./login.do" class="d-block" style="padding-left: 45px;">      
-        
-        <c:if test="${sessionScope.member.email == null}">
+       
+       <c:if test="${sessionScope.member.email == null}">
+         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+      
         <div class="image">
           <img src="resources/dist/img/user0-160x160.png" 
           	class="img-circle elevation-2" alt="User Image">
         </div> 
+        <div class="info">
+                <a href="./login.do" class="d-block" style="padding-left: 45px;">      
+               <span>로그인</span>
+       </a>
+        </div>
         
-        <span>로그인</span>
+        </div>
         
         </c:if>
-        </a>
-        <a href="./userDetailPage.jsp" class="d-block">
-          
+
           <c:if test="${sessionScope.member.email ne null}">
           
-          <div class="image">
-          <img src="resources/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
-        </div>
+          <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+      
+        <div class="image">
+          <img src="resources/dist/img/user2-160x160.jpg" 
+          	class="img-circle elevation-2" alt="User Image">
+        </div> 
+        <div class="info">
+           <a href="./userDetailPage.jsp" class="d-block">
         
 		<span>
 			${member.nickName}님 어서오세요!			
 		</span>
-		</c:if>
           </a>
-          <hr>
-        <c:if test="${sessionScope.member.email ne null}">
-        	<a href="<%=request.getContextPath()%>/logout.do"
-			style="color: white; padding-left: 70px; padding-right: 50px;">로그아웃</a>
-        </c:if>
-          
+          <br/>
+          <a href="<%=request.getContextPath()%>/logout.do"
+			style="color: white;">
+			<span>
+			로그아웃
+			</span>
+		</a>
         </div>
-      </div>
+        
+        </div>
+          
+		</c:if>
+          <hr>
+<%--         <c:if test="${sessionScope.member.email ne null}"> --%>
+        
+<%--         <a href="<%=request.getContextPath()%>/logout.do" --%>
+<!-- 			style="color: white;"> -->
+<!-- 			<span> -->
+<!-- 			로그아웃 -->
+<!-- 			</span> -->
+<!-- 		</a> -->
+			
+<%--         </c:if> --%>
+          
+        
 
       <!-- SidebarSearch Form -->
       <div class="form-inline">
