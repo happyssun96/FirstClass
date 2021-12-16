@@ -53,15 +53,15 @@ public class MemberController {
 				session.setAttribute("member", memberVo);
 				
 				//회원종류(관리자, 유저)에 따라 로그인
-				if (memberVo.getAuth().equals("user")) {
+				if (memberVo.getAuth().equals("admin")) {
 					
 					//주소창의 경우 앞에 / 하지 않을 경우 잘못된 주소로 이동할 것 같아 추가
-					return "/main/mainPage.do";
+					return "redirect:/admin.jsp";
 				}else {
 					return "redirect:/index.jsp";
 				}
 			}else {
-				return "/main/loginFailPage.do";
+				return "/auth/LoginFail";
 			}
 		}
 	
@@ -82,7 +82,7 @@ public class MemberController {
 		public String memberAdd(Model model) {
 			logger.info("MemberController! memberAdd");
 			
-			return "member/MemberForm";
+			return "member/RegisterForm";
 		}
 	
 		//이메일 중복체크
@@ -115,7 +115,7 @@ public class MemberController {
 				//이메일 중복이 있을때
 				if (resultEmail == 1) {
 					//이메일 에러 페이지로
-					return "auth/emailErr";
+					return "auth/emailError";
 				}
 				//이메일에 중복이없을때
 				else if (resultEmail == 0) {
@@ -123,7 +123,7 @@ public class MemberController {
 					//닉네임에 중복이 있을때
 					if (resultNickName == 1) {
 						//닉네임 에러 페이지로
-						return "auth/nickNameErr";
+						return "auth/nickNameError";
 					}
 					
 					//닉네임, 이메일 모두 중복이 없을때

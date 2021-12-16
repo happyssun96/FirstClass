@@ -31,7 +31,7 @@
       
       <div class="seperator"><br/>
       	<p style="color: #666">계정이 없나요?</p>	
-      <button class="register-btn" onclick="location.href='./RegisterForm.jsp'">회원가입</button> 	
+      <button class="register-btn" onclick="location.href='./member/add.do'">회원가입</button> 	
       </div>
       
       <div class="seperator"><b>or</b></div>

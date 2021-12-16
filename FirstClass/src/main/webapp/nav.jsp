@@ -24,8 +24,21 @@
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         
         <div class="info">
-          <a href="./userDetailPage.jsp" class="d-block">
-
+        
+        <a href="./login.do" class="d-block" style="padding-left: 45px;">      
+        
+        <c:if test="${sessionScope.member.email == null}">
+        <div class="image">
+          <img src="resources/dist/img/user0-160x160.png" 
+          	class="img-circle elevation-2" alt="User Image">
+        </div> 
+        
+        <span>로그인</span>
+        
+        </c:if>
+        </a>
+        <a href="./userDetailPage.jsp" class="d-block">
+          
           <c:if test="${sessionScope.member.email ne null}">
           
           <div class="image">
@@ -40,7 +53,7 @@
           <hr>
         <c:if test="${sessionScope.member.email ne null}">
         	<a href="<%=request.getContextPath()%>/logout.do"
-			style="color: white;">로그아웃</a>
+			style="color: white; padding-left: 70px; padding-right: 50px;">로그아웃</a>
         </c:if>
           
         </div>

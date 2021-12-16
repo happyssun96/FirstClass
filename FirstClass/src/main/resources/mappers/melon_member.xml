@@ -29,12 +29,12 @@
 	
 	<select id = "emailChk" resultType = "int">
 		SELECT COUNT(*) FROM MEMBER
-		WHERE EMAIL = #{email};	
+		WHERE EMAIL = #{email}
 	</select>		
 	
 	<select id="nickNameChk" resultType = "int">
 		SELECT COUNT(*) FROM MEMBER
-		WHERE NICKNAME = #{nickName};
+		WHERE NICKNAME = #{nickName}
 	</select>
 	
    <select id="memberSelectList" parameterType="map" resultMap="memberResultMap">
@@ -70,8 +70,8 @@
 
    <insert id="memberInsertOne" parameterType="memberVo">
       INSERT INTO MEMBER
-      (MEMBER_NO, EMAIL, PWD, NICKNAME, CRE_DATE, MOD_DATE)
-      VALUES(MNO_SEQ.NEXTVAL, #{email}, #{password}, #{NICKNAME},
+      (MEMBER_NO, EMAIL, PWD, AUTH, NICKNAME, AGE, GENDER, CRE_DATE, MOD_DATE)
+      VALUES(MNO_SEQ.NEXTVAL, #{email}, #{password}, #{auth}, #{nickName}, #{age}, #{gender},
       SYSDATE, SYSDATE)
    </insert>
 
