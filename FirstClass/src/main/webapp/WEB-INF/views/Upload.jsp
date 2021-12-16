@@ -14,9 +14,9 @@
 			<label>상품 이미지</label>
 		</div>
 		<div class="form_section_content">
-			음원 제목 : <input type="text" name = "songName"><br>
+			음원 제목 : <input type="text" name = "songName" id = "songName"><br>
 			아티스트 : <input type = "text" name = "Artist"><br>
-			앨범 제목 : <input type = "text" name = "albumName"><br>
+			앨범 제목 : <input type = "text" name = "albumName" id = "albumName"><br>
 			소속사 : <input type = "text" name = "publisher"><br>
 			음원 파일 : <br>
 			<input type="file" id ="songItem" name='uploadSongFile' style="height: 30px;"><br>
@@ -24,7 +24,7 @@
 			<input type="file" id ="coverItem" name='uploadSongImageFile' style="height: 30px;"><br>								
 		</div>
 	</div>
-	<input type="submit" value="등록"> 
+	<input type="submit" value="등록" onclick="check_submit();"> 
 </form>
 
 
@@ -32,6 +32,7 @@
 </script>
 
 <script type="text/javascript">
+
 function songFileCheck(fileName, fileSize)
 {
 	let regex = new RegExp("(.*?)\.(mp3)$");

@@ -72,23 +72,8 @@ public class SongController {
 	public String uploadMusicCtr(SongVo songVo, MultipartFile uploadSongFile
 			, MultipartFile uploadSongImageFile )
 	{
-//	public String uploadMusicCtr( MultipartFile uploadSongFile
-//			, MultipartFile uploadSongImageFile 
-//			, String songName, String songArtist,  String albumName, String publisher)
-//	{
 		logger.info("Welcome SongController! uploadMusicCtr \n uploadSongFile =" + uploadSongFile
 				+ "\n uploadImageFile = " + uploadSongImageFile + "\n songVo =" + songVo);
-//						+ "\n songName =" + songName
-//				+ "\n songArtist =" + songArtist + "\n albumName =" + albumName 
-//				+ "\n publisher =" + publisher);
-		
-//		logger.info("Song file name : " + uploadSongFile.getOriginalFilename());
-//		logger.info("Song file type : " + uploadSongFile.getContentType());
-//		logger.info("Song file size : " + uploadSongFile.getSize());
-//		
-//		logger.info("Album file name : " + uploadSongImageFile.getOriginalFilename());
-//		logger.info("Album file type : " + uploadSongImageFile.getContentType());
-//		logger.info("Album file size : " + uploadSongImageFile.getSize());		
 		
 		String uploadSongFolder = "C://upload//song";
 		String uploadSongImageFolder = "C://upload//image";

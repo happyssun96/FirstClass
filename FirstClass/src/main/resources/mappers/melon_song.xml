@@ -30,5 +30,19 @@
 			VALUES(SEQ_SONG_SNO.NEXTVAL, #{songName}, #{artist},
 			 #{albumName}, #{publisher}, SYSDATE, SYSDATE, #{musicResourcePath}, #{albumImagePath})
 		</select>
+		
+		   <select id="songSelectList" parameterType="map" 
+      resultMap="songResultMap">
+       	  SELECT SONG.RNUM, SONG.song_no, SONG.SONG_NAME, SONG.ARTIST
+            , to_char(RELEASE_DATE , 'YYYY-MM-DD HH24:MM')as RELEASE_DATE 
+      FROM (   SELECT ROWNUM RNUM, S.SONG_NO, S.SONG_NAME, S.ARTIST, S.RELEASE_DATE 
+            FROM (   SELECT song_no, SONG_NAME, ARTIST, RELEASE_DATE 
+                  FROM SONG
+    	             WHERE SONG_NAME LIKE '%'||#{keyword}||'%'
+	                 OR ARTIST LIKE '%'||#{keyword}||'%'
+	                  ORDER BY RELEASE_DATE  DESC) S
+         ) SONG
+      WHERE SONG.RNUM BETWEEN #{start} AND #{end}
+   </select>
 
 </mapper>
