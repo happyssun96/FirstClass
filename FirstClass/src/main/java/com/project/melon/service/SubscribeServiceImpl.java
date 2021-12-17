@@ -1,5 +1,5 @@
 package com.project.melon.service;
 
-public interface SubscribeService {
+public class SubscribeServiceImpl implements SubscribeService{
 
 }
