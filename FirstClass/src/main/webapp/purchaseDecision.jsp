@@ -86,7 +86,7 @@
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
     <!-- Control sidebar content goes here -->
-  </aside>
+    </aside>
   <!-- /.control-sidebar -->
 
 	<jsp:include page="footer.jsp" />

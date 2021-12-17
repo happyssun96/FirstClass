@@ -34,18 +34,23 @@ public class MemberController {
 		}
 		
 		//loginCtr.do 로그인 작업을 수행하기위한 구문(DB 활용)
+		/**
+		 * @param email
+		 * @param password
+		 * @param session
+		 * @param model
+		 * @return
+		 */
 		@RequestMapping(value = "/loginCtr.do", method = RequestMethod.POST)
 			public String loginCtr(@Valid String email, String password, HttpSession session, Model model) {
 			
 			//디버깅을 위한 로그 출력 로직
 			logger.info("MemberController! loginCtr" + email + ", " + password);
 	
-			
-			
 			MemberVO memberVo = memberService.memberExist(email, password);
 	
 			//암호화 valid 기능을 통해 패스워드 검증 수행?? - 뭔소린지 모르겠음
-			
+			String viewUrlStr = "";
 			//로그인 정보 존재여부 확인
 			if (memberVo != null) {
 	
@@ -55,10 +60,13 @@ public class MemberController {
 				//회원종류(관리자, 유저)에 따라 로그인
 				if (memberVo.getAuth().equals("admin")) {
 					//주소창의 경우 앞에 / 하지 않을 경우 잘못된 주소로 이동할 것 같아 추가
-					return "redirect:/adminPage.jsp";
+					viewUrlStr = "redirect:/adminPage.jsp";
+					
 				}else {
-					return "redirect:/index.jsp";
+					viewUrlStr = "redirect:/index.jsp";
 				}
+				
+				return viewUrlStr;
 			}else {
 				return "/auth/LoginFail";
 			}
