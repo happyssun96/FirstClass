@@ -29,20 +29,24 @@ public class MainController {
 	@Autowired
 	private SongService songService;
 	
+	/**
+	 * @param curPage 현재 페이지를 저장하고 있는 파라미터
+	 * @param model 프론트로 데이터를 넘겨주기 위한 모델
+	 * @return
+	 */
 	@RequestMapping(value = "userMainPage.do", method = RequestMethod.GET)
-	public String userMainPage(@RequestParam(defaultValue = "1")int curPage, 
-			@RequestParam(defaultValue="")String keyword, Model model )
+	public String userMainPage(@RequestParam(defaultValue = "1")int curPage
+			, Model model )
 	{
-	      logger.info("Welcome MemberController! searchPage curpage =" + curPage + 
-	    		  " keyword :" + keyword);
+	      logger.info("Welcome MemberController! searchPage curpage =" + curPage);
 	      
-	    int totalCount = songService.songSelectTotalCount(keyword);  
+	    int totalCount = songService.songSelectTotalCount("");  
 	    System.out.println(totalCount);
 		Paging songPaging = new Paging(totalCount, curPage);
 		int start = songPaging.getPageBegin();
 		int end = songPaging.getPageEnd();
 		
-		List<SongVO> songList = songService.songSelectList("all" ,keyword, start, end);
+		List<SongVO> songList = songService.songSelectList("", start, end);
 		
 		
 		Map<String, Object> pagingMap = new HashMap<String, Object>();
@@ -51,11 +55,15 @@ public class MainController {
 		
 		model.addAttribute("songList", songList);
 		model.addAttribute("pagingMap", pagingMap);
-		model.addAttribute("keyword", keyword);
 		
 		return "/WaterMelon/index.jsp";
 	}
 	
+	/**
+	 * @param curPage 현재 페이지를 저장하고 있는 파라미터
+	 * @param model 프론트로 데이터를 넘겨주기 위한 모델
+	 * @return
+	 */
 	@RequestMapping(value = "adminMainPage.do", method = RequestMethod.GET)
 	public String adminMainPage(@RequestParam(defaultValue = "1")int curPage
 			, Model model)
@@ -79,14 +87,21 @@ public class MainController {
 		List<SongVO> songList = songService.songSelectList("", memberStart, memberEnd);
 		List<MemberVO> memberList = memberService.memberSelectList("all", "", songStart, songEnd);
 		
-		Map<String, Object> pagingMap = new HashMap<String, Object>();
-		pagingMap.put("totalCount", songTotalCount);
-		pagingMap.put("songPaging", songPaging);
+		Map<String, Object> songPagingMap = new HashMap<String, Object>();
+		songPagingMap.put("songTotalCount", songTotalCount);
+		songPagingMap.put("songPaging", songPaging);
 		
+		Map<String, Object> memberPagingMap = new HashMap<String, Object>();
+		memberPagingMap.put("memberTotalCount", memberTotalCount);
+		memberPagingMap.put("memberPaging", memberPaing);
+		
+		model.addAttribute("memberList", memberList);
 		model.addAttribute("songList", songList);
-		model.addAttribute("pagingMap", pagingMap);
 		
-		return "/WaterMelon/index.jsp";
+		model.addAttribute("pagingMap", songPagingMap);
+		model.addAttribute("memberPagingMap", memberPagingMap);
+		
+		return "/WaterMelon/adminPage";
 	}
 	
 }
