@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.melon">
+
+   <resultMap type="subscribeVo" id="subscribeResultMap">
+      <id column="SUBSCRIBE_NO" property="subscribe_no" />
+      <result column="MEMBER_NO" property="member_no" />
+      <result column="EXPIRE_RESERVATION" property="expire_reservation" />
+      <result column="PURCHASE_DATE" property="purchaseDate"
+         javaType="java.util.Date" />
+      <result column="EXPIRE_DATE" property="expireDate"
+         javaType="java.util.Date" />
+   </resultMap>	
+
+	<select id = "subscribeChk" resultType = "int">
+		SELECT COUNT(*) FROM SUBSCRIBE
+		WHERE MEMBER_NO = #{member_no};	
+	</select>			
+
+
+
+
+</mapper>
