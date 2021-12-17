@@ -9,9 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.project.melon.model.MemberVO;
 import com.project.melon.model.PlayListVO;
-import com.project.melon.service.MemberServiceImpl;
 import com.project.melon.service.PlayListServiceImpl;
 
 public class PlayListController {
@@ -21,6 +19,7 @@ public class PlayListController {
 	@Autowired
 	private PlayListServiceImpl playListService;
 	
+	//플레이리스트 음악 추가
 	@RequestMapping(value = "playList/addPlayList.do", method = RequestMethod.GET)
 		public String addPlayList(HttpSession session, PlayListVO playListVo, Model model) {
 			logger.info("playListAdd");
@@ -49,6 +48,7 @@ public class PlayListController {
 		
 		}
 	
+	//플레이리스트 음악 삭제
 	@RequestMapping(value = "playList/deletePlayList.do", method = RequestMethod.GET)
 		public String deletePlayList(HttpSession session, int no, Model model) {
 		

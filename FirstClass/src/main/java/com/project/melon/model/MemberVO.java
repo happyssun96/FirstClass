@@ -1,6 +1,6 @@
 package com.project.melon.model;
 
-
+import java.util.Date;
 
 public class MemberVO {
 	/* Value Object*/
@@ -13,18 +13,16 @@ public class MemberVO {
 	private int cash = 0;
 	private int age = 0;
 	private String gender = "";
-	private String createDate = null;
-	private String modifyDate = null;
-	
-	
+	private Date createDate = null;
+	private Date modifyDate = null;
+
 	public MemberVO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
-	
+
 	public MemberVO(int member_no, String email, String password, String auth, int memberClass, String nickName,
-			int cash, int age, String gender, String createDate, String modifyDate) {
+			int cash, int age, String gender, Date createDate, Date modifyDate) {
 		super();
 		this.member_no = member_no;
 		this.email = email;
@@ -38,7 +36,6 @@ public class MemberVO {
 		this.createDate = createDate;
 		this.modifyDate = modifyDate;
 	}
-
 
 	public int getMember_no() {
 		return member_no;
@@ -94,16 +91,16 @@ public class MemberVO {
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
-	public String getCreateDate() {
+	public Date getCreateDate() {
 		return createDate;
 	}
-	public void setCreateDate(String createDate) {
+	public void setCreateDate(Date createDate) {
 		this.createDate = createDate;
 	}
-	public String getModifyDate() {
+	public Date getModifyDate() {
 		return modifyDate;
 	}
-	public void setModifyDate(String modifyDate) {
+	public void setModifyDate(Date modifyDate) {
 		this.modifyDate = modifyDate;
 	}
 	@Override
@@ -111,12 +108,7 @@ public class MemberVO {
 		return "MemberVo [member_no=" + member_no + ", email=" + email + ", password=" + password + ", auth=" + auth
 				+ ", memberClass=" + memberClass + ", nickName=" + nickName + ", cash=" + cash + ", age=" + age
 				+ ", gender=" + gender + ", createDate=" + createDate + ", modifyDate=" + modifyDate + "]";
-	}
-	
-	
-	
-	
-	
+	}	
 	
 }
 
