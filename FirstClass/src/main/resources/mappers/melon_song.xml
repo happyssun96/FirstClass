@@ -10,16 +10,10 @@
       <result column="ALBUM_NAME" property="albumName"/>
       <result column="PUBLISHER" property="publisher"/>
       <result column="RELEASE_DATE" property="releaseDate"/>
-      <result column="SONG_MODIFY_DATE" property="modifyDate"/>
+      <result column="SONG_MODIFY_DATE" property="modifyDate" />
       <result column="MUSIC_RESOURCE_PATH" property="musicResourcePath"/>
       <result column="ALBUM_IMAGE_PATH" property="albumImagePath"/>
    </resultMap>
-   
-<!--    <select id="memberSelectList" resultMap="memberResultMap"> -->
-<!--       SELECT MNO, MNAME, EMAIL, CRE_DATE -->
-<!--       FROM MEMBER -->
-<!--       ORDER BY MNO DESC -->
-<!--    </select> -->
 
 		<select id="addSong" parameterType = "songVo" 
 			resultMap="songResultMap">
@@ -43,6 +37,14 @@
 	                  ORDER BY RELEASE_DATE  DESC) S
          ) SONG
       WHERE SONG.RNUM BETWEEN #{start} AND #{end}
+   </select>
+   
+   		   <select id="songSelectTotalCount" parameterType="map"
+   		   resultType = "java.lang.Integer" >
+       	  SELECT COUNT(*) 
+       	  FROM SONG 
+       	  WHERE SONG_NAME LIKE '%'||#{keyword}||'%'
+	      OR ARTIST LIKE '%'||#{keyword}||'%'
    </select>
 
 </mapper>

@@ -38,4 +38,9 @@ public class SongDAOImpl implements SongDAO {
 		return sqlSession.selectList(nameSpace + "songSelectList", map);
 	}
 
+	@Override
+	public int songSelectTotalCount(String keyword) {
+		return sqlSession.selectOne(nameSpace + "songSelectTotalCount", keyword);
+	}
+
 }
