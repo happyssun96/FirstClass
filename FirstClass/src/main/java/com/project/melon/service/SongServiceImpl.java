@@ -28,8 +28,8 @@ public class SongServiceImpl implements SongService{
 	}
 
 	@Override
-	public int songSelectTotalCount(String keyword) {
-		return songDao.songSelectTotalCount(keyword);
+	public int songSelectTotalCount() {
+		return songDao.songSelectTotalCount();
 	}
 
 

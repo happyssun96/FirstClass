@@ -12,10 +12,8 @@
       <result column="CASH" property="cash" />
       <result column="AGE" property="age" />
       <result column="GENDER" property="gender" />
-      <result column="CRE_DATE" property="createDate"
-         javaType="java.util.Date" />
-      <result column="MOD_DATE" property="modifyDate"
-         javaType="java.util.Date" />
+      <result column="CRE_DATE" property="createDate"/>
+      <result column="MOD_DATE" property="modifyDate"/>
    </resultMap>
 
 
@@ -29,16 +27,17 @@
 	
 	<select id = "emailChk" resultType = "int">
 		SELECT COUNT(*) FROM MEMBER
-		WHERE EMAIL = #{email};	
+		WHERE EMAIL = #{email}
 	</select>		
 	
 	<select id="nickNameChk" resultType = "int">
 		SELECT COUNT(*) FROM MEMBER
-		WHERE NICKNAME = #{nickName};
+		WHERE NICKNAME = #{nickName}
 	</select>
 	
    <select id="memberSelectList" parameterType="map" resultMap="memberResultMap">
-      SELECT MEMBER.RNUM, MEMBER.MEMBER_NO, MEMBER.AUTH, MEMBER.NICKNAME, MEMBER.EMAIL, MEMBER.CRE_DATE
+      SELECT MEMBER.RNUM, MEMBER.MEMBER_NO, MEMBER.AUTH, MEMBER.NICKNAME, MEMBER.EMAIL
+      		, to_char(MEMBER.CRE_DATE , 'YYYY-MM-DD HH24:MM')as CRE_DATE
       FROM (   SELECT ROWNUM RNUM, M.MEMBER_NO, M.AUTH, M.NICKNAME, M.EMAIL, M.CRE_DATE
               FROM    (   SELECT MEMBER_NO, AUTH, NICKNAME, EMAIL, CRE_DATE
                           FROM MEMBER 
@@ -61,7 +60,7 @@
 
    <select id="memberExist" parameterType="map"
       resultMap="memberResultMap">
-      SELECT NICKNAME, EMAIL
+      SELECT MEMBER_NO, NICKNAME, EMAIL, AUTH
       FROM MEMBER
       WHERE EMAIL = #{email}
       AND PWD = #{password}
@@ -70,8 +69,8 @@
 
    <insert id="memberInsertOne" parameterType="memberVo">
       INSERT INTO MEMBER
-      (MEMBER_NO, EMAIL, PWD, NICKNAME, CRE_DATE, MOD_DATE)
-      VALUES(MNO_SEQ.NEXTVAL, #{email}, #{password}, #{NICKNAME},
+      (MEMBER_NO, EMAIL, PWD, AUTH, NICKNAME, AGE, GENDER, CRE_DATE, MOD_DATE)
+      VALUES(MNO_SEQ.NEXTVAL, #{email}, #{password}, #{auth}, #{nickName}, #{age}, #{gender},
       SYSDATE, SYSDATE)
    </insert>
 
@@ -98,8 +97,8 @@
 	
 	
    <select id="memberSelectTotalCount" resultType="java.lang.Integer">
-		SELECT * FROM MEMBER
-		ORDER BY AUTH DESC, CRE_DATE
+		SELECT COUNT(*) 
+		FROM MEMBER
    </select>
 
 

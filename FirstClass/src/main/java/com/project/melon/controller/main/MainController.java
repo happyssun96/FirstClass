@@ -40,7 +40,7 @@ public class MainController {
 	{
 	      logger.info("Welcome MemberController! searchPage curpage =" + curPage);
 	      
-	    int totalCount = songService.songSelectTotalCount("");  
+	    int totalCount = songService.songSelectTotalCount();  
 	    System.out.println(totalCount);
 		Paging songPaging = new Paging(totalCount, curPage);
 		int start = songPaging.getPageBegin();
@@ -56,7 +56,7 @@ public class MainController {
 		model.addAttribute("songList", songList);
 		model.addAttribute("pagingMap", pagingMap);
 		
-		return "/WaterMelon/index.jsp";
+		return "/index";
 	}
 	
 	/**
@@ -65,27 +65,30 @@ public class MainController {
 	 * @return
 	 */
 	@RequestMapping(value = "adminMainPage.do", method = RequestMethod.GET)
-	public String adminMainPage(@RequestParam(defaultValue = "1")int curPage
+	public String adminMainPage(@RequestParam(defaultValue = "1")int memberCurPage
+			, @RequestParam(defaultValue = "1")int songCurPage
 			, Model model)
 	{
-	      logger.info("Welcome MemberController! searchPage curpage =" + curPage);
+	      logger.info("Welcome MainController! adminMainPage memberCurpage =" + memberCurPage
+	    		  + "\n songCurPage = " + songCurPage);
 	      
-	    int songTotalCount = songService.songSelectTotalCount("");
-	    int memberTotalCount = memberService.memberSelectTotalCount();
-	    
+	    int songTotalCount = songService.songSelectTotalCount();
+	    int memberTotalCount = memberService.memberSelectTotalCount(); 
+//	    int memberTotalCount = 6;
 	    System.out.println(memberTotalCount);
 	    System.out.println(songTotalCount);
 	    
-	    Paging memberPaing = new Paging(memberTotalCount, curPage);
+	    Paging memberPaing = new Paging(memberTotalCount, memberCurPage);
 	    int memberStart = memberPaing.getPageBegin();
 	    int memberEnd = memberPaing.getPageEnd();
 	    
-		Paging songPaging = new Paging(songTotalCount, curPage);
+		Paging songPaging = new Paging(songTotalCount, songCurPage);
 		int songStart = songPaging.getPageBegin();
 		int songEnd = songPaging.getPageEnd();
 		
-		List<SongVO> songList = songService.songSelectList("", memberStart, memberEnd);
-		List<MemberVO> memberList = memberService.memberSelectList("all", "", songStart, songEnd);
+		List<SongVO> songList = songService.songSelectList("", songStart, songEnd);
+		System.out.println("songList =" + songService.songSelectList("", songStart, songEnd));
+		List<MemberVO> memberList = memberService.memberSelectList("all", "", memberStart, memberEnd);
 		
 		Map<String, Object> songPagingMap = new HashMap<String, Object>();
 		songPagingMap.put("songTotalCount", songTotalCount);
@@ -101,7 +104,7 @@ public class MainController {
 		model.addAttribute("pagingMap", songPagingMap);
 		model.addAttribute("memberPagingMap", memberPagingMap);
 		
-		return "/WaterMelon/adminPage";
+		return "/adminPage";
 	}
 	
 }
