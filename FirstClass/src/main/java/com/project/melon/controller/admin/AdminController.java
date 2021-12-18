@@ -48,7 +48,6 @@ public class AdminController {
 	@RequestMapping(value = "/admin/userInfomation.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public String adminUserInfomation(@RequestParam(defaultValue = "1")int curPage
 			, @RequestParam(defaultValue = "")String keyword
-			, @RequestParam(defaultValue = "all")String searchOption
 			, Model model) {
 		
 		
@@ -62,18 +61,15 @@ public class AdminController {
 	      int end = memberPaging.getPageEnd();
 	      
 	      List<MemberVO> memberList = 
-	            memberService.memberSelectList(searchOption, keyword, start, end);
+	            memberService.memberSelectList(keyword, start, end);
 	      
-	      HashMap<String, Object> searchMap = new HashMap<String, Object>();
-	      searchMap.put("keyword", keyword);
-	      searchMap.put("searchOption", searchOption);
 	      
 	      Map<String, Object> pagingMap = new HashMap<String, Object>();
 	      pagingMap.put("totalCount", totalCount);
 	      pagingMap.put("memberPaging", memberPaging);
 	      
 	      model.addAttribute("memberList", memberList);
-	      model.addAttribute("searchMap", searchMap);
+	      model.addAttribute("keyword", keyword);
 	      model.addAttribute("pagingMap", pagingMap);
 	      
 		return "auth/userListView";

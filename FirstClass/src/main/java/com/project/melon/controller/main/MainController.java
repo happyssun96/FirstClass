@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.javassist.compiler.ast.Keyword;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,7 @@ import com.project.melon.util.Paging;
 
 @Controller
 public class MainController {
-	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
+	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
 	
 	@Autowired
 	private MemberService memberService;
@@ -59,6 +60,28 @@ public class MainController {
 		return "/index";
 	}
 	
+	@RequestMapping(value = "userSearchPage.do", method = RequestMethod.GET)
+	public String userSearchList(@RequestParam(defaultValue = "1") int curPage
+			,@RequestParam(defaultValue = "")String keyword, Model model)
+	{
+		int totalCount = songService.songSelectTotalCount();
+		Paging songPaging = new Paging(totalCount, curPage);
+		int start = songPaging.getPageBegin();
+		int end = songPaging.getPageEnd();
+		
+		List<SongVO> songList = songService.songSelectList(keyword, start, end);
+		
+		Map<String, Object> pagingMap = new HashMap<String, Object>();
+		pagingMap.put("totalCount", totalCount);
+		pagingMap.put("songPaging", songPaging);
+		
+		model.addAttribute("keyword", keyword);
+		model.addAttribute("songList", songList);
+		model.addAttribute("pagingMap", pagingMap);
+		
+		return "사용자용 검색페이지";
+	}
+	
 	/**
 	 * @param curPage 현재 페이지를 저장하고 있는 파라미터
 	 * @param model 프론트로 데이터를 넘겨주기 위한 모델
@@ -88,7 +111,7 @@ public class MainController {
 		
 		List<SongVO> songList = songService.songSelectList("", songStart, songEnd);
 		System.out.println("songList =" + songService.songSelectList("", songStart, songEnd));
-		List<MemberVO> memberList = memberService.memberSelectList("all", "", memberStart, memberEnd);
+		List<MemberVO> memberList = memberService.memberSelectList("", memberStart, memberEnd);
 		
 		Map<String, Object> songPagingMap = new HashMap<String, Object>();
 		songPagingMap.put("songTotalCount", songTotalCount);
@@ -107,4 +130,53 @@ public class MainController {
 		return "/adminPage";
 	}
 	
+	/** 관리자가 유저를 검색했을경우
+	 * @param curPage 현재 페이지 파라미터
+	 * @param keyword 검색어 파라미터
+	 * @param model 프론트 파라미터 전송용 몯ㄹ
+	 * @return
+	 */
+	@RequestMapping(value = "adminUserSearchPage.do", method = RequestMethod.GET)
+	public String adminUserSearchList(@RequestParam(defaultValue = "1") int curPage
+			,@RequestParam(defaultValue = "")String keyword, Model model)
+	{
+		int totalCount = memberService.memberSelectTotalCount();
+		Paging memberPaging = new Paging(totalCount, curPage);
+		int start = memberPaging.getPageBegin();
+		int end = memberPaging.getPageEnd();
+		
+		List<MemberVO> memberList = memberService.memberSelectList(keyword, start, end);
+		
+		Map<String, Object> pagingMap = new HashMap<String, Object>();
+		pagingMap.put("totalCount", totalCount);
+		pagingMap.put("memberPaging", memberPaging);
+		
+		model.addAttribute("keyword", keyword);
+		model.addAttribute("memberList", memberList);
+		model.addAttribute("pagingMap", pagingMap);
+		
+		return "관리자용 사용자 검색페이지";
+	}
+	
+	@RequestMapping(value = "adminSongSearchPage.do", method = RequestMethod.GET)
+	public String adminSongSearchList(@RequestParam(defaultValue = "1") int curPage
+			,@RequestParam(defaultValue = "")String keyword, Model model)
+	{
+		int totalCount = songService.songSelectTotalCount();
+		Paging songPaging = new Paging(totalCount, curPage);
+		int start = songPaging.getPageBegin();
+		int end = songPaging.getPageEnd();
+		
+		List<SongVO> songList = songService.songSelectList(keyword, start, end);
+		
+		Map<String, Object> pagingMap = new HashMap<String, Object>();
+		pagingMap.put("totalCount", totalCount);
+		pagingMap.put("songPaging", songPaging);
+		
+		model.addAttribute("keyword", keyword);
+		model.addAttribute("songList", songList);
+		model.addAttribute("pagingMap", pagingMap);
+		
+		return "관리자용 음원 검색페이지";
+	}
 }

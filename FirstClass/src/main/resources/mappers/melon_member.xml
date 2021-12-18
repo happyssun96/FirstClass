@@ -41,18 +41,8 @@
       FROM (   SELECT ROWNUM RNUM, M.MEMBER_NO, M.AUTH, M.NICKNAME, M.EMAIL, M.CRE_DATE
               FROM    (   SELECT MEMBER_NO, AUTH, NICKNAME, EMAIL, CRE_DATE
                           FROM MEMBER 
-                             <if test="searchOption == 'all'">
                                 WHERE NICKNAME LIKE '%'||#{keyword}||'%'
                                       OR EMAIL LIKE '%'||#{keyword}||'%'
-                             </if>
-                             
-                             <if test="searchOption == 'name'">
-                                WHERE NICKNAME LIKE '%'||#{keyword}||'%'
-                             </if>
-                             
-                             <if test="searchOption == 'email'">
-                                WHERE EMAIL LIKE '%'||#{keyword}||'%'
-                             </if>
                           ORDER BY AUTH, CRE_DATE) M
            ) MEMBER 
       WHERE MEMBER.RNUM BETWEEN #{start} AND #{end}

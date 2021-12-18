@@ -19,12 +19,11 @@ public class MemberDAOImpl implements MemberDAO{
 	String nameSpace = "com.project.melon.";
 
 	@Override
-	public List<MemberVO> memberSelectList(String searchOption, String keyword, int start, int end) {
+	public List<MemberVO> memberSelectList(String keyword, int start, int end) {
 		// TODO Auto-generated method stub
 	
 		Map<String, Object> map = new HashMap<>();
 		map.put("keyword", keyword);
-		map.put("searchOption", searchOption);
 		map.put("start", start);
 		map.put("end", end);
 		
