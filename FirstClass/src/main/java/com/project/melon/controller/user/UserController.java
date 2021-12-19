@@ -37,37 +37,46 @@ public class UserController {
 			{
 		      logger.info("Welcome userController! userDetailInformation password :" + password);
 			// 원래는 사용자 비밀번호를 입력받고 해야하지만 우선은 패스
+			String viewUrl = "userValidFail";
 			
 			if(session.getAttribute("member") != null)
 				{
 					MemberVO tempVo = (MemberVO) session.getAttribute("member");
-				
-				if(tempVo.getPassword().equals(password))
-					{
-					model.addAttribute(tempVo);
-					return "main/user/UserDetailInformationForm";	
-					}
+					MemberVO userVo = memberService.memberSelectOne(tempVo.getMember_no());
+
+//					플레이 리스트가 완성되면 추가
+//					PlayListVO playListVo = playListService.selectListPlayList(tempVo.getMember_no());
+					
+//					model.addAttribute(playListVo);
+					model.addAttribute(userVo);
+					viewUrl = "userDetailPage";
 				}
-				return "main/user/UserValidFail"; // 비밀번호가 일치하지 않는경우 비밀번호 검증 실패 페이지로 이동
+				return viewUrl; // 비밀번호가 일치하지 않는경우 비밀번호 검증 실패 페이지로 이동
 			}
 		
-		@RequestMapping(value = "update.do", method = RequestMethod.POST)
+		@RequestMapping(value = "updateCtr.do", method = RequestMethod.POST)
 			public String userUpdate(MemberVO memberVo, HttpSession session)
 			{
 		      logger.info("Welcome MemberController! login");
+		      String viewUrl = "sessionExpired";
+		      
 		      if(session.getAttribute("member") != null)
 		      {
-				
 					memberService.memberUpdateOne(memberVo);
-					return "";
+					viewUrl = "userDetailPage";
 		      }
-				return "auth/sessionexpired"; //로그인 정보가 존재하지 않을경우 페이지 이동
+				return viewUrl; //로그인 정보가 존재하지 않을경우 페이지 이동
 			}
 		
 		@RequestMapping(value = "userAccountDismiss.do", method = RequestMethod.GET)
 			public String userAccountDismiss(HttpSession session) {
+			String viewUrl = "index";
+			
 			MemberVO tempVo = (MemberVO)session.getAttribute("member");
 			memberService.memberDeleteOne(tempVo.getMember_no());
-			return "";
+			
+			session.invalidate();
+			
+			return viewUrl;
 		}
 }

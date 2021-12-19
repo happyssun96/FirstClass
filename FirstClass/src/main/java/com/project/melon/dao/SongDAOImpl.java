@@ -43,4 +43,16 @@ public class SongDAOImpl implements SongDAO {
 		return sqlSession.selectOne(nameSpace + "songSelectTotalCount");
 	}
 
+	@Override
+	public void songDeleteOne(int songNo) {
+		// TODO Auto-generated method stub
+		sqlSession.delete(nameSpace + "songDeleteOne", songNo);
+	}
+
+	@Override
+	public SongVO songSelectOne(int songNo) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(nameSpace + "songSelectOne", songNo);
+	}
+
 }

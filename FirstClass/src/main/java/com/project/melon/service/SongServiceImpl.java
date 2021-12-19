@@ -32,5 +32,18 @@ public class SongServiceImpl implements SongService{
 		return songDao.songSelectTotalCount();
 	}
 
+	@Override
+	public void songDeleteOne(int songNo) {
+		// TODO Auto-generated method stub
+		songDao.songDeleteOne(songNo);
+		
+	}
+
+	@Override
+	public SongVO songSelectOne(int songNo) {
+		// TODO Auto-generated method stub
+		return songDao.songSelectOne(songNo);
+	}
+
 
 }

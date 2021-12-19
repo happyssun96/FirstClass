@@ -47,6 +47,8 @@ public class MainController {
 		int start = songPaging.getPageBegin();
 		int end = songPaging.getPageEnd();
 		
+		String viewUrl = "/index";
+		
 		List<SongVO> songList = songService.songSelectList("", start, end);
 		
 		
@@ -57,13 +59,15 @@ public class MainController {
 		model.addAttribute("songList", songList);
 		model.addAttribute("pagingMap", pagingMap);
 		
-		return "/index";
+		return viewUrl;
 	}
 	
 	@RequestMapping(value = "userSearchPage.do", method = RequestMethod.GET)
 	public String userSearchList(@RequestParam(defaultValue = "1") int curPage
 			,@RequestParam(defaultValue = "")String keyword, Model model)
 	{
+		String viewUrl = "userSearchPage";
+		
 		int totalCount = songService.songSelectTotalCount();
 		Paging songPaging = new Paging(totalCount, curPage);
 		int start = songPaging.getPageBegin();
@@ -79,7 +83,7 @@ public class MainController {
 		model.addAttribute("songList", songList);
 		model.addAttribute("pagingMap", pagingMap);
 		
-		return "사용자용 검색페이지";
+		return viewUrl;
 	}
 	
 	/**
@@ -95,9 +99,10 @@ public class MainController {
 	      logger.info("Welcome MainController! adminMainPage memberCurpage =" + memberCurPage
 	    		  + "\n songCurPage = " + songCurPage);
 	      
+	     String viewUrl = "/adminPage"; 
+	      
 	    int songTotalCount = songService.songSelectTotalCount();
 	    int memberTotalCount = memberService.memberSelectTotalCount(); 
-//	    int memberTotalCount = 6;
 	    System.out.println(memberTotalCount);
 	    System.out.println(songTotalCount);
 	    
@@ -127,7 +132,7 @@ public class MainController {
 		model.addAttribute("pagingMap", songPagingMap);
 		model.addAttribute("memberPagingMap", memberPagingMap);
 		
-		return "/adminPage";
+		return viewUrl;
 	}
 	
 	/** 관리자가 유저를 검색했을경우
@@ -140,6 +145,8 @@ public class MainController {
 	public String adminUserSearchList(@RequestParam(defaultValue = "1") int curPage
 			,@RequestParam(defaultValue = "")String keyword, Model model)
 	{
+		String viewUrl = "adminUserSearchPage.do";
+		
 		int totalCount = memberService.memberSelectTotalCount();
 		Paging memberPaging = new Paging(totalCount, curPage);
 		int start = memberPaging.getPageBegin();
@@ -155,13 +162,15 @@ public class MainController {
 		model.addAttribute("memberList", memberList);
 		model.addAttribute("pagingMap", pagingMap);
 		
-		return "관리자용 사용자 검색페이지";
+		return viewUrl;
 	}
 	
 	@RequestMapping(value = "adminSongSearchPage.do", method = RequestMethod.GET)
 	public String adminSongSearchList(@RequestParam(defaultValue = "1") int curPage
 			,@RequestParam(defaultValue = "")String keyword, Model model)
 	{
+		String viewUrl = "adminSongSearchPage";
+		
 		int totalCount = songService.songSelectTotalCount();
 		Paging songPaging = new Paging(totalCount, curPage);
 		int start = songPaging.getPageBegin();
@@ -177,6 +186,6 @@ public class MainController {
 		model.addAttribute("songList", songList);
 		model.addAttribute("pagingMap", pagingMap);
 		
-		return "관리자용 음원 검색페이지";
+		return viewUrl;
 	}
 }
