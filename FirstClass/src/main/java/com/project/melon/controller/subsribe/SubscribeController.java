@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.project.melon.model.MemberVO;
 import com.project.melon.model.SubscribeVO;
 import com.project.melon.service.MemberService;
+import com.project.melon.service.PurchaseListService;
 import com.project.melon.service.SubscribeService;
 
 
@@ -23,8 +24,8 @@ public class SubscribeController {
 	private SubscribeService subscribeService;
 	@Autowired
 	private MemberService memberService;	
-	
-	
+	@Autowired
+	private PurchaseListService purchaseListService;
 	//이용권 구매 버튼 클릭시
 	@RequestMapping(value = "/subscribe/subscribeList.do", method = RequestMethod.POST)
 		public String addSubscribeList(HttpSession session, SubscribeVO subscribeVo, Model model) {
@@ -89,7 +90,7 @@ public class SubscribeController {
 					logger.info("purchaseInsert");
 					
 					subscribeService.subscribeInsertOne(subscribeVo);
-					
+					purchaseListService.addPurchaseList(tempVo.getMember_no(), subscribeVo.getSubscribe_no());
 					//세션정보 갱신 후 addPurchaseList.do 로 리턴 
 					
 					MemberVO memberVo = memberService.memberSelectOne(tempVo.getMember_no());
