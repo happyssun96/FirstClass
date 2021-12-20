@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.melon.song">
+<mapper namespace="com.project.melon">
 
    <resultMap type="songVo" id="songResultMap">
       <id column="SONG_NO" property="songNo"/>
@@ -10,16 +10,10 @@
       <result column="ALBUM_NAME" property="albumName"/>
       <result column="PUBLISHER" property="publisher"/>
       <result column="RELEASE_DATE" property="releaseDate"/>
-      <result column="SONG_MODIFY_DATE" property="modifyDate"/>
+      <result column="SONG_MODIFY_DATE" property="modifyDate" />
       <result column="MUSIC_RESOURCE_PATH" property="musicResourcePath"/>
       <result column="ALBUM_IMAGE_PATH" property="albumImagePath"/>
    </resultMap>
-   
-<!--    <select id="memberSelectList" resultMap="memberResultMap"> -->
-<!--       SELECT MNO, MNAME, EMAIL, CRE_DATE -->
-<!--       FROM MEMBER -->
-<!--       ORDER BY MNO DESC -->
-<!--    </select> -->
 
 		<select id="addSong" parameterType = "songVo" 
 			resultMap="songResultMap">
@@ -31,12 +25,19 @@
 			 #{albumName}, #{publisher}, SYSDATE, SYSDATE, #{musicResourcePath}, #{albumImagePath})
 		</select>
 		
-		   <select id="songSelectList" parameterType="map" 
-      resultMap="songResultMap">
-       	  SELECT SONG.RNUM, SONG.song_no, SONG.SONG_NAME, SONG.ARTIST
-            , to_char(RELEASE_DATE , 'YYYY-MM-DD HH24:MM')as RELEASE_DATE 
-      FROM (   SELECT ROWNUM RNUM, S.SONG_NO, S.SONG_NAME, S.ARTIST, S.RELEASE_DATE 
-            FROM (   SELECT song_no, SONG_NAME, ARTIST, RELEASE_DATE 
+		   <select id="songSelectList" parameterType="map" resultMap="songResultMap">
+		   
+		      SELECT SONG.RNUM, SONG.song_no, SONG.SONG_NAME, SONG.ARTIST
+                  , SONG.ALBUM_NAME, SONG.PUBLISHER
+                  , to_char(RELEASE_DATE , 'YYYY-MM-DD HH24:MM')as RELEASE_DATE
+                  , to_char(SONG_MODIFY_DATE, 'YYYY-MM-DD HH24:MM')as SONG_MODIFY_DATE
+                  , SONG.MUSIC_RESOURCE_PATH, SONG.ALBUM_IMAGE_PATH
+      FROM (   SELECT ROWNUM RNUM, S.SONG_NO, S.SONG_NAME, S.ARTIST
+            , S.ALBUM_NAME, S.PUBLISHER, S.RELEASE_DATE, S.SONG_MODIFY_DATE
+            , S.MUSIC_RESOURCE_PATH, S.ALBUM_IMAGE_PATH
+            FROM (   SELECT song_no, SONG_NAME, ARTIST, ALBUM_NAME
+                    , PUBLISHER, RELEASE_DATE, SONG_MODIFY_DATE
+                    , MUSIC_RESOURCE_PATH, ALBUM_IMAGE_PATH
                   FROM SONG
     	             WHERE SONG_NAME LIKE '%'||#{keyword}||'%'
 	                 OR ARTIST LIKE '%'||#{keyword}||'%'
@@ -44,5 +45,24 @@
          ) SONG
       WHERE SONG.RNUM BETWEEN #{start} AND #{end}
    </select>
+   
+   <select id="songSelectTotalCount" resultType="java.lang.Integer">
+		SELECT COUNT(*) 
+		FROM SONG 
+   </select>
+   
+   <select id="songDeleteOne">
+		DELETE FROM SONG
+        WHERE SONG_NO = #{songNo};
+   </select>
+
+	<select id="songSelectOne">
+        SELECT SONG_NO, SONG_NAME, ARTIST
+            , ALBUM_NAME, PUBLISHER, RELEASE_DATE
+            , SONG_MODIFY_DATE, MUSIC_RESOURCE_PATH, ALBUM_IMAGE_PATH
+        FROM SONG
+        WHERE SONG_NO = #{songNo};
+   </select>
+
 
 </mapper>

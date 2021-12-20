@@ -29,16 +29,18 @@ public class SongController {
 	
 	@Autowired
 	private SongService songService;
-//	@Autowired
-//	private SubscribeService subscribeService;
+	@Autowired
+	private SubscribeService subscribeService;
+
 	
+//	ajax 매핑으로 구현예정
 //	@RequestMapping(value = "playMusic.do", method = RequestMethod.GET)
 //	public String playMusic(int songNumber, HttpSession session)
 //	{
 //		logger.info("Welcome SongController! playMusic : songNumber =" + songNumber);
 //		if(session.getAttribute("memberVo") != null)
 //		{
-//			MemberVo tempVo = (MemberVo)session.getAttribute("memberVo");
+//			MemberVO tempVo = (MemberVO)session.getAttribute("memberVo");
 //			if(subscribeService.subscribeExist(tempVo.getMember_no()) != null)
 //			{
 //				songService.playFullMusic(songNumber);
@@ -47,7 +49,7 @@ public class SongController {
 //		songService.playExperienceMusic(songNumber);
 //		return "";
 //	}
-//	
+	
 	
 	
 	
@@ -55,17 +57,19 @@ public class SongController {
 	public String uploadMusic(HttpSession session, Model model)
 	{
 		logger.info("Welcome SongController! uploadMusic");
-//		if(session.getAttribute("MemberVo") != null)
-//		{
-//			MemberVo tempVo = (MemberVo)session.getAttribute("MemberVo");
-//			if(tempVo.getAuth().equals("adminlister"))
-//			{
-//				return "song/songUploadForm"; // 어드민 계정검증이 완료되었으므로 음악 업로드 폼으로 이동
-//			}
-//		}
-//		return "auth/authorityError"; // 그 외의 경우 권한이 없으므로 에러 페이지로 이동
-//	}
-		return "Upload";
+		
+		String viewUrl = "authorityError";
+		
+		if(session.getAttribute("MemberVo") != null)
+		{
+			MemberVO tempVo = (MemberVO)session.getAttribute("MemberVo");
+			if(tempVo.getAuth().equals("adminlister"))
+			{
+				viewUrl = "SongUploadForm"; // 어드민 계정검증이 완료되었으므로 음악 업로드 폼으로 이동
+			}
+		}
+		return viewUrl; // 그 외의 경우 권한이 없으므로 에러 페이지로 이동
+		
 	}
 	
 	@RequestMapping(value = "song/uploadMusicCtr.do", method= { RequestMethod.POST })
@@ -74,6 +78,8 @@ public class SongController {
 	{
 		logger.info("Welcome SongController! uploadMusicCtr \n uploadSongFile =" + uploadSongFile
 				+ "\n uploadImageFile = " + uploadSongImageFile + "\n songVo =" + songVo);
+		
+		String viewUrl = "redirect :/adminMainPage.do";
 		
 		String uploadSongFolder = "C://upload//song";
 		String uploadSongImageFolder = "C://upload//image";
@@ -116,7 +122,35 @@ public class SongController {
 		}
 		
 		
-		return "redirect:/uploadMusic.do";
+		return viewUrl;
+	}
+	
+	@RequestMapping(value = "song/DeleteMusicCtr.do", method=RequestMethod.GET)
+	public String deleteMusic(int songNo, HttpSession session)
+	{
+		String viewUrl = "authorityError";
+		if(session.getAttribute("MemberVo") != null)
+		{
+			MemberVO tempVo = (MemberVO)session.getAttribute("MemberVo");
+			if(tempVo.getAuth().equals("adminlister"))
+			{
+				SongVO songTempVo = songService.songSelectOne(songNo);
+				
+				String deleteMusicResourcePath = songTempVo.getMusicResourcePath();
+				String deleteAlbumImagePath = songTempVo.getAlbumImagePath();
+				
+				File songFile = new File(deleteMusicResourcePath);
+				File imageFile = new File(deleteAlbumImagePath);
+				
+				songFile.delete();
+				imageFile.delete();
+				
+				songService.songDeleteOne(songNo);
+				viewUrl = "redirect :/adminMainPage.do";;
+				}
+				
+			}
+		return viewUrl; 
 	}
 	
 //	/* 음원 파일 업로드 */
@@ -158,19 +192,7 @@ public class SongController {
 //		
 //	}
 	
-//	@RequestMapping(value = "song/DeleteMusicCtr.do", method=RequestMethod.GET)
-//	public String deleteMusic(int songNo, HttpSession session)
-//	{
-//		if(session.getAttribute("MemberVo") != null)
-//		{
-//			MemberVo tempVo = (MemberVo)session.getAttribute("MemberVo");
-//			if(tempVo.getAuth().equals("adminlister"))
-//			{
-//				songService.deleteMusicOne(songNo);
-//			}
-//		}
-//		return "auth/authorityError"; // 그 외의 경우 권한이 없으므로 에러 페이지로 이동
-//	}
+
 	
 
 }

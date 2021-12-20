@@ -15,9 +15,9 @@ public class MemberServiceImpl implements MemberService{
 	public MemberDAO memberDao;
 	
 	@Override
-	public List<MemberVO> memberSelectList(String searchOption, String keyword, int start, int end) {
+	public List<MemberVO> memberSelectList(String keyword, int start, int end) {
 		// TODO Auto-generated method stub
-		return memberDao.memberSelectList(searchOption, keyword, start, end);
+		return memberDao.memberSelectList(keyword, start, end);
 	}
 
 	@Override

@@ -16,7 +16,7 @@ public class SongDAOImpl implements SongDAO {
 	@Autowired
 	SqlSessionTemplate sqlSession;
 	
-	String nameSpace = "com.melon.song.";
+	String nameSpace = "com.project.melon.";
 	
 	@Override
 	public void addSong(SongVO songVo) {
@@ -36,6 +36,23 @@ public class SongDAOImpl implements SongDAO {
 		
 		
 		return sqlSession.selectList(nameSpace + "songSelectList", map);
+	}
+
+	@Override
+	public int songSelectTotalCount() {
+		return sqlSession.selectOne(nameSpace + "songSelectTotalCount");
+	}
+
+	@Override
+	public void songDeleteOne(int songNo) {
+		// TODO Auto-generated method stub
+		sqlSession.delete(nameSpace + "songDeleteOne", songNo);
+	}
+
+	@Override
+	public SongVO songSelectOne(int songNo) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(nameSpace + "songSelectOne", songNo);
 	}
 
 }
