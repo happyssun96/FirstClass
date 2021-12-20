@@ -7,7 +7,7 @@
 <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>유저 리스트</title>
+  <title>음원 리스트</title>
   <style type="text/css">
   	
   	table, th {
@@ -49,7 +49,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">관리자 페이지</h1>&emsp; >&nbsp;&nbsp; 유저 정보
+            <h1 class="m-0">관리자 페이지</h1>&emsp; >&nbsp;&nbsp; 음원 정보
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -59,64 +59,58 @@
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
-    <div style="font-size: 100px; color: #E5E1E1; margin-left: 450px;">
+    <div style="font-size: 100px; color: #E5E1E1; margin-left: 400px;">
     	<img src="resources/images/watermelon.png" style="height: 100px;">&nbsp;WaterMelon
     </div>
     <br>
     <br>
-   
-        <div style="margin-top: 50px;">
-	    <div style="margin-left: 300px;">		    	
+
+    
+    <div style="margin-top: 50px; margin-left: 230px;">
+	     		    		    	
+	    <div style=" margin-left: 20px; margin-top : 50px;">	    	
 	    	<br>
 	    	<br>
-	    	<h2>&nbsp;회원 데이터 ></h2>
+	    	<h2>&nbsp;음원 데이터 ></h2>
 	    	<br>
-		    	<table border="1">				
+	    		<table border="1">				
 					<tbody>
-					
 					 	<tr style="background: #403A3A;">
 					 		<th>번호</th>
-					 		<th>이메일</th>
-					 		<th>닉네임</th>
-					 		<th>권한</th>
-					 		<th>등급</th>
-					 		<th>보유 캐시</th>
-					 		<th>나이</th>
-					 		<th>성별</th>
-					 		<th>구독여부</th>
-					 		<th>가입일</th>
-					 		<th>수정일</th>
+					 		<th style="width: 90px;">앨범 커버</th>
+					 		<th>제목</th>
+					 		<th>아티스트</th>
+					 		<th>앨범 명</th>
+					 		<th>기획사</th>
+					 		<th>등록일</th>
+					 		<th>수정일</th>	
+					 		<th>음원경로</th>
+					 		<th>앨범경로</th>							 		
 					 	</tr>
 					 	
-					 	<c:forEach var="memberVo" items="${memberList}">
-					         <tr onclick="location.href='admin/admin?no=${memberVo.member_no}'" style="cursor: pointer;">
-					            <td>${memberVo.member_no}</td>
-					            <td>${memberVo.email}</td>
-					            <td>${memberVo.nickName}</td>
-					            <td>${memberVo.auth}</td>
-					            <td>${memberVo.memberClass}</td>
-					            <td>${memberVo.cash}</td>
-					            <td>${memberVo.age}</td>
-					            <td>${memberVo.gender}</td>
-					            <td>O</td>
-					            <td>${memberVo.createDate}</td>
-					            <td>${memberVo.modifyDate}</td>
+					 	<c:forEach var="songVo" items="${songList}">
+					         <tr>
+					            <td>${songVo.songNo}</td>
+					            <td></td>
+					            <td>${songVo.songName}</td>
+					            <td>${songVo.artist}</td>
+					            <td>${songVo.albumName}</td>
+					            <td>${songVo.publisher}</td>
+					            <td>${songVo.releaseDate}</td>
+					            <td>${songVo.modifyDate}</td>					            
+					            <td>${songVo.musicResourcePath}</td>
+					            <td>${songVo.albumImagePath}</td>
 					         </tr>
 					      </c:forEach>
-					 			
+					      	
 		      		</tbody>	      		
-			</table>
-	    	
+				</table>
+				
+				<div style="margin-left:360px;">
+					<br>
+					<jsp:include page="Paging.jsp" />
+				</div>	    
 	    </div>
-	    	
-	    </div> 		    		    	
-	    
-	    <div style="margin-left:700px;">
-	    	<br>
-				<jsp:include page="./paging.jsp">
-      				<jsp:param value="${pagingMap}" name="pagingMap"/>
-   				</jsp:include>
-			</div>
     </div>        	    	
     </div>			
   </div>

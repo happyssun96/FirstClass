@@ -3,16 +3,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>결제 창</title>
+<script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js">
+</script>
 <script type="text/javascript">
 function commitbtn(){	
-alert('결제가 완료되었습니다!');
+alert('캐시충전이 완료되었습니다!');
 location.href='./index.jsp';
 }
 </script>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>캐시 충전</title>
 </head>
 <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <div class="wrapper">
@@ -43,50 +45,43 @@ location.href='./index.jsp';
       </div><!-- /.container-fluid -->
     </div>
     	
-		<h2 style="margin-top: 30px;">이용권 정보</h2>
+		<h2 style="margin-top: 30px;">캐시 충전</h2>
 		<div style="display: table-cell; vertical-align: middle;">	
+			<div style="display: table-cell; vertical-align: middle;">	
 			<div style="border:1px solid #E5E1E1; border-radius: 0.4em; padding:20px; float: left; width: 500px; margin-top: 30px;">
-				<h3>1개월 구독</h3>
-				<p>음원 무제한 스트리밍 및 음원 업로드를 자유롭게 해보세요!</p>
+				<h3>선택한 충전 금액</h3>
+				<p style="font-size: 25px;">-&nbsp;&nbsp;10,000&nbsp;&nbsp;원</p>
 				<ul>
-				<li>1개월 구독권
-					<strong style="font-size: 15px;">월 8,400원</strong>
-					<br>
-					<span>
-						<em style="font-size: 7px; color: #B0ACAC;">
-							&nbsp;&nbsp;-&nbsp;&nbsp; 1개월간 실시간 스트리밍, 음원 업로드가 가능한 이용권
-						</em>
-					</span>
-					
+				<li style="font-size: 15px; color: #B0ACAC;">음원 무제한 스트리밍 및 음원 업로드를 자유롭게 할 수 있는 구독권을 구매하기 위해 캐시를 충전하세요 !					
+				<br>					
 				</li>
 				</ul>
 			</div>
 			<div style="border:3px solid black; border-radius: 0.4em; padding:20px; float: left; width: 320px; margin-left: 50px; margin-top: 30px;">
-				<h3>최종 결제 정보</h3>				
+				<h3>최종 충전 정보</h3>				
 					<hr width =100% color="#E5E1E1" align="left" size=60 style="margin-top: 30px;"/>
 						<dl style="font-size: 20px;">					
-							<dt>보유 캐시 &emsp;&emsp;&emsp;&emsp;&nbsp;<strong>10,000</strong>&nbsp;&nbsp;원</dt>							
-							<dt style="color: #FFB16C; margin-top: 20px;">상품 금액 &emsp;&emsp;&emsp;&emsp;-&nbsp;&nbsp;<strong>8,400</strong>&nbsp;&nbsp;원</dt>
+							<dt>보유 캐시 &emsp;&emsp;&emsp;&emsp;&nbsp;<strong style="text-align: justify;">&emsp;&emsp;&emsp;0&nbsp;&nbsp;원</strong></dt>							
+							<dt style="color: #FFB16C; margin-top: 20px;">충전 금액 &emsp;&emsp;&emsp;&emsp;+&nbsp;&nbsp;<strong>10,000</strong>&nbsp;&nbsp;원</dt>
 							<hr width =100% color="#E5E1E1" align="left" size=60/>
-							<dt>잔여 캐시 &emsp;&emsp;&emsp;&emsp;&emsp;<strong>1600</strong>&nbsp;&nbsp;원</dt>
-							<p style="font-size: 13px; color: #B0ACAC; text-align: center;">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;(VAT 별도)</p>										
+							<dt>충전 후 캐시 &emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;<strong>10,000</strong>&nbsp;&nbsp;원</dt>
+																	
 						</dl>														
 			</div>
 		</div>
-		<div>
-			<input type="checkbox" name="xxx" value="yyy">&emsp;본 이용권은 30일동안 유지되며, 30일 약정 이용에 동의합니다.
+			
+		</div>
+		<div style="margin-top: 20px;">
+			&emsp;<input type="checkbox" name="xxx" value="yyy">&emsp;상기 결제 내용을 확인하였습니다.
 			<br>
-			<input type="checkbox" name="xxx" value="yyy">&emsp;상기 내용 및 사은품 할인 반환금에 대한 유의사항을 확인하였습니다.
+			&emsp;<input type="checkbox" name="xxx" value="yyy">&emsp;이용약관을 확인하였습니다.&emsp;
+			<button type="button" class="btn btn-light" style="font-size:9px; width:auto; height: auto; padding:2px;">이용약관 보기</button>
+			<br>			
 			<br>
-			<input type="checkbox" name="xxx" value="yyy">&emsp;이용약관을 확인하였습니다.&emsp;
-			<button type="button" class="btn btn-light" style="font-size:7px; width:auto; height: auto;">이용약관 보기</button>
-			<br>
-			<br>
-			<br>
-			<button type="button" class="btn btn-primary" style="margin-left: 350px; font-size:30px;" onclick="commitbtn();">결제하기</button>
-			<button type="button" class="btn btn-secondary" style="margin-left: 30px; font-size:20px; padding:11px;" onclick="location.href='./subscribePurchase.jsp'">뒤로가기</button>
-			</div>							
-	 	</div> 
+			<button type="button" class="btn btn-primary" style="margin-left: 300px; font-size:20px; padding:11px;" onclick="commitbtn();">충전하기</button>	
+			<button type="button" class="btn btn-secondary" style="margin-left: 30px; font-size:20px; padding:11px;" onclick="location.href='./cashPurchase.jsp'">충전취소</button>	
+		</div>						
+	 </div> 
   </div>		
   
   <!-- /.content-wrapper -->
@@ -94,7 +89,7 @@ location.href='./index.jsp';
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
     <!-- Control sidebar content goes here -->
-    </aside>
+  </aside>
   <!-- /.control-sidebar -->
 
 	<jsp:include page="footer.jsp" />

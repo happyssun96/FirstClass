@@ -89,7 +89,7 @@
 					 	</tr>
 					 	
 					 	<c:forEach var="memberVo" items="${memberList}">
-					         <tr onclick="location.href='admin/admin?no=${memberVo.member_no}'" style="cursor: pointer;">
+					         <tr onclick="location.href='admin/adminUserDetailInformation.do?no=${memberVo.member_no}'" style="cursor: pointer;">
 					            <td>${memberVo.member_no}</td>
 					            <td>${memberVo.email}</td>
 					            <td>${memberVo.nickName}</td>
@@ -113,7 +113,7 @@
 	    
 	    <div style="margin-left:700px;">
 	    	<br>
-				<jsp:include page="./paging.jsp">
+				<jsp:include page="./Paging.jsp">
       				<jsp:param value="${pagingMap}" name="pagingMap"/>
    				</jsp:include>
 			</div>

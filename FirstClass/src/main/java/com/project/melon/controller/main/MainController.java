@@ -99,7 +99,7 @@ public class MainController {
 	      logger.info("Welcome MainController! adminMainPage memberCurpage =" + memberCurPage
 	    		  + "\n songCurPage = " + songCurPage);
 	      
-	     String viewUrl = "/adminPage"; 
+	     String viewUrl = "adminPage"; 
 	      
 	    int songTotalCount = songService.songSelectTotalCount();
 	    int memberTotalCount = memberService.memberSelectTotalCount(); 
@@ -145,7 +145,7 @@ public class MainController {
 	public String adminUserSearchList(@RequestParam(defaultValue = "1") int curPage
 			,@RequestParam(defaultValue = "")String keyword, Model model)
 	{
-		String viewUrl = "adminUserSearchPage.do";
+		String viewUrl = "adminUserList";
 		
 		int totalCount = memberService.memberSelectTotalCount();
 		Paging memberPaging = new Paging(totalCount, curPage);
@@ -169,7 +169,7 @@ public class MainController {
 	public String adminSongSearchList(@RequestParam(defaultValue = "1") int curPage
 			,@RequestParam(defaultValue = "")String keyword, Model model)
 	{
-		String viewUrl = "adminSongSearchPage";
+		String viewUrl = "adminSongList";
 		
 		int totalCount = songService.songSelectTotalCount();
 		Paging songPaging = new Paging(totalCount, curPage);

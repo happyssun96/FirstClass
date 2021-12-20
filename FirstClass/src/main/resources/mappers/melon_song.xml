@@ -15,19 +15,19 @@
       <result column="ALBUM_IMAGE_PATH" property="albumImagePath"/>
    </resultMap>
 
-		<select id="addSong" parameterType = "songVo" 
-			resultMap="songResultMap">
-			INSERT INTO SONG
-			VALUE(SONG_NO, SONG_NAME, ARTIST, ALBUM_NAME
-			    , PUBLISHER, RELEASE_DATE, SONG_MODIFY_DATE
-			    , MUSIC_RESOURCE_PATH, ALBUM_IMAGE_PATH)
-			VALUES(SEQ_SONG_SNO.NEXTVAL, #{songName}, #{artist},
-			 #{albumName}, #{publisher}, SYSDATE, SYSDATE, #{musicResourcePath}, #{albumImagePath})
-		</select>
-		
-		   <select id="songSelectList" parameterType="map" resultMap="songResultMap">
-		   
-		      SELECT SONG.RNUM, SONG.song_no, SONG.SONG_NAME, SONG.ARTIST
+      <select id="addSong" parameterType = "songVo" 
+         resultMap="songResultMap">
+         INSERT INTO SONG
+         VALUE(SONG_NO, SONG_NAME, ARTIST, ALBUM_NAME
+             , PUBLISHER, RELEASE_DATE, SONG_MODIFY_DATE
+             , MUSIC_RESOURCE_PATH, ALBUM_IMAGE_PATH)
+         VALUES(SEQ_SONG_SNO.NEXTVAL, #{songName}, #{artist},
+          #{albumName}, #{publisher}, SYSDATE, SYSDATE, #{musicResourcePath}, #{albumImagePath})
+      </select>
+      
+         <select id="songSelectList" parameterType="map" resultMap="songResultMap">
+         
+            SELECT SONG.RNUM, SONG.song_no, SONG.SONG_NAME, SONG.ARTIST
                   , SONG.ALBUM_NAME, SONG.PUBLISHER
                   , to_char(RELEASE_DATE , 'YYYY-MM-DD HH24:MM')as RELEASE_DATE
                   , to_char(SONG_MODIFY_DATE, 'YYYY-MM-DD HH24:MM')as SONG_MODIFY_DATE
@@ -39,24 +39,24 @@
                     , PUBLISHER, RELEASE_DATE, SONG_MODIFY_DATE
                     , MUSIC_RESOURCE_PATH, ALBUM_IMAGE_PATH
                   FROM SONG
-    	             WHERE SONG_NAME LIKE '%'||#{keyword}||'%'
-	                 OR ARTIST LIKE '%'||#{keyword}||'%'
-	                  ORDER BY RELEASE_DATE  DESC) S
+                    WHERE SONG_NAME LIKE '%'||#{keyword}||'%'
+                    OR ARTIST LIKE '%'||#{keyword}||'%'
+                     ORDER BY RELEASE_DATE  DESC) S
          ) SONG
       WHERE SONG.RNUM BETWEEN #{start} AND #{end}
    </select>
    
    <select id="songSelectTotalCount" resultType="java.lang.Integer">
-		SELECT COUNT(*) 
-		FROM SONG 
+      SELECT COUNT(*) 
+      FROM SONG 
    </select>
    
    <select id="songDeleteOne">
-		DELETE FROM SONG
+      DELETE FROM SONG
         WHERE SONG_NO = #{songNo};
    </select>
 
-	<select id="songSelectOne">
+   <select id="songSelectOne">
         SELECT SONG_NO, SONG_NAME, ARTIST
             , ALBUM_NAME, PUBLISHER, RELEASE_DATE
             , SONG_MODIFY_DATE, MUSIC_RESOURCE_PATH, ALBUM_IMAGE_PATH
