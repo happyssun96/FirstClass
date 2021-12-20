@@ -136,72 +136,31 @@
                       <th>ARTIST</th>
                       <th>ALBUM</th>
                     </tr>
+<!--                     <tr> -->
+<!--                       <td>1</td> -->
+<!--                       <td><a href="./songDetailPage.jsp"> -->
+<!--                       	<img class="img slider__img" style="width: 65px; height: 65px;" -->
+<!--                       		src="resources/images/covers/showme10_1.jpeg" alt="cover"> -->
+<!--                       		</a> -->
+<!--                       </td> -->
+<!--                       <td>리무진 (Feat. MINO) (Prod. GRAY)</td> -->
+<!-- <!--                       <td><span class="badge badge-success">BE'O (비오)</span></td> --> -->
+<!--                       <td>BE'O (비오)</td> -->
+<!--                       <td> -->
+<!--                         <div class="sparkbar" data-color="#00a65a" data-height="20">쇼미더머니 10 Episode 3</div> -->
+<!--                       </td> -->
+<!--                     </tr> -->
                     </thead>
-                    <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td><a href="./songDetailPage.jsp">
-                      	<img class="img slider__img" style="width: 65px; height: 65px;"
-                      		src="resources/images/covers/showme10_1.jpeg" alt="cover">
-                      		</a>
-                      </td>
-                      <td>리무진 (Feat. MINO) (Prod. GRAY)</td>
-<!--                       <td><span class="badge badge-success">BE'O (비오)</span></td> -->
-                      <td>BE'O (비오)</td>
-                      <td>
-                        <div class="sparkbar" data-color="#00a65a" data-height="20">쇼미더머니 10 Episode 3</div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td><a href="#">2</a></td>
-                      <td>
-                      	<img class="img slider__img" style="width: 65px; height: 65px;"
-                      		src="resources/images/covers/showme10_2.jpg" alt="cover">
-                      </td>
-                      <td>회전목마 (Feat. Zion.T, 원슈타인) (Prod. Slom)</td>
-                      <td>sokodomo</td>
-                      <td>
-                        <div class="sparkbar" data-color="#f39c12" data-height="20">쇼미더머니 10 Episode 2</div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td><a href="#">3</a></td>
-                      <td>
-                      	<img class="img slider__img" style="width: 65px; height: 65px;"
-                      		src="resources/images/covers/showme10_1.jpeg" alt="cover">
-                      </td>
-                      <td>만남은 쉽고 이별은 어려워 (Feat. Leellamarz) (Prod. TOIL)</td>
-                      <td>베이식 (Basick)</td>
-                      <td>
-                        <div class="sparkbar" data-color="#f39c12" data-height="20">쇼미더머니 10 Episode 3</div>
-                      </td>
-                    </tr>
-                    <tr>
-                     <td><a href="#">4</a></td>
-                      <td>
-                      	<img class="img slider__img" style="width: 65px; height: 65px;"
-                      		src="resources/images/covers/strawberrymoon.jpg" alt="cover">
-                      </td>
-                      <td>strawberry moon</td>
-                      <td>아이유</td>
-                      <td>
-                        <div class="sparkbar" data-color="#f39c12" data-height="20">strawberry moon</div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td><a href="#">5</a></td>
-                      <td>
-                      	<img class="img slider__img" style="width: 65px; height: 65px;"
-                      		src="resources/images/covers/eleven.jpeg" alt="cover">
-                      </td>
-                      <td>ELEVEN</td>
-                      <td>IVE (아이브)</td>
-                      <td>
-                        <div class="sparkbar" data-color="#f39c12" data-height="20">ELEVEN</div>
-                      </td>
-                    </tr>
-                    
-                    </tbody>
+               <c:forEach var="songVo" items="${songList}">
+		         <tr>
+		            <td>${songVo.songNo}</td>
+		            <td><a href='./detailInfomation.do?no=${songVo.songNo}&curPage=${pagingMap.memberPaging.curPage}'>
+		            ${songVo.songName}</a></td>
+		            <td>${songVo.artist}</td>
+		            <td>${songVo.albumName}</td>
+		            <td><a href='#' onclick='pageMoveDeleteFnc(${memberVo.no});'>[삭제]</a></td>
+         		</tr>
+      </c:forEach>
                   </table>
                 </div>
                 <!-- /.table-responsive -->

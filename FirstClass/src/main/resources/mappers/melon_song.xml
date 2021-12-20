@@ -25,7 +25,8 @@
           #{albumName}, #{publisher}, SYSDATE, SYSDATE, #{musicResourcePath}, #{albumImagePath})
       </select>
       
-         <select id="songSelectList" parameterType="map" resultMap="songResultMap">
+         <select id="songSelectList" parameterType="map" 
+         resultMap="songResultMap">
          
             SELECT SONG.RNUM, SONG.song_no, SONG.SONG_NAME, SONG.ARTIST
                   , SONG.ALBUM_NAME, SONG.PUBLISHER
@@ -56,12 +57,12 @@
         WHERE SONG_NO = #{songNo};
    </select>
 
-   <select id="songSelectOne">
+   <select id="songSelectOne" parameterType="int">
         SELECT SONG_NO, SONG_NAME, ARTIST
             , ALBUM_NAME, PUBLISHER, RELEASE_DATE
             , SONG_MODIFY_DATE, MUSIC_RESOURCE_PATH, ALBUM_IMAGE_PATH
         FROM SONG
-        WHERE SONG_NO = #{songNo};
+        WHERE SONG_NO = #{songNo}
    </select>
 
 

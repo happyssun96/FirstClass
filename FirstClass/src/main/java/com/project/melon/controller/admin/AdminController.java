@@ -16,7 +16,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.project.melon.model.MemberVO;
+import com.project.melon.model.SongVO;
 import com.project.melon.service.MemberServiceImpl;
+import com.project.melon.service.SongService;
+import com.project.melon.service.SongServiceImpl;
 import com.project.melon.util.Paging;
 
 @Controller
@@ -26,7 +29,7 @@ public class AdminController {
 
 	@Autowired
 	private MemberServiceImpl memberService;
-	
+	@Autowired SongServiceImpl SongService;
 	//관리자 1. 유저정보 2. 음원정보 검색 admin/searchPage.do
 	//1. 유저정보 클릭시
 	@RequestMapping(value = "/main/adminUserDetailInformation.do", method = RequestMethod.GET)
@@ -40,44 +43,15 @@ public class AdminController {
 	return "/adminDetailPage";
 }
 //	//2. 음원정보 클릭시
-	@RequestMapping(value = "/main/adminlisterMainPage.do", method = RequestMethod.GET)
-	public String musicDetailInfoPage(Model model) {
-	
+	@RequestMapping(value = "adminSongDetailInformation.do", method = RequestMethod.GET)
+	public String musicDetailInfoPage(int no, Model model) {
 	//디버깅을 위한 로그 출력 로직
-	logger.info("AdminController! musicDetailInfo");
+	logger.info("AdminController! musicDetailInfo no = " + no);
 	
-	return "/admin/musicInfomation.do";	
-	}
-//	
-//	//1. 유저 정보 목록 화면(관리자, 유저 전체 리스트 출력)으로
-	@RequestMapping(value = "/admin/userInfomation.do", method = {RequestMethod.GET, RequestMethod.POST})
-	public String adminUserInfomation(@RequestParam(defaultValue = "1")int curPage
-			, @RequestParam(defaultValue = "")String keyword
-			, Model model) {
-		
-		
-		logger.info("memberController!" + "memberList keyword: {}", keyword);
-		
-		int totalCount = memberService.memberSelectTotalCount();
-		
-	      // 페이지 나누기 관련 처리
-	      Paging memberPaging = new Paging(totalCount, curPage);
-	      int start = memberPaging.getPageBegin();
-	      int end = memberPaging.getPageEnd();
-	      
-	      List<MemberVO> memberList = 
-	            memberService.memberSelectList(keyword, start, end);
-	      
-	      
-	      Map<String, Object> pagingMap = new HashMap<String, Object>();
-	      pagingMap.put("totalCount", totalCount);
-	      pagingMap.put("memberPaging", memberPaging);
-	      
-	      model.addAttribute("memberList", memberList);
-	      model.addAttribute("keyword", keyword);
-	      model.addAttribute("pagingMap", pagingMap);
-	      
-		return "auth/userListView";
+	SongVO songVo = (SongVO)SongService.songSelectOne(no);
+	
+	model.addAttribute(songVo);
+	return "adminSongDetailPage";	
 	}
 //	
 //	//admin/update.do [어드민] 유저 세부정보 수정 프론트(회원 수정 화면으로)

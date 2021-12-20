@@ -65,7 +65,7 @@ public class SongController {
 			MemberVO tempVo = (MemberVO)session.getAttribute("MemberVo");
 			if(tempVo.getAuth().equals("adminlister"))
 			{
-				viewUrl = "SongUploadForm"; // 어드민 계정검증이 완료되었으므로 음악 업로드 폼으로 이동
+				viewUrl = "songUploadForm"; // 어드민 계정검증이 완료되었으므로 음악 업로드 폼으로 이동
 			}
 		}
 		return viewUrl; // 그 외의 경우 권한이 없으므로 에러 페이지로 이동
@@ -81,33 +81,22 @@ public class SongController {
 		
 		String viewUrl = "redirect :/adminMainPage.do";
 		
-		String uploadSongFolder = "C://upload//song";
-		String uploadSongImageFolder = "C://upload//image";
+		String uploadSongFolder = "C:\\gitRepository\\WaterMelon\\FirstClass\\src\\main\\webapp\\resources\\song";
+		String uploadSongImageFolder = "C:\\gitRepository\\WaterMelon\\FirstClass\\src\\main\\webapp\\resources\\cover";
 		
-//		파일 확장자 분리 (결과값 .xxx)
-		String songFileType = uploadSongFile.getContentType();
-		songFileType = "." + songFileType.split("/")[1];
-		String songImageFileType = uploadSongImageFile.getContentType();
-		songImageFileType = "." + songImageFileType.split("/")[1];
-		logger.info("Stype = " + songFileType);
-		logger.info("Stype = " + songImageFileType);
 		
-		String fullSongName = songVo.getSongName() + songFileType;
-		String fullSongImageName = songVo.getAlbumName()  + songImageFileType;
-//		
+		String fullSongName = uploadSongFile.getOriginalFilename();
+		String fullSongImageName = uploadSongImageFile.getOriginalFilename();
+
 		File uploadSong = new File(uploadSongFolder, fullSongName);
+		
 		File uploadSongImage = new File(uploadSongImageFolder, fullSongImageName);
-//		
-		String songFullPath = uploadSongFolder + "//" + fullSongName;
-		String songImageFullPath = uploadSongImageFolder + "//" + fullSongImageName;
-		logger.info("SFP =" + songFullPath + "\n SIFP =" + songImageFullPath);
+		String songFullPath = "resources/song" + "/" + fullSongName;
+		String songImageFullPath = "resources/cover" + "/" + fullSongImageName;
 		
 		songVo.setMusicResourcePath(songFullPath);
 		songVo.setAlbumImagePath(songImageFullPath);
 		
-		logger.info("SFPVo =" + songVo.getMusicResourcePath());
-		logger.info("SIFPVo =" + songVo.getAlbumImagePath()); 
-//
 		try {
 			uploadSongFile.transferTo(uploadSong);
 			uploadSongImageFile.transferTo(uploadSongImage);
