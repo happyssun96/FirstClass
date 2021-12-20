@@ -68,6 +68,13 @@ public class MemberServiceImpl implements MemberService{
 		// TODO Auto-generated method stub
 		memberDao.memberDeleteOne(no);
 	}
+
+	@Override
+	public void memberPurchaseCash(int no, int chosenCash) {
+		// TODO Auto-generated method stub
+		memberDao.memberPurchaseCash(no, chosenCash);
+	}
+
 	
 	
 	

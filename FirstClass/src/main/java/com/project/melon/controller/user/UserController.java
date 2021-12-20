@@ -31,7 +31,21 @@ public class UserController {
 		@Autowired
 		private SongService songService;
 	
-		
+		@RequestMapping(value = "addCashCtr.do", method = RequestMethod.GET)
+			public String addCashCtr(HttpSession session, @RequestParam(defaultValue = "0")int chosenCash)
+			{
+				String viewUrl = "/index";
+				
+				MemberVO tempVo = (MemberVO)session.getAttribute("member");
+				
+				memberService.memberPurchaseCash(2,5000);
+				
+//				MemberVO userVo = memberService.memberSelectOne(tempVo.getMember_no());
+				MemberVO userVo = memberService.memberSelectOne(2);
+				session.setAttribute("member", userVo);
+				
+				return viewUrl;
+			}
 		@RequestMapping(value = "userDetailInformation.do", method = RequestMethod.GET)
 			public String userDetailInformation(HttpSession session, String password, Model model)
 			{

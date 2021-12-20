@@ -92,6 +92,18 @@ public class MemberDAOImpl implements MemberDAO{
 		// TODO Auto-generated method stub
 		sqlSession.delete(nameSpace + "memberDeleteOne", no);
 	}
+
+	@Override
+	public void memberPurchaseCash(int no, int chosenCash) {
+		// TODO Auto-generated method stub
+		Map<String, Object> map = new HashMap<>();
+		map.put("no", no);
+		map.put("chosenCash", chosenCash);
+		
+		sqlSession.update(nameSpace + "memberPurchaseCash", chosenCash);
+		
+	}
+
 	
 	
 	

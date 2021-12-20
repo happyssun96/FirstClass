@@ -66,7 +66,7 @@
 
    <select id="memberSelectOne" parameterType="int"
       resultMap="memberResultMap">
-      SELECT MEMBER_NO, AUTH, NICKNAME, EMAIL, MEMBERCLASS, CRE_DATE
+      SELECT MEMBER_NO, AUTH, NICKNAME, EMAIL, MEMBERCLASS, CRE_DATE, CASH
       FROM MEMBER
       WHERE MEMBER_NO = #{no}
    </select>
@@ -90,6 +90,14 @@
 		SELECT COUNT(*) 
 		FROM MEMBER
    </select>
+   
+   
+   <select id="memberPurchaseCash" parameterType="map">
+		UPDATE MEMBER 
+		SET CASH = CASH + #{chosenCash}
+        WHERE MEMBER_NO = #{no}
+   </select>
+   
 
 
 
