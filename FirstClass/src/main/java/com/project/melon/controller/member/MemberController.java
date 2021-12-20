@@ -33,7 +33,7 @@ public class MemberController {
 		}
 		
 		//loginCtr.do 로그인 작업을 수행하기위한 구문(DB 활용)
-		@RequestMapping(value = "/main/login.do", method = RequestMethod.POST)
+		@RequestMapping(value = "/loginCtr.do", method = RequestMethod.POST)
 		public String loginCtr(@Valid String email, String password, HttpSession session, Model model) {
 			//디버깅을 위한 로그 출력 로직
 			logger.info("MemberController! loginCtr" + email + ", " + password);
@@ -52,12 +52,12 @@ public class MemberController {
 				if (memberVo.getAuth().equals("user")) {
 					
 					//주소창의 경우 앞에 / 하지 않을 경우 잘못된 주소로 이동할 것 같아 추가
-					return "/main/mainPage.do";	
+					return "redirect:/userMainPage.do";	
 				}else {
-					return "/main/adminlisterMainPage.do";
+					return "redirect:/adminMainPage.do";
 				}				
 			}else {
-				return "/main/loginFailPage.do";
+				return "/auth/LoginFail";
 			}
 		}
 	
