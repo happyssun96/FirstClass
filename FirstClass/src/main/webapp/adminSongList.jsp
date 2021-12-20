@@ -7,7 +7,7 @@
 <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>관리자 페이지</title>
+  <title>음원 리스트</title>
   <style type="text/css">
   	
   	table, th {
@@ -42,7 +42,6 @@
   <jsp:include page="header.jsp" /> 
   <jsp:include page="adminNav.jsp" />
 
-
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper" style="margin-left: 300px;">
     <!-- Content Header (Page header) -->
@@ -50,7 +49,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">관리자 페이지</h1>
+            <h1 class="m-0">관리자 페이지</h1>&emsp; >&nbsp;&nbsp; 음원 정보
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -65,88 +64,10 @@
     </div>
     <br>
     <br>
-    <div style="margin-left: 300px;">
-	    <form id='pagingForm' action="./admin/userInformation.do" method="post">
-	    	 <select name='searchOption' style="background: #E5E1E1; border: none; border-radius: 2.0em; height:60px; width:60px; color:#212529; ">
-			   <c:choose>
-			      <c:when test="${searchMap.searchOption == null}">
-			            <option value="user">유저</option>
-			            <option value="song">음원</option>
-			      </c:when>
-			      <c:when test="${searchMap.searchOption == 'user'}">
-			            <option value="user" selected='selected'>유저</option>
-			            <option value="song">음원</option>
-			      </c:when>
-			      <c:when test="${searchMap.searchOption == 'song'}">
-			            <option value="user">유저</option>
-			            <option value="song" selected='selected'>음원</option>
-			      </c:when>
-			   </c:choose>
-	     	 </select>
-	    	<input type="text" placeholder="검색할 내용을 입력하세요.&nbsp; (&nbsp;ex&nbsp;.&nbsp;유저 정보, 음원 정보&nbsp;)" style="width:730px; height:60px; background: #E5E1E1; border: none; border-radius: 2.0em; padding-inline-end: 44px; padding-inline-start: 52px; margin-left: 10px;">   	
-	    	
-	    </form>
-    </div>
+
     
     <div style="margin-top: 50px; margin-left: 230px;">
-	    <div style="margin-left: 20px;">		    	
-	    	<br>
-	    	<br>
-	    	<h2>&nbsp;회원 데이터 ></h2>
-	    	<br>
-		    	<table border="1">				
-					<tbody>
-					
-					 	<tr style="background: #403A3A;">
-					 		<th>번호</th>
-					 		<th>이메일</th>
-					 		<th>닉네임</th>
-					 		<th>권한</th>
-					 		<th>등급</th>
-					 		<th>보유 캐시</th>
-					 		<th>나이</th>
-					 		<th>성별</th>
-					 		<th>구독여부</th>
-					 		<th>가입일</th>
-					 		<th>수정일</th>
-					 	</tr>
-					 	<tr onclick="location.href='./adminDetailPage.jsp'" style="cursor: pointer;">
-					 		<td>${member.member_no}</td>
-					 		<td>${member.email}</td>
-					 		<td>${member.nickName}</td>
-					 		<td>${member.auth}</td>
-					 		<td>골드회원</td>
-					 		<td>10000원</td>
-					 		<td>25</td>
-					 		<td>M</td>
-					 		<td>1개월 구독 중</td>
-					 		<td>2021.12.10</td>
-					 		<td>2021.12.15</td>
-					 	</tr>
-					 	<tr>
-					 		<td>3</td>
-					 		<td>Melon@naver.com</td>
-					 		<td>멜론녀</td>
-					 		<td>일반</td>
-					 		<td>실버회원</td>
-					 		<td>5000원</td>
-					 		<td>20</td>
-					 		<td>F</td>
-					 		<td>1개월 구독 중</td>
-					 		<td>2021.12.10</td>
-					 		<td>2021.12.15</td>
-					 	</tr>					 			
-		      		</tbody>	      		
-			</table>	    	
-	    </div>
-	</div>
-	
-	<div style="margin-left: 600px;">
-		<br>
-		<jsp:include page="paging.jsp" />
-	</div>
-			
-	<div style="margin-top: 30px; margin-left: 230px;">   	    		    	
+	     		    		    	
 	    <div style=" margin-left: 20px; margin-top : 50px;">	    	
 	    	<br>
 	    	<br>
@@ -182,15 +103,15 @@
 					 		
 					 	</tr>		
 		      		</tbody>	      		
-				</table>				  
+				</table>
+				
+				<div style="margin-left:360px;">
+					<br>
+					<jsp:include page="paging.jsp" />
+				</div>	    
 	    </div>
-	    </div>
-	    
-	    <div style="margin-left: 600px;">
-			<br>
-			<jsp:include page="paging.jsp" />
-		</div>	    	
-    </div>        	    			
+    </div>        	    	
+    </div>			
   </div>
   <!-- /.content-wrapper -->
 
