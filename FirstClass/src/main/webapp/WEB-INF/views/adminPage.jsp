@@ -19,10 +19,6 @@
   		padding : 5px;
   	}
   	
-  	table {
-  		width: 900px;
-  	}
-  	
   	img {
   		width: 75px;
   		height: 75px;
@@ -30,6 +26,17 @@
   	}
 
   </style>
+  <script type="text/javascript">
+	  function searchFunc(){
+		  var curPage = document.getElementById('curPage');
+		  curPage.setAttribute('value', 1);	
+		  var selectedOption = document.getElementById("searchOption");
+		  var form = document.getElementById('pagingForm');
+		  location.href = './list.do?curPage='+curPage.value
+		         +'&keyword='+form.keyword.value
+		         +'&searchOption='+selectedOption.options[selectedOption.selectedIndex].value;
+
+  </script>
 </head>
 <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <div class="wrapper">
@@ -40,7 +47,8 @@
   </div>
   
   <jsp:include page="header.jsp" /> 
-  <jsp:include page="nav.jsp" />
+  <jsp:include page="adminNav.jsp" />
+
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper" style="margin-left: 300px;">
@@ -65,32 +73,31 @@
     <br>
     <br>
     <div style="margin-left: 300px;">
-	    <form id='pagingForm' action="./list.do" method="post">
-	    	 <select name='searchOption' style="background: #E5E1E1; border: none; border-radius: 2.0em; height:60px; width:60px; ">
+	    <form id='pagingForm' action="./admin/userInformation.do" method="post">
+	    	 <select name='searchOption' style="background: #E5E1E1; border: none; border-radius: 2.0em; height:60px; width:60px; color:#212529; ">
 			   <c:choose>
-				  <c:when test="${searchMap.searchOption == 'all'}">
-			            <option value="all"  selected='selected'>전체</option>
-			            <option value="name">유저</option>
-			            <option value="email">음원</option>
+			      <c:when test="${searchMap.searchOption == null}">
+			            <option value="user">유저</option>
+			            <option value="song">음원</option>
 			      </c:when>
-			      <c:when test="${searchMap.searchOption == 'name'}">
-			            <option value="all">전체</option>
-			            <option value="name" selected='selected'>이름</option>
-			            <option value="email">이메일</option>
+			      <c:when test="${searchMap.searchOption == 'user'}">
+			            <option value="user" selected='selected'>유저</option>
+			            <option value="song">음원</option>
 			      </c:when>
-			      <c:when test="${searchMap.searchOption == 'email'}">
-			            <option value="all">전체</option>
-			            <option value="name">이름</option>
-			            <option value="email" selected='selected'>이메일</option>
+			      <c:when test="${searchMap.searchOption == 'song'}">
+			            <option value="user">유저</option>
+			            <option value="song" selected='selected'>음원</option>
 			      </c:when>
 			   </c:choose>
 	     	 </select>
-	     
 	    	<input type="text" placeholder="검색할 내용을 입력하세요.&nbsp; (&nbsp;ex&nbsp;.&nbsp;유저 정보, 음원 정보&nbsp;)" style="width:730px; height:60px; background: #E5E1E1; border: none; border-radius: 2.0em; padding-inline-end: 44px; padding-inline-start: 52px; margin-left: 10px;">   	
+	    	<input type='button' value='검색' onclick="searchFunc();" style="background: #E5E1E1; border: none; border-radius: 2.0em; height:60px; width:60px; color:#212529;">
+	    	<input type="hidden" id='curPage' name='curPage' 
+	    	value="${memberPagingMap.memberPaging.curPage}">
 	    </form>
     </div>
     
-    <div style="margin-top: 50px; margin-left: 230px;">
+    <div style="margin-top: 50px; margin-left: 300px;">
 	    <div style="margin-left: 20px;">		    	
 	    	<br>
 	    	<br>
@@ -112,37 +119,38 @@
 					 		<th>가입일</th>
 					 		<th>수정일</th>
 					 	</tr>
-					 	<tr>
-					 		<td>1</td>
-					 		<td>waterM@naver.com</td>
-					 		<td>수박남</td>
-					 		<td>관리자</td>
-					 		<td>골드회원</td>
-					 		<td>10000원</td>
-					 		<td>25</td>
-					 		<td>M</td>
-					 		<td>1개월 구독 중</td>
-					 		<td>2021.12.10</td>
-					 		<td>2021.12.15</td>
-					 	</tr>
-					 	<tr>
-					 		<td>2</td>
-					 		<td>Melon@naver.com</td>
-					 		<td>멜론녀</td>
-					 		<td>일반</td>
-					 		<td>실버회원</td>
-					 		<td>5000원</td>
-					 		<td>20</td>
-					 		<td>F</td>
-					 		<td>1개월 구독 중</td>
-					 		<td>2021.12.10</td>
-					 		<td>2021.12.15</td>
-					 	</tr>
-					 			
+					 	
+					 	<c:forEach var="memberVo" items="${memberList}">
+					         <tr>
+					            <td>${memberVo.member_no}</td>
+					            <td><a href='./Info.do?no=${memberVo.member_no}'>${memberVo.email}</a></td>
+					            <td>${memberVo.nickName}</td>
+					            <td>${memberVo.auth}</td>
+					            <td>${memberVo.memberClass}</td>
+					            <td>${memberVo.cash}</td>
+					            <td>${memberVo.age}</td>
+					            <td>${memberVo.gender}</td>
+					            <td>O</td>
+					            <td>${memberVo.createDate}</td>
+					            <td>${memberVo.modifyDate}</td>
+					         </tr>
+					      </c:forEach>				 
 		      		</tbody>	      		
 			</table>
-	    	
-	    </div> 		    		    	
+					<jsp:include page="/WEB-INF/views/common/Paging.jsp">
+			<jsp:param value="${PagingMap}" name="pagingMap"/>
+		</jsp:include>	    	
+	    </div>
+	</div>
+	
+<!-- 	<div style="margin-left: 650px;"> -->
+<!-- 		<br> -->
+<%-- 		<jsp:include page="paging.jsp"> --%>
+<%-- 			<jsp:param value="${memberPagingMap}" name="memberPagingMap"/> --%>
+<%-- 		</jsp:include> --%>
+<!-- 	</div> -->
+			
+	<div style="margin-top: 30px; margin-left: 90px;">   	    		    	
 	    <div style=" margin-left: 20px; margin-top : 50px;">	    	
 	    	<br>
 	    	<br>
@@ -156,32 +164,40 @@
 					 		<th>제목</th>
 					 		<th>아티스트</th>
 					 		<th>앨범 명</th>
-					 		<th>음원 존재여부</th>
-					 		
+					 		<th>기획사</th>
+					 		<th>등록일</th>
+					 		<th>수정일</th>	
+					 		<th>음원경로</th>
+					 		<th>앨범경로</th>							 		
 					 	</tr>
-					 	<tr onclick="location.href='./adminSongDetailPage.jsp'" style="cursor: pointer;">
-					 		<td>1</td>
-					 		<td style="width: 90px;"><img src="resources/images/music-7.jpg"></td>
-					 		<td>리무진 (Feat. MINO) (Prod.G...</td>
-					 		<td>BE`O (비오)</td>
-					 		<td>쇼미더머니 10 Episode 3</td>
-					 		<td>O</td>
-					 		
-					 	</tr>
-					 	<tr>
-					 		<td>2</td>
-					 		<td style="width: 90px;"><img src="resources/images/music-7.jpg" ></td>
-					 		<td>회전목마 (Feat. Zion.T, 원슈타...</td>
-					 		<td>sokodomo</td>
-					 		<td>쇼미더머니 10 Episode 3</td>
-					 		<td>X</td>
-					 		
-					 	</tr>		
+					 	
+					 	<c:forEach var="songVo" items="${songList}">
+					         <tr>
+					            <td>${songVo.songNo}</td>
+					            <td></td>
+					            <td>${songVo.songName}</td>
+					            <td>${songVo.artist}</td>
+					            <td>${songVo.albumName}</td>
+					            <td>${songVo.publisher}</td>
+					            <td>${songVo.releaseDate}</td>
+					            <td>${songVo.modifyDate}</td>					            
+					            <td>${songVo.musicResourcePath}</td>
+					            <td>${songVo.albumImagePath}</td>
+					         </tr>
+					      </c:forEach>
+					      	
 		      		</tbody>	      		
-				</table>	    
+				</table>				  
 	    </div>
-    </div>        	    	
-    </div>			
+	    </div>
+	    
+	    <div style="margin-left: 650px;">
+			<br>
+<%-- 			<jsp:include page="paging.jsp"> --%>
+<%-- 				<jsp:param value="${pagingMap}" name="pagingMap"/> --%>
+<%-- 			</jsp:include> --%>
+		</div>	    	
+    </div>        	    			
   </div>
   <!-- /.content-wrapper -->
 

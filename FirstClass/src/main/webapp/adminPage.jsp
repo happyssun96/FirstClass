@@ -30,6 +30,17 @@
   	}
 
   </style>
+  <script type="text/javascript">
+	  function searchFunc(){
+		  var curPage = document.getElementById('curPage');
+		  curPage.setAttribute('value', 1);	
+		  var selectedOption = document.getElementById("searchOption");
+		  var form = document.getElementById('pagingForm');
+		  location.href = './list.do?curPage='+curPage.value
+		         +'&keyword='+form.keyword.value
+		         +'&searchOption='+selectedOption.options[selectedOption.selectedIndex].value;
+
+  </script>
 </head>
 <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <div class="wrapper">
@@ -84,6 +95,7 @@
 			   </c:choose>
 	     	 </select>
 	    	<input type="text" placeholder="검색할 내용을 입력하세요.&nbsp; (&nbsp;ex&nbsp;.&nbsp;유저 정보, 음원 정보&nbsp;)" style="width:730px; height:60px; background: #E5E1E1; border: none; border-radius: 2.0em; padding-inline-end: 44px; padding-inline-start: 52px; margin-left: 10px;">   	
+	    	<input type='button' value='검색' onclick="searchFunc();" style="background: #E5E1E1; border: none; border-radius: 2.0em; height:60px; width:60px; color:#212529;">
 	    	
 	    </form>
     </div>
@@ -110,32 +122,51 @@
 					 		<th>가입일</th>
 					 		<th>수정일</th>
 					 	</tr>
-					 	<tr onclick="location.href='./adminDetailPage.jsp'" style="cursor: pointer;">
-					 		<td>${member.member_no}</td>
-					 		<td>${member.email}</td>
-					 		<td>${member.nickName}</td>
-					 		<td>${member.auth}</td>
-					 		<td>골드회원</td>
-					 		<td>10000원</td>
-					 		<td>25</td>
-					 		<td>M</td>
-					 		<td>1개월 구독 중</td>
-					 		<td>2021.12.10</td>
-					 		<td>2021.12.15</td>
-					 	</tr>
-					 	<tr>
-					 		<td>3</td>
-					 		<td>Melon@naver.com</td>
-					 		<td>멜론녀</td>
-					 		<td>일반</td>
-					 		<td>실버회원</td>
-					 		<td>5000원</td>
-					 		<td>20</td>
-					 		<td>F</td>
-					 		<td>1개월 구독 중</td>
-					 		<td>2021.12.10</td>
-					 		<td>2021.12.15</td>
-					 	</tr>					 			
+					 	
+					 	<c:forEach var="memberVo" items="${memberList}">
+					         <tr>
+					            <td>${memberVo.member_no}</td>
+					            <td><a href='./Info.do?no=${memberVo.member_no}'>${memberVo.email}</a></td>
+					            <td>${memberVo.nickName}</td>
+					            <td>${memberVo.auth}</td>
+					            <td>${memberVo.memberClass}</td>
+					            <td>${memberVo.cash}</td>
+					            <td>${memberVo.age}</td>
+					            <td>${memberVo.gender}</td>
+					            <td>O</td>
+					            <td><fmt:formatDate value="${memberVo.cre_Date}"
+					                  pattern="YYYY-MM-dd hh:mm" />
+					            </td>
+					            <td>${memberVo.mod_date}</td>
+					         </tr>
+					      </c:forEach>
+					 	
+<!-- 					 	<tr onclick="location.href='./adminDetailPage.jsp'" style="cursor: pointer;"> -->
+<%-- 					 		<td>${member.member_no}</td> --%>
+<%-- 					 		<td>${member.email}</td> --%>
+<%-- 					 		<td>${member.nickName}</td> --%>
+<%-- 					 		<td>${member.auth}</td> --%>
+<!-- 					 		<td>골드회원</td> -->
+<!-- 					 		<td>10000원</td> -->
+<!-- 					 		<td>25</td> -->
+<!-- 					 		<td>M</td> -->
+<!-- 					 		<td>1개월 구독 중</td> -->
+<!-- 					 		<td>2021.12.10</td> -->
+<!-- 					 		<td>2021.12.15</td> -->
+<!-- 					 	</tr> -->
+<!-- 					 	<tr> -->
+<!-- 					 		<td>3</td> -->
+<!-- 					 		<td>Melon@naver.com</td> -->
+<!-- 					 		<td>멜론녀</td> -->
+<!-- 					 		<td>일반</td> -->
+<!-- 					 		<td>실버회원</td> -->
+<!-- 					 		<td>5000원</td> -->
+<!-- 					 		<td>20</td> -->
+<!-- 					 		<td>F</td> -->
+<!-- 					 		<td>1개월 구독 중</td> -->
+<!-- 					 		<td>2021.12.10</td> -->
+<!-- 					 		<td>2021.12.15</td> -->
+<!-- 					 	</tr>					 			 -->
 		      		</tbody>	      		
 			</table>	    	
 	    </div>
@@ -143,7 +174,9 @@
 	
 	<div style="margin-left: 600px;">
 		<br>
-		<jsp:include page="paging.jsp" />
+		<jsp:include page="paging.jsp">
+			<jsp:param value="${pagingMap}" name="pagingMap"/>
+		</jsp:include>
 	</div>
 			
 	<div style="margin-top: 30px; margin-left: 230px;">   	    		    	
@@ -188,7 +221,9 @@
 	    
 	    <div style="margin-left: 600px;">
 			<br>
-			<jsp:include page="paging.jsp" />
+			<jsp:include page="paging.jsp">
+				<jsp:param value="${pagingMap}" name="pagingMap"/>
+			</jsp:include>
 		</div>	    	
     </div>        	    			
   </div>
