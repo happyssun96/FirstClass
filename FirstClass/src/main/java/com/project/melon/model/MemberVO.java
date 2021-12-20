@@ -13,8 +13,8 @@ public class MemberVO {
 	private int cash = 0;
 	private int age = 0;
 	private String gender = "";
-	private Date createDate = null;
-	private Date modifyDate = null;
+	private String createDate = null;
+	private String modifyDate = null;
 
 	public MemberVO() {
 		super();
@@ -22,7 +22,7 @@ public class MemberVO {
 	}
 
 	public MemberVO(int member_no, String email, String password, String auth, int memberClass, String nickName,
-			int cash, int age, String gender, Date createDate, Date modifyDate) {
+			int cash, int age, String gender, String createDate, String modifyDate) {
 		super();
 		this.member_no = member_no;
 		this.email = email;
@@ -91,16 +91,16 @@ public class MemberVO {
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
-	public Date getCreateDate() {
+	public String getCreateDate() {
 		return createDate;
 	}
-	public void setCreateDate(Date createDate) {
+	public void setCreateDate(String createDate) {
 		this.createDate = createDate;
 	}
-	public Date getModifyDate() {
+	public String getModifyDate() {
 		return modifyDate;
 	}
-	public void setModifyDate(Date modifyDate) {
+	public void setModifyDate(String modifyDate) {
 		this.modifyDate = modifyDate;
 	}
 	@Override
