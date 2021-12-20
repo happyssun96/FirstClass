@@ -70,12 +70,16 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
+	public void memberPurchaseCash(int no, int chosenCash) {
+		// TODO Auto-generated method stub
+		memberDao.memberPurchaseCash(no, chosenCash);
+	}
+
+	@Override
 	public int memberCash(int no) {
 		// TODO Auto-generated method stub
-		return memberDao.memberCash(no);
+		return 0;
 	}
-	
-	
 	
 	
 	

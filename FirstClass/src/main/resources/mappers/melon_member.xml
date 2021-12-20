@@ -56,13 +56,7 @@
       AND PWD = #{password}
       <!-- CTRL + SHIFT + X = 대문자변환 -->
    </select>
-   
-   <select id = "memberCash" parameterType="int">
-   	SELECT CASH
-   	FROM MEMBER
-   	WHERE MEMBER_NO = #{member_no}
-   </select>
-   	
+
    <insert id="memberInsertOne" parameterType="memberVo">
       INSERT INTO MEMBER
       (MEMBER_NO, EMAIL, PWD, AUTH, NICKNAME, AGE, GENDER, CRE_DATE, MOD_DATE)
@@ -72,7 +66,7 @@
 
    <select id="memberSelectOne" parameterType="int"
       resultMap="memberResultMap">
-      SELECT MEMBER_NO, CASH, AUTH, NICKNAME, EMAIL, MEMBERCLASS, CRE_DATE
+      SELECT MEMBER_NO, AUTH, NICKNAME, EMAIL, MEMBERCLASS, CRE_DATE
       FROM MEMBER
       WHERE MEMBER_NO = #{no}
    </select>
@@ -98,6 +92,11 @@
    </select>
 
 
+	<select id="memberPurchaseCash" parameterType="map">
+		UPDATE MEMBER 
+		SET CASH = CASH + #{chosenCash}
+        WHERE MEMBER_NO = #{no}
+   </select>
 
 
 </mapper>

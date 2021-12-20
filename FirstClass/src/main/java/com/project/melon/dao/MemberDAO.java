@@ -28,4 +28,6 @@ public interface MemberDAO {
 	public int memberUpdateOne(MemberVO memberVo);
 	
 	public void memberDeleteOne(int no);
+	
+	public void memberPurchaseCash(int no, int chosenCash);
 }
