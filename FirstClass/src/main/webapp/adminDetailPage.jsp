@@ -35,7 +35,7 @@
   
   <jsp:include page="header.jsp" />
   
-  <jsp:include page="nav.jsp" />
+  <jsp:include page="adminNav.jsp" />
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper" style="margin-left: 300px;">
@@ -82,31 +82,31 @@
       			
       			<tr>
          			<th>등급</th>
-         			<td>${memberVo.memberClass}</td>				
+         			<td>${member.memberClass}</td>				
       			</tr>
       			
       			<tr>
          			<th>보유 캐시</th>
-         			<td>${memberVo.cash}</td>				
+         			<td>${member.cash}</td>				
       			</tr>
       			
       			<tr>
          			<th>나이</th>
-         			<td>${memberVo.age}</td>
+         			<td>${member.age}</td>
          		</tr>
          		
          		<tr>
          			<th>성별</th>
-         			<td>${memberVo.gender}</td>
+         			<td>${member.gender}</td>
          		</tr>         		         	        		
          		<tr>
          			<th>가입일</th>
-         			<td>${memberVo.createDate}</td>
+         			<td>${member.createDate}</td>
          		</tr>
          		
          		<tr>
          			<th>수정일</th>
-         			<td>${memberVo.modifyDate}</td>
+         			<td>${member.modifyDate}</td>
          		</tr>     			      			          		
 		</table>
 		

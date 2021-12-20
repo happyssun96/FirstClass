@@ -20,7 +20,7 @@
 <div class="wrapper">
 	<jsp:include page="header.jsp"/>
 
-	<jsp:include page="nav.jsp" />
+	<jsp:include page="adminNav.jsp" />
 	
 	 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
