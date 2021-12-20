@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.project.melon">
 
-   <resultMap type="subscribeVo" id="subscribeResultMap">
+   	<resultMap type="subscribeVo" id="subscribeResultMap">
       <id column="SUBSCRIBE_NO" property="subscribe_no" />
       <result column="MEMBER_NO" property="member_no" />
       <result column="EXPIRE_RESERVATION" property="expire_reservation" />
@@ -10,14 +10,19 @@
          javaType="java.util.Date" />
       <result column="EXPIRE_DATE" property="expireDate"
          javaType="java.util.Date" />
-   </resultMap>	
+   	</resultMap>	
 
 	<select id = "subscribeChk" resultType = "int">
 		SELECT COUNT(*) FROM SUBSCRIBE
 		WHERE MEMBER_NO = #{member_no};	
 	</select>			
 
-
+   	<insert id="subscribeInsertOne" parameterType="subscribeVo">
+		INSERT INTO SUBSCRIBE
+		(SUBSCRIBE_NO, PURCHASE_DATE, EXPIRE_DATE)
+		VALUES(SNO_SEQ.NEXTVAL, SYSDATE, SYSDATE+30)
+		WHERE MEMBER_NO = #{member_no};	
+   	</insert>	
 
 
 </mapper>

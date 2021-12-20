@@ -16,6 +16,9 @@ public interface MemberDAO {
 	//닉네임 중복체크
 	public int nickNameChk(MemberVO memberVo);
 	
+	//멤버 캐시 구독권과 비교를 위한 구문
+	public int memberCash(int no);
+	
 	public int memberInsertOne(MemberVO memberVo);
 	
 	public int memberSelectTotalCount();

@@ -1,5 +1,11 @@
 package com.project.melon.service;
 
-public interface SubscribeService {
+import com.project.melon.model.SubscribeVO;
 
+public interface SubscribeService {
+	//구독권 중복체크
+	public int subscribeChk(SubscribeVO subscribeVo);
+	
+	//구독권 추가
+	public int subscribeInsertOne(SubscribeVO subscribeVo);
 }

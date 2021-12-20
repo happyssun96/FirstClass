@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.project.melon.model.MemberVO;
-import com.project.melon.service.MemberServiceImpl;
+import com.project.melon.service.MemberService;
 
 @Controller
 public class MemberController {
@@ -21,7 +21,7 @@ public class MemberController {
 			= LoggerFactory.getLogger(MemberController.class);
 		
 		@Autowired
-		private MemberServiceImpl memberService;
+		private MemberService memberService;
 		
 		//login.do 로그인 폼으로 이동하기 위한 구문
 		@RequestMapping(value = "/login.do", method = RequestMethod.GET)
@@ -33,23 +33,15 @@ public class MemberController {
 		}
 		
 		//loginCtr.do 로그인 작업을 수행하기위한 구문(DB 활용)
-		/**
-		 * @param email
-		 * @param password
-		 * @param session
-		 * @param model
-		 * @return
-		 */
-		@RequestMapping(value = "/loginCtr.do", method = RequestMethod.POST)
-			public String loginCtr(@Valid String email, String password, HttpSession session, Model model) {
-			
+		@RequestMapping(value = "/main/login.do", method = RequestMethod.POST)
+		public String loginCtr(@Valid String email, String password, HttpSession session, Model model) {
 			//디버깅을 위한 로그 출력 로직
 			logger.info("MemberController! loginCtr" + email + ", " + password);
 	
 			MemberVO memberVo = memberService.memberExist(email, password);
 	
 			//암호화 valid 기능을 통해 패스워드 검증 수행?? - 뭔소린지 모르겠음
-			String viewUrlStr = "";
+			
 			//로그인 정보 존재여부 확인
 			if (memberVo != null) {
 	
@@ -57,17 +49,15 @@ public class MemberController {
 				session.setAttribute("member", memberVo);
 				
 				//회원종류(관리자, 유저)에 따라 로그인
-				if (memberVo.getAuth().equals("admin")) {
-					//주소창의 경우 앞에 / 하지 않을 경우 잘못된 주소로 이동할 것 같아 추가
-					viewUrlStr = "redirect:/adminPage.jsp";
+				if (memberVo.getAuth().equals("user")) {
 					
+					//주소창의 경우 앞에 / 하지 않을 경우 잘못된 주소로 이동할 것 같아 추가
+					return "/main/mainPage.do";	
 				}else {
-					viewUrlStr = "redirect:/index.jsp";
-				}
-				
-				return viewUrlStr;
+					return "/main/adminlisterMainPage.do";
+				}				
 			}else {
-				return "/auth/LoginFail";
+				return "/main/loginFailPage.do";
 			}
 		}
 	
@@ -142,6 +132,7 @@ public class MemberController {
 			} catch (Exception e) {
 				// TODO: handle exception
 				e.printStackTrace();
+				return "redirect:/login.do";
 			}
 			
 			//실행이 완료되었다면 로그인 페이지로
