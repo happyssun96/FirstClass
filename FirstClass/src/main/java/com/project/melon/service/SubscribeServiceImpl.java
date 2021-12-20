@@ -1,5 +1,23 @@
 package com.project.melon.service;
 
-public class SubscribeServiceImpl implements SubscribeService{
+import org.springframework.beans.factory.annotation.Autowired;
 
+import com.project.melon.dao.SubscribeDAO;
+import com.project.melon.model.SubscribeVO;
+
+public class SubscribeServiceImpl implements SubscribeService{
+	@Autowired
+	public SubscribeDAO subscribeDao;
+
+	@Override
+	public int subscribeChk(SubscribeVO subscribeVo) {
+		// TODO Auto-generated method stub
+		return subscribeDao.subscribeChk(subscribeVo);
+	}
+
+	@Override
+	public int subscribeInsertOne(SubscribeVO subscribeVo) {
+		// TODO Auto-generated method stub
+		return subscribeDao.subscribeInsertOne(subscribeVo);
+	}	
 }

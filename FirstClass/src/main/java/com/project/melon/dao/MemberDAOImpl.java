@@ -93,6 +93,12 @@ public class MemberDAOImpl implements MemberDAO{
 		// TODO Auto-generated method stub
 		sqlSession.delete(nameSpace + "memberDeleteOne", no);
 	}
+
+	@Override
+	public int memberCash(int no) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(nameSpace + "memberCash", no);
+	}
 	
 	
 	

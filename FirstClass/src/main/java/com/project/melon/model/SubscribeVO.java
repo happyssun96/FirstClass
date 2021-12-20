@@ -56,6 +56,8 @@ public class SubscribeVO {
 		return "SubscribeVO [subscribe_no=" + subscribe_no + ", member_no=" + member_no + ", expire_reservation="
 				+ expire_reservation + ", purchaseDate=" + purchaseDate + ", expireDate=" + expireDate + "]";
 	}
+
+	
 	
 	
 }

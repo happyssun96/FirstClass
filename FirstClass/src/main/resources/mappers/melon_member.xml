@@ -61,13 +61,19 @@
 
    <select id="memberExist" parameterType="map"
       resultMap="memberResultMap">
-      SELECT NICKNAME, EMAIL
+      SELECT MEMBER_NO, AUTH, CASH, NICKNAME, EMAIL
       FROM MEMBER
       WHERE EMAIL = #{email}
       AND PWD = #{password}
       <!-- CTRL + SHIFT + X = 대문자변환 -->
    </select>
-
+   
+   <select id = "memberCash" parameterType="int">
+   	SELECT CASH
+   	FROM MEMBER
+   	WHERE MEMBER_NO = #{member_no}
+   </select>
+   	
    <insert id="memberInsertOne" parameterType="memberVo">
       INSERT INTO MEMBER
       (MEMBER_NO, EMAIL, PWD, NICKNAME, CRE_DATE, MOD_DATE)
@@ -77,7 +83,7 @@
 
    <select id="memberSelectOne" parameterType="int"
       resultMap="memberResultMap">
-      SELECT MEMBER_NO, AUTH, NICKNAME, EMAIL, MEMBERCLASS, CRE_DATE
+      SELECT MEMBER_NO, CASH, AUTH, NICKNAME, EMAIL, MEMBERCLASS, CRE_DATE
       FROM MEMBER
       WHERE MEMBER_NO = #{no}
    </select>

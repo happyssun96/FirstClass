@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.project.melon.model.MemberVO;
-import com.project.melon.service.MemberServiceImpl;
+import com.project.melon.service.MemberService;
 
 @Controller
 public class MemberController {
@@ -21,7 +21,7 @@ public class MemberController {
 			= LoggerFactory.getLogger(MemberController.class);
 		
 		@Autowired
-		private MemberServiceImpl memberService;
+		private MemberService memberService;
 		
 		//login.do 로그인 폼으로 이동하기 위한 구문
 		@RequestMapping(value = "/login.do", method = RequestMethod.GET)
@@ -34,7 +34,7 @@ public class MemberController {
 		
 		//loginCtr.do 로그인 작업을 수행하기위한 구문(DB 활용)
 		@RequestMapping(value = "/main/login.do", method = RequestMethod.POST)
-			public String loginCtr(@Valid String email, String password, HttpSession session, Model model) {
+		public String loginCtr(@Valid String email, String password, HttpSession session, Model model) {
 			
 			//디버깅을 위한 로그 출력 로직
 			logger.info("MemberController! loginCtr" + email + ", " + password);
@@ -50,7 +50,8 @@ public class MemberController {
 	
 				//로그인 성공시 session 정보 추가
 				session.setAttribute("member", memberVo);
-				
+//				MemberVO tempVo = (MemberVO)session.getAttribute("member");
+//				tempVo.getCash();
 				//회원종류(관리자, 유저)에 따라 로그인
 				if (memberVo.getAuth().equals("user")) {
 					
@@ -135,6 +136,7 @@ public class MemberController {
 			} catch (Exception e) {
 				// TODO: handle exception
 				e.printStackTrace();
+				return "redirect:/login.do";
 			}
 			
 			//실행이 완료되었다면 로그인 페이지로
