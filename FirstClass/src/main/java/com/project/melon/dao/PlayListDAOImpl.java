@@ -2,9 +2,11 @@ package com.project.melon.dao;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import com.project.melon.model.PlayListVO;
 
+@Repository
 public class PlayListDAOImpl implements PlayListDAO{
 
 	

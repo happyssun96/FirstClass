@@ -1,10 +1,13 @@
 package com.project.melon.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.project.melon.dao.PlayListDAO;
 import com.project.melon.model.PlayListVO;
 
+
+@Service
 public class PlayListServiceImpl implements PlayListService{
 	@Autowired
 	public PlayListDAO playListDAO;

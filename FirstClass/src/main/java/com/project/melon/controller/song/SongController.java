@@ -29,8 +29,8 @@ public class SongController {
 	
 	@Autowired
 	private SongService songService;
-	@Autowired
-	private SubscribeService subscribeService;
+//	@Autowired
+//	private SubscribeService subscribeService;
 
 	
 //	ajax 매핑으로 구현예정
