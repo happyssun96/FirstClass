@@ -54,7 +54,7 @@ public class AdminController {
 		}
 	}
 	
-	return "viewUrl";
+	return viewUrl;
 }
 //	//2. 음원정보 클릭시
 	@RequestMapping(value = "adminSongDetailInformation.do", method = RequestMethod.GET)
@@ -65,9 +65,9 @@ public class AdminController {
 	
 	String viewUrl = "authorityError";
 	
-	if(session.getAttribute("MemberVo") != null)
+	if(session.getAttribute("member") != null)
 	{
-		MemberVO tempVo = (MemberVO)session.getAttribute("MemberVo");
+		MemberVO tempVo = (MemberVO)session.getAttribute("member");
 		if(tempVo.getAuth().equals("admin"))
 		{
 			SongVO songVo = (SongVO)songService.songSelectOne(no);
@@ -89,9 +89,9 @@ public class AdminController {
 	
 	String viewUrl = "authorityError";
 	
-	if(session.getAttribute("MemberVo") != null)
+	if(session.getAttribute("member") != null)
 	{
-		MemberVO tempVo = (MemberVO)session.getAttribute("MemberVo");
+		MemberVO tempVo = (MemberVO)session.getAttribute("member");
 		if(tempVo.getAuth().equals("admin"))
 		{
 			SongVO songVo = (SongVO)songService.songSelectOne(no);
@@ -115,9 +115,9 @@ public class AdminController {
 	
 	String viewUrl = "authorityError";
 	
-	if(session.getAttribute("MemberVo") != null)
+	if(session.getAttribute("member") != null)
 	{
-		MemberVO tempVo = (MemberVO)session.getAttribute("MemberVo");
+		MemberVO tempVo = (MemberVO)session.getAttribute("member");
 		if(tempVo.getAuth().equals("admin"))
 		{
 			if(uploadSongFile.isEmpty() == false)
@@ -182,14 +182,14 @@ public class AdminController {
 	      
 			String viewUrl = "authorityError";
 			
-			if(session.getAttribute("MemberVo") != null)
+			if(session.getAttribute("member") != null)
 			{
-				MemberVO tempVo = (MemberVO)session.getAttribute("MemberVo");
+				MemberVO tempVo = (MemberVO)session.getAttribute("member");
 				if(tempVo.getAuth().equals("admin"))
 				{
 					MemberVO memberVo = memberService.memberSelectOne(no);
 					
-					model.addAttribute("memberVo", memberVo);
+					model.addAttribute("member", memberVo);
 					
 					viewUrl = "adminUserUpdateForm"; 
 				}
@@ -222,7 +222,7 @@ public class AdminController {
 		
 		logger.info("memberDeleteCtr" + no);
 		
-		if (session.getAttribute("memberVo") != null) { //세션정보있는지 확인
+		if (session.getAttribute("member") != null) { //세션정보있는지 확인
 			MemberVO sessionVo = (MemberVO)session.getAttribute("member");
 			if (sessionVo.getMember_no() == memberVo.getMember_no()) {
 				session.invalidate();
