@@ -52,7 +52,7 @@ public class MemberController {
 				if (memberVo.getAuth().equals("user")) {
 					
 					//주소창의 경우 앞에 / 하지 않을 경우 잘못된 주소로 이동할 것 같아 추가
-					return "redirect:/userMainPage.do";	
+					return "redirect:/home.jsp";	
 				}else {
 					return "redirect:/adminUserSearchPage.do";
 				}				

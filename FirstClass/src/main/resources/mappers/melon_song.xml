@@ -14,6 +14,15 @@
       <result column="MUSIC_RESOURCE_PATH" property="musicResourcePath"/>
       <result column="ALBUM_IMAGE_PATH" property="albumImagePath"/>
    </resultMap>
+   
+   <select id="searchSong" parameterType="String" resultType="com.project.melon.model.SongVO">
+	SELECT SONG_NO, SONG_NAME, ARTIST
+            , ALBUM_NAME, PUBLISHER, RELEASE_DATE
+            , SONG_MODIFY_DATE, MUSIC_RESOURCE_PATH, ALBUM_IMAGE_PATH
+	FROM SONG
+	WHERE TITLE 
+	LIKE '%'||#{queryText}||'%'
+	</select>
 
       <select id="addSong" parameterType = "songVo" 
          resultMap="songResultMap">
@@ -65,6 +74,7 @@
         FROM SONG
         WHERE SONG_NO = #{songNo}
    </select>
+
 
 
 </mapper>

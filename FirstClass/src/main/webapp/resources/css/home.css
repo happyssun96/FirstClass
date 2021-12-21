@@ -1,0 +1,295 @@
+html,body {
+	height:100%;
+	margin :0;
+	padding: 0;
+}
+
+.container {
+	position: relative;
+	width: 1100px !important;
+	min-height:100%;
+}
+.clearBoth{
+	clear:both;
+}
+
+/**
+*	login page
+*/
+.floginform{
+	width: 450px;
+    margin: 0 auto;
+    height: 100%;
+    margin-top:70px;
+}
+
+.floginform label {
+	width: 100px;
+    display: block;
+}
+.floginform input[type="text"], .floginform input[type="password"]{
+	width:200px;
+	margin-bottom:10px;
+}
+
+.floginform input[type="submit"]{
+	display: block;
+    padding: 5px 75px;
+    margin-top: 10px;
+}
+
+
+
+/* SignUp Page */
+.navbar-static-top {
+	background-color:#303a53;	
+}
+.navbar-static-top .container {
+	padding-top: 16px;
+}
+.left-container {
+	float: left;	
+}
+
+.right-container {
+	float: right;	
+}
+
+.navbar-static-top .signup-title {
+	color: #f8f8f8;
+	font-size: 17px; 
+	text-align:left;
+}
+
+#signUp {
+	display:block;
+	text-align: left;
+	width:500px;
+	height:100%;
+	margin: 10px auto;
+}
+
+#signUp label {
+	width: 100px;
+	text-align:left;
+}
+
+
+/*         
+*   header
+*/ 
+#header-area{
+	border-bottom: #efefef 2px solid;
+	padding-bottom: 5px;
+	margin-bottom: 20px;
+    position: relative;
+}
+
+#header-area h3 {
+	width: 150px;
+    display: inline-block;
+}
+
+#header-area #afterSearch {
+	display:inline;
+}
+
+.loginInfo {
+    padding-top: 23px;
+    float: right;
+}
+
+.loginInfo div a {
+	color:#888;
+}
+
+.main-search {
+	margin: 0 auto;
+    text-align: center;
+    padding: 8px 0px 25px 0px;
+}
+
+/*
+*	footer
+*/
+.footer-area {
+    position: relative;
+    width: 100%;
+    height: 91px;
+    padding: 10px;
+    background: #2d2929;
+    margin-top: 2em;
+}
+.footer-text {
+	margin-top: 16px;
+	font-size: 14px;
+	color: #eee;
+}
+
+/*         
+*   main.jsp (main page)
+*/         
+
+#search-area{
+	width: 800px;
+    margin: 0 auto;
+    padding: 140px 0px;
+    text-align: center;
+    position: relative;
+}
+
+#searchBox{
+	text-align: left;
+    width: 535px;
+    margin: 0 auto;
+}
+
+.searchTitle {
+	font-size: 45px;
+	padding-bottom:20px;
+}
+
+
+/*         
+*   searchMain.jsp
+*/   
+#result {
+	width: 100%;
+    height: 100%;
+    position: relative;
+    margin-bottom: 22px;
+}
+
+#section {
+	width: 100%;
+    height: 100%;
+    padding: 10px 0px;
+}
+
+.box, .albumBox .box {
+	width: 245px;
+	height: 80px;
+    min-height: 70px;
+    float: left;
+    margin: 0px 10px 20px 10px;
+  	background: #efefef;
+    border: 1px solid #eee; 
+}
+
+.box .box-title {
+	display:inline-block;
+	overflow: hidden;
+	text-overflow:ellipsis-word;
+	padding: 11px;
+    margin: 0px;
+}
+
+.albumBox .box {
+	height: 130px;
+    min-height: 125px;
+}
+
+.albumBox .box .inner-box {
+	width:100%;
+	padding:13px 10px 10px 10px;
+}
+
+.albumBox .album {
+	display:inline-block;
+	font-weight: bold;
+	font-size: 15px; 
+	margin-bottom: 5px;
+    width: 215px;
+}
+
+.songBox table {
+    width: 100%;
+    height: 100%;
+    position:relative;
+}
+
+.songBox table td {
+	overflow: hidden;
+	text-overflow:ellipsis-word;
+}
+
+
+.songBox table th {
+	padding: 5px 0px;
+}
+
+.songBox table th .col-1{
+	width: 5%;
+    text-align: center;
+}
+
+.songBox table .col-2{
+	width: 4%;
+	text-align:center;
+}
+
+.songBox table td .num {
+	text-align: center;
+}
+
+.songBox table .col-3 {
+	/*width: 53%;*/
+	text-align:left;
+}
+
+.songBox table .col-3 .title, .songBox table td .title {
+    padding-left: 5px;
+    overflow:hidden;
+	text-overflow:ellipsis-word;
+}
+
+
+.songBox table th .col-4{
+	width: 16%;
+	text-align:left;
+}
+
+.songBox table th .col-5{
+	width: 16%;
+	text-align:left;
+}
+
+.songBox table th .col-6 {
+	width: 8%;
+	text-align:left;
+}
+
+.songBox table th .col-7 {
+	width: 8%;
+	text-align:left;
+}
+
+.songBox table th .col-8{
+	width: 8%;
+	text-align:left;
+}
+
+.resultText{
+	font-size:24px;
+}
+
+.resultInfo {
+	font-size:14px;
+}
+
+.resultInfo span {
+	color:#1fd871;
+	font-weight:bold;
+}
+
+.artistName, .songName, .albumName {
+	font-size:18px;
+	font-weight:bold;
+	padding-bottom: 8px;
+    border-bottom: 1px solid #ccc;
+}
+.artistName span, .songName span, .albumName span{
+	color:#999;
+}
+
+
