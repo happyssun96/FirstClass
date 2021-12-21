@@ -38,10 +38,10 @@ public class UserController {
 				
 				MemberVO tempVo = (MemberVO)session.getAttribute("member");
 				
-				memberService.memberPurchaseCash(2,5000);
+				memberService.memberPurchaseCash(tempVo.getMember_no(),chosenCash);
 				
-//				MemberVO userVo = memberService.memberSelectOne(tempVo.getMember_no());
-				MemberVO userVo = memberService.memberSelectOne(2);
+				MemberVO userVo = memberService.memberSelectOne(tempVo.getMember_no());
+//				MemberVO userVo = memberService.memberSelectOne(2);
 				session.setAttribute("member", userVo);
 				
 				return viewUrl;
