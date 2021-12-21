@@ -78,7 +78,7 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public int memberCash(int no) {
 		// TODO Auto-generated method stub
-		return 0;
+		return memberDao.memberCash(no);
 	}
 	
 	

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.melon">
+
+	<resultMap type="melonVo" id="melonResultMap">
+	   <id column="MRANK" property="mrank" />
+	   <result column="MNAME" property="mname" />
+	   <result column="MARTIST" property="martist" />
+	   <result column="MALBUM" property="malbum" />
+	</resultMap>	
+
+
+</mapper>
