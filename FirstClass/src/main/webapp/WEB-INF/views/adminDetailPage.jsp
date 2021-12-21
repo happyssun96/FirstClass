@@ -4,18 +4,18 @@
 <html>
 <head>
 <style type="text/css">
-	table {
-		height: 650px;				
-	}
-	th {
-		padding: 15px;
-		background-color: #645f5f4f;
-	}
-	td {
-		width : 500px;
-		padding: 15px;
-		font-size: 17px;
-	}
+   table {
+      height: 650px;            
+   }
+   th {
+      padding: 15px;
+      background-color: #645f5f4f;
+   }
+   td {
+      width : 500px;
+      padding: 15px;
+      font-size: 17px;
+   }
 
 </style>
 <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
@@ -44,7 +44,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">${memberVo.nickName}의 정보</h1>
+            <h1 class="m-0">${member.nickName}의 정보</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -54,69 +54,69 @@
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
-	<div>
-		<table border="1">				
-				<tr>
-         			<th>회원번호</th>
-         			<td>${memberVo.member_no}</td>
-         		</tr>
-			 	<tr>
-         			<th>이메일</th>
-         			<td>${memberVo.email}</td>
-         		</tr>
-         		
-        		<tr>
-         			<th>닉네임</th>
-         			<td>${memberVo.nickName}</td>				
-      			</tr>
-      			
-      			<tr>
-         			<th>비밀번호</th>
-         			<td>${memberVo.password}</td>				
-      			</tr>
-      			
-      			<tr>
-         			<th>권한</th>
-         			<td>${memberVo.auth}</td>
-         		</tr>
-      			
-      			<tr>
-         			<th>등급</th>
-         			<td>${memberVo.memberClass}</td>				
-      			</tr>
-      			
-      			<tr>
-         			<th>보유 캐시</th>
-         			<td>${memberVo.cash}</td>				
-      			</tr>
-      			
-      			<tr>
-         			<th>나이</th>
-         			<td>${memberVo.age}</td>
-         		</tr>
-         		
-         		<tr>
-         			<th>성별</th>
-         			<td>${memberVo.gender}</td>
-         		</tr>         		         	        		
-         		<tr>
-         			<th>가입일</th>
-         			<td>${memberVo.createDate}</td>
-         		</tr>
-         		
-         		<tr>
-         			<th>수정일</th>
-         			<td>${memberVo.modifyDate}</td>
-         		</tr>     			      			          		
-		</table>
-		
-		<br>
-		<button class="btn btn-secondary" onclick ="location.href='./adminUserUpdateForm.jsp'">프로필 수정</button>
-		
-					
-	</div>
-	
-	
+   <div>
+      <table border="1">            
+            <tr>
+                  <th>회원번호</th>
+                  <td>${member.member_no}</td>
+               </tr>
+             <tr>
+                  <th>이메일</th>
+                  <td>${member.email}</td>
+               </tr>
+               
+              <tr>
+                  <th>닉네임</th>
+                  <td>${member.nickName}</td>            
+               </tr>
+               
+               <tr>
+                  <th>비밀번호</th>
+                  <td>****</td>            
+               </tr>
+               
+               <tr>
+                  <th>권한</th>
+                  <td>${member.auth}</td>
+               </tr>
+               
+               <tr>
+                  <th>등급</th>
+                  <td>${member.memberClass}</td>            
+               </tr>
+               
+               <tr>
+                  <th>보유 캐시</th>
+                  <td>${member.cash}</td>            
+               </tr>
+               
+               <tr>
+                  <th>나이</th>
+                  <td>${member.age}</td>
+               </tr>
+               
+               <tr>
+                  <th>성별</th>
+                  <td>${member.gender}</td>
+               </tr>                                         
+               <tr>
+                  <th>가입일</th>
+                  <td>${member.createDate}</td>
+               </tr>
+               
+               <tr>
+                  <th>수정일</th>
+                  <td>${member.modifyDate}</td>
+               </tr>                                             
+      </table>
+      
+      <br>
+      <button class="btn btn-secondary" onclick ="location.href='./adminUserUpdate.do?no=${member.member_no}'">프로필 수정</button>
+      
+               
+   </div>
+   
+   
   </div>
   <!-- /.content-wrapper -->
 
@@ -126,10 +126,10 @@
   </aside>
   <!-- /.control-sidebar -->
 
-	<jsp:include page="footer.jsp" />
+   <jsp:include page="footer.jsp" />
 
 </div>
-	<!-- ./wrapper -->	
+   <!-- ./wrapper -->   
 </div>
 </body>
 </html>

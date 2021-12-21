@@ -79,13 +79,13 @@
 
    <update id="memberUpdateOne" parameterType="memberVo">
       UPDATE MEMBER
-      SET 	<if test="auth != ''">AUTH = #{auth},</if>
-      	    <if test="memberClass != ''">MEMBERCLASS = #{memberClass},</if>
-      		<if test="email != ''">EMAIL = #{email}, </if>
-      	    <if test="password != ''">PWD = #{password}, </if>
-         	<if test="nickName != ''">NICKNAME = #{nickName},</if>
-         	MOD_DATE = SYSDATE
-      WHERE MEMBER_NO = #{no}
+      SET    <if test="auth != ''">AUTH = #{auth},</if>
+             <if test="memberClass != ''">MEMBERCLASS = #{memberClass},</if>
+            <if test="email != ''">EMAIL = #{email}, </if>
+             <if test="password != ''">PWD = #{password}, </if>
+            <if test="nickName != ''">NICKNAME = #{nickName},</if>
+            MOD_DATE = SYSDATE
+      WHERE MEMBER_NO = #{member_no}
    </update>
 
    <delete id="memberDeleteOne" parameterType="int">

@@ -48,22 +48,24 @@
           	class="img-circle elevation-2" alt="User Image">
         </div> 
         <div class="info">
-           <a href="./userDetailInformation.do?no=${member.member_no}" class="d-block">
+           <a href="./userDetailInformation.do?no=${sessionScope.member.member_no}" class="d-block">
         
 		<span>
-			<c:set var="auth" value="${member.auth}"/>
+<%-- 			<c:set var="auth" value="${member.auth}"/> --%>
 		<c:choose>
-			<c:when test="${auth eq 'admin'}">
+		
+		<c:when test="${sessionScope.member.auth eq 'admin'}">
+<%-- 			<c:when test="${auth eq 'admin'}"> --%>
 			관리자<br>
-			${member.nickName} 
+			${sessionScope.member.nickName} 
 			</c:when>
 			
 			<c:otherwise>
-			${member.nickName}
+			${sessionScope.member.nickName}
 			</c:otherwise>
 		</c:choose>
 			님 <br>
-			보유캐시:${member.cash}		
+			보유캐시:${sessionScope.member.cash}		
 		</span>
           </a>
           <br/>
@@ -95,7 +97,7 @@
 
       <!-- Sidebar Menu -->
 		<c:choose>
-			<c:when test="${auth eq 'admin'}">
+			<c:when test="${sessionScope.member.auth eq 'admin'}">
 		      <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
@@ -169,7 +171,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="./cashPurchasePage.do?no=${member.member_no}" class="nav-link">
+            <a href="./cashPurchasePage.do?no=${sessionScope.member.member_no}" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 캐시 충전

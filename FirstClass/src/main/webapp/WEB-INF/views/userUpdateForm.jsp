@@ -31,9 +31,14 @@
 </style>
 
 <script type="text/javascript">
-   function pageMoveDeleteFnc(member_no) {
-      var url ='./deleteCtr.do?no=' + member_no;
+   function pageMoveDeleteFnc(no) {
+      var url ='./deleteCtr.do?no=' + no;
       location.href = url;
+   }
+   
+   function pageMoveUpdateFnc(member_no) {
+	   var url = './updateCtr.do?no=' + no;
+	      location.href = url;
    }
 </script>
 
@@ -70,6 +75,7 @@
     </div>
    <div>
       <form action="./updateCtr.do" method="post">
+      <input type="hidden" value='${member.member_no}' name="member_no">
       <table border="1">            
             <tr>
                   <th>회원번호</th>
@@ -77,17 +83,17 @@
                </tr>
              <tr>
                   <th>이메일</th>
-                  <td><input type="text" value="${member.email}"></td>
+                  <td><input type="text" name="email" value="${member.email}"></td>
                </tr>
                
               <tr>
                   <th>닉네임</th>
-                  <td><input type="text" value="${member.nickName}"></td>
+                  <td><input type="text" name="nickName" value="${member.nickName}"></td>
                </tr>
                
                <tr>
                   <th>비밀번호</th>
-                  <td><input type="password" value="${member.password}"></td>
+                  <td><input type="password" name="password" value="${member.password}"></td>
                </tr>
                
                <tr>

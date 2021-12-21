@@ -213,7 +213,7 @@ public class AdminController {
 				session.setAttribute("member", memberService.memberSelectOne(memberVo.getMember_no()));
 			}
 		}
-		return "/common/successPage";
+		return "redirect:adminUserDetailInformation.do?no=" + memberVo.getMember_no();
 	}
 	
 	//어드민 회원삭제 로직 adminAccountDeleteCtr.do

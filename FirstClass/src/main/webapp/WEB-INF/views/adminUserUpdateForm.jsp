@@ -5,24 +5,24 @@
 <html>
 <head>
 <style type="text/css">
-	table {
-		height: 650px;				
-	}
-	th {
-		padding: 15px;
-		background-color: #645f5f4f;
-	}
-	td {
-		width : 500px;
-		padding: 15px;
-		font-size: 17px;
-	}
-	
-	input {
-		background-color: #3F474E;
-		border: 1px solid #BDBDBD;
-		border-radius: 0.8em;
-		color: white;
+   table {
+      height: 650px;            
+   }
+   th {
+      padding: 15px;
+      background-color: #645f5f4f;
+   }
+   td {
+      width : 500px;
+      padding: 15px;
+      font-size: 17px;
+   }
+   
+   input {
+      background-color: #3F474E;
+      border: 1px solid #BDBDBD;
+      border-radius: 0.8em;
+      color: white;
 
 </style>
 <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
@@ -61,81 +61,82 @@
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
-	<div>
-		<form action="./updateCtr.do" method="post">
-		<table border="1">				
-				<tr>
-         			<th>회원번호</th>
-         			<td>${memberVo.member_no}</td>
-         		</tr>
-			 	<tr>
-         			<th>이메일</th>
-         			<td><input type="text" value="${memberVo.email}"></td>
-         		</tr>
-         		
-        		<tr>
-         			<th>닉네임</th>
-         			<td><input type="text" value="${memberVo.nickName}"></td>
-      			</tr>
-      			
-      			<tr>
-         			<th>비밀번호</th>
-         			<td><input type="password" value="${memberVo.pwd}"></td>
-      			</tr>
-      			
-      			<tr>
-         			<th>권한</th>
-         			<td><select>
-         					<option value='' selected>--선택--</option>
-         					<option value='admin'>관리자</option>
-         					<option value='user'>유저</option>
-         				</select>${memberVo.auth}</td>
-         		</tr>
-      			
-      			<tr>
-         			<th>등급</th>
-         			<td><select>
-         					<option value='' selected>--선택--</option>
-         					<option value='gold'>골드</option>
-         					<option value='silver'>실버</option>
-         					<option value='bronze'>브론즈</option>
-         				</select>${memberVo.memberClass}</td>				
-      			</tr>
-      			
-      			<tr>
-         			<th>보유 캐시</th>
-         			<td><input type="text" value="${memberVo.cash}"></td>				
-      			</tr>
-      			
-      			<tr>
-         			<th>나이</th>
-         			<td>${memberVo.age}</td>
-         		</tr>
-         		
-         		<tr>
-         			<th>성별</th>
-         			<td>${memberVo.gender}</td>
-         		</tr>         		         	        		
-         		<tr>
-         			<th>가입일</th>
-         			<td><fmt:formatDate value="${requestScope.songVo.createDate}" pattern="yyyy-MM-dd hh:mm"/></td>
-         		</tr>
-         		
-         		<tr>
-         			<th>수정일</th>
-         			<td>${memberVo.modifyDate}</td>
-         		</tr>     			      			          		
-		</table>
-		
-		<br>
-		<input type="submit" class="btn btn-secondary" value="수정하기">
-		<input type="button" class="btn btn-secondary" value="회원삭제" onclick="pageMoveDeleteFnc(${memberVo.member_no});" style="margin-left: 10px;">
-		<input type="button" class="btn btn-secondary" value="뒤로가기" onclick="history.back(-1)" style="margin-left: 10px;">
-		</form>
-					
-	</div>
-	
-	
+   <div>
+      <form action="./adminUserUpdateCtr.do" method="post">
+      <input type="hidden" value='${memberVo.member_no}' name="member_no">
+      <table border="1">            
+            <tr>
+                  <th>회원번호</th>
+                  <td>${memberVo.member_no}</td>
+               </tr>
+             <tr>
+                  <th>이메일</th>
+                  <td><input type="text" name="email" value="${memberVo.email}"></td>
+               </tr>
+               
+              <tr>
+                  <th>닉네임</th>
+                  <td><input type="text" name="nickName" value="${memberVo.nickName}"></td>
+               </tr>
+               
+               <tr>
+                  <th>비밀번호</th>
+                  <td><input type="password" name="password" value="${memberVo.password}"></td>
+               </tr>
+               
+               <tr>
+                  <th>권한</th>
+                  <td><select name = "authOption">
+                        <option value='' selected>--선택--</option>
+                        <option value='admin'>관리자</option>
+                        <option value='user'>유저</option>
+                     </select></td>
+               </tr>
+               
+               <tr>
+                  <th>등급</th>
+                  <td><select name = "memberClassOption">
+                        <option value='' selected>--선택--</option>
+                        <option value='gold'>골드</option>
+                        <option value='silver'>실버</option>
+                        <option value='bronze'>브론즈</option>
+                     </select></td>            
+               </tr>
+               
+               <tr>
+                  <th>보유 캐시</th>
+                  <td><input type="text" name="cash" value="${memberVo.cash}"></td>            
+               </tr>
+               
+               <tr>
+                  <th>나이</th>
+                  <td>${memberVo.age}</td>
+               </tr>
+               
+               <tr>
+                  <th>성별</th>
+                  <td>${memberVo.gender}</td>
+               </tr>                                         
+               <tr>
+                  <th>가입일</th>
+                  <td>${memberVo.createDate}</td>
+               </tr>
+               
+               <tr>
+                  <th>수정일</th>
+                  <td>${memberVo.modifyDate}</td>
+               </tr>                                             
+      </table>
+      
+      <br>
+      <input type="submit" class="btn btn-secondary" value="수정하기">
+      <input type="button" class="btn btn-secondary" value="회원삭제" onclick="pageMoveDeleteFnc(${memberVo.member_no});" style="margin-left: 10px;">
+      <input type="button" class="btn btn-secondary" value="뒤로가기" onclick="history.back(-1)" style="margin-left: 10px;">
+      </form>
+               
+   </div>
+   
+   
   </div>
   <!-- /.content-wrapper -->
 
@@ -145,10 +146,10 @@
   </aside>
   <!-- /.control-sidebar -->
 
-	<jsp:include page="footer.jsp" />
+   <jsp:include page="footer.jsp" />
 
 </div>
-	<!-- ./wrapper -->	
+   <!-- ./wrapper -->   
 </div>
 </body>
 </html>

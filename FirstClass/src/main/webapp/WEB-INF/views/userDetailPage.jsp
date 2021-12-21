@@ -94,7 +94,7 @@
 		</table>
 		
 		<br>
-		<button class="btn btn-secondary" onclick="location.href=''">프로필 수정</button>
+		<button class="btn btn-secondary" onclick="location.href='userUpdateInformation.do?no=${member.member_no}'">프로필 수정</button>
 		&nbsp;&nbsp;&nbsp;
 		<button class="btn btn-secondary">내 플레이리스트 가기</button>				
 	</div>

@@ -61,8 +61,9 @@ location.href='./userMainPage.do';
 				<h3>최종 충전 정보</h3>				
 					<hr width =100% color="#E5E1E1" align="left" size=60 style="margin-top: 30px;"/>
 						<dl style="font-size: 20px;">					
-							<dt>보유 캐시 &emsp;&emsp;&emsp;&emsp;&nbsp;<strong style="text-align: justify;">&emsp;&emsp;&emsp;${member.cash}&nbsp;&nbsp;원</strong></dt>							
-							<dt style="color: #FFB16C; margin-top: 20px;">충전 금액 &emsp;&emsp;&emsp;&emsp;+&nbsp;&nbsp;<strong>${chosenCash}</strong>&nbsp;&nbsp;원</dt>
+							<dt>보유 캐시<br>
+								<strong style="text-align: justify;">&emsp;●&nbsp;&nbsp;${member.cash}&nbsp;&nbsp;원</strong></dt>							
+							<dt style="color: #FFB16C; margin-top: 20px;">충전 금액<br><strong>&emsp;+&nbsp;&nbsp;${chosenCash}</strong>&nbsp;&nbsp;원</dt>
 							<hr width =100% color="#E5E1E1" align="left" size=60/>
 							<dt>충전 후 캐시 &emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;<strong>${finalCash}</strong>&nbsp;&nbsp;원</dt>
 																	

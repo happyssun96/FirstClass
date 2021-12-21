@@ -153,7 +153,7 @@ public class UserController {
 		      if(session.getAttribute("member") != null)
 		      {
 					memberService.memberUpdateOne(memberVo);
-					viewUrl = "userDetailPage";
+					viewUrl = "redirect:/userDetailInformation.do";
 		      }
 				return viewUrl; //로그인 정보가 존재하지 않을경우 페이지 이동
 			}

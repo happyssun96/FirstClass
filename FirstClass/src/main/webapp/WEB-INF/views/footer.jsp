@@ -10,9 +10,12 @@
 
 	<!-- Main Footer -->
 	<footer class="main-footer">
-		<strong><br><a href="#">(주)워터멜론</a>
-		</strong>&nbsp;&nbsp;경기도 성남시 분당구 불정로 6 &nbsp;&nbsp;ㅣ&nbsp;&nbsp; 대표이사 : 이대근 &nbsp;&nbsp;ㅣ&nbsp;&nbsp; 이메일 : watermelon@naver.com
-		&nbsp;&nbsp;ㅣ&nbsp;&nbsp; 문의전화 : 1234-5678 (평일 09:00-18:00, 유료)
+		<strong><br>(주)워터멜론</strong>&nbsp;&nbsp;
+		경기도 성남시 분당구 불정로 6 &nbsp;&nbsp;ㅣ&nbsp;&nbsp; 
+		대표이사 : 이대근 &nbsp;&nbsp;ㅣ&nbsp;&nbsp; 
+		이메일 : watermelon@naver.com
+		&nbsp;&nbsp;ㅣ&nbsp;&nbsp; 
+		문의전화 : 1234-5678 (평일 09:00-18:00, 유료)
 		<br>&copy; WaterMelon Entertainment Corp.
 		
 	</footer>
