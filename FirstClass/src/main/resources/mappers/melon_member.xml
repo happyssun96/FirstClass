@@ -66,7 +66,9 @@
 
    <select id="memberSelectOne" parameterType="int"
       resultMap="memberResultMap">
-      SELECT MEMBER_NO, AUTH, NICKNAME, EMAIL, MEMBERCLASS, CRE_DATE
+      SELECT MEMBER_NO, AGE, GENDER, AUTH
+      , NICKNAME, EMAIL, MEMBERCLASS, CASH
+      , CRE_DATE, MOD_DATE
       FROM MEMBER
       WHERE MEMBER_NO = #{no}
    </select>

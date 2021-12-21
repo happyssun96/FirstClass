@@ -136,25 +136,11 @@
                       <th>ARTIST</th>
                       <th>ALBUM</th>
                     </tr>
-<!--                     <tr> -->
-<!--                       <td>1</td> -->
-<!--                       <td><a href="./songDetailPage.jsp"> -->
-<!--                       	<img class="img slider__img" style="width: 65px; height: 65px;" -->
-<!--                       		src="resources/images/covers/showme10_1.jpeg" alt="cover"> -->
-<!--                       		</a> -->
-<!--                       </td> -->
-<!--                       <td>리무진 (Feat. MINO) (Prod. GRAY)</td> -->
-<!-- <!--                       <td><span class="badge badge-success">BE'O (비오)</span></td> --> -->
-<!--                       <td>BE'O (비오)</td> -->
-<!--                       <td> -->
-<!--                         <div class="sparkbar" data-color="#00a65a" data-height="20">쇼미더머니 10 Episode 3</div> -->
-<!--                       </td> -->
-<!--                     </tr> -->
                     </thead>
                <c:forEach var="songVo" items="${songList}">
 		         <tr>
 		            <td>${songVo.songNo}</td>
-		            <td><a href='./detailInfomation.do?no=${songVo.songNo}&curPage=${pagingMap.memberPaging.curPage}'>
+		            <td><a href='./userSongDetailInformation.do?no=${songVo.songNo}&curPage=${pagingMap.memberPaging.curPage}'>
 		            ${songVo.songName}</a></td>
 		            <td>${songVo.artist}</td>
 		            <td>${songVo.albumName}</td>

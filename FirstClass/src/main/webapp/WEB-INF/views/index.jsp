@@ -141,7 +141,7 @@
       <c:forEach var="songVo" items="${songList}">
 		         <tr>
 		            <td>${songVo.songNo}</td>
-		            <td><a href="adminSongDetailInformation.do?no=${songVo.songNo}"><img class="img slider__img" style="width: 65px; height: 65px;" 
+		            <td><a href="userSongDetailInformation.do?no=${songVo.songNo}"><img style="width: 65px; height: 65px;" 
 		            src="${songVo.albumImagePath}"></a></td>
 		            <td>${songVo.songName}</td>
 		            <td>${songVo.artist}</td>

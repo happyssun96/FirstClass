@@ -29,7 +29,7 @@ public class AdminController {
 
 	@Autowired
 	private MemberServiceImpl memberService;
-	@Autowired SongServiceImpl SongService;
+	@Autowired SongServiceImpl songService;
 	//관리자 1. 유저정보 2. 음원정보 검색 admin/searchPage.do
 	//1. 유저정보 클릭시
 	@RequestMapping(value = "/main/adminUserDetailInformation.do", method = RequestMethod.GET)
@@ -48,7 +48,7 @@ public class AdminController {
 	//디버깅을 위한 로그 출력 로직
 	logger.info("AdminController! musicDetailInfo no = " + no);
 	
-	SongVO songVo = (SongVO)SongService.songSelectOne(no);
+	SongVO songVo = (SongVO)songService.songSelectOne(no);
 	
 	model.addAttribute(songVo);
 	return "adminSongDetailPage";	

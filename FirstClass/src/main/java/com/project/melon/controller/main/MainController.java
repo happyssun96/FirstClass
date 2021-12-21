@@ -1,8 +1,11 @@
 package com.project.melon.controller.main;
 
+import java.lang.reflect.Member;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.javassist.compiler.ast.Keyword;
 import org.slf4j.Logger;
@@ -29,6 +32,26 @@ public class MainController {
 	private MemberService memberService;
 	@Autowired
 	private SongService songService;
+	
+	
+	@RequestMapping(value = "clickHomeBtn.do", method = RequestMethod.GET)
+	public String clickHomeBtn(HttpSession session, Model model )
+	{
+	      logger.info("Welcome MemberController! clickHomeBtn =");
+	      
+		String viewUrl = "redirect:userMainPage.do";
+		
+		if(session.getAttribute("member") != null)
+		{
+			if(((MemberVO)session.getAttribute("member")).getAuth().equals("admin"))
+			{
+				viewUrl = "redirect:adminMainPage.do";
+			}
+		}
+
+		
+		return viewUrl;
+	}
 	
 	/**
 	 * @param curPage 현재 페이지를 저장하고 있는 파라미터

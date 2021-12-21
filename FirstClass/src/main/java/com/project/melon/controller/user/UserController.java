@@ -68,6 +68,25 @@ public class UserController {
 				return viewUrl; // 비밀번호가 일치하지 않는경우 비밀번호 검증 실패 페이지로 이동
 			}
 		
+		@RequestMapping(value = "userSongDetailInformation.do", method = RequestMethod.GET)
+		public String userSongDetailInformation(HttpSession session, int no, Model model)
+		{
+	      logger.info("Welcome userController! userDetailInformation no :" + no);
+		// 원래는 사용자 비밀번호를 입력받고 해야하지만 우선은 패스
+		String viewUrl = "userValidFail";
+		
+//		if(session.getAttribute("member") != null)
+//			{
+				SongVO songVo = songService.songSelectOne(no);
+				
+				
+//				model.addAttribute(playListVo);
+				model.addAttribute("songVo",songVo);
+				viewUrl = "songDetailPage";
+//			}
+			return viewUrl; // 비밀번호가 일치하지 않는경우 비밀번호 검증 실패 페이지로 이동
+		}
+		
 		@RequestMapping(value = "updateCtr.do", method = RequestMethod.POST)
 			public String userUpdate(MemberVO memberVo, HttpSession session)
 			{

@@ -57,7 +57,8 @@
         WHERE SONG_NO = #{songNo};
    </select>
 
-   <select id="songSelectOne" parameterType="int">
+   <select id="songSelectOne" parameterType="int"
+   	resultMap="songResultMap">
         SELECT SONG_NO, SONG_NAME, ARTIST
             , ALBUM_NAME, PUBLISHER, RELEASE_DATE
             , SONG_MODIFY_DATE, MUSIC_RESOURCE_PATH, ALBUM_IMAGE_PATH

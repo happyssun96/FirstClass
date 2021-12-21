@@ -32,7 +32,7 @@
               <div class="col-12 product-image-thumbs">
                 <div class="product-image-thumb active" 
                 	style="max-width: 20rem; margin-top: 50px; margin-left: 60px;">
-                	<img src="resources/images/covers/showme10_1.jpeg" 
+                	<img src="${songVo.albumImagePath}" 
                 		alt="Product Image">
                 </div>
               </div>
@@ -44,7 +44,7 @@
               </div>
             </div>
             <div class="col-12 col-sm-6">
-              <h3 class="my-3">쇼미더머니 10 Episode 3</h3>
+              <h3 class="my-3">${songVo.songName}</h3>
               <hr>
             
              <div class="card card-primary">
@@ -53,28 +53,28 @@
                 <strong><i class="fa fa-user mr-1"></i> 아티스트</strong>
 
                 <p class="text-muted">
-                Various Artists
+              <h3 class="my-3">${songVo.artist}</h3>
                 </p>
                 
                 <hr>
                 
-                <strong><i class="fas fa-guitar mr-1"></i> 장르/스타일</strong>
+                <strong><i class="fas fa-guitar mr-1"></i> 앨범명</strong>
 
-                <p class="text-muted">랩/힙합/가요</p>
+                <p class="text-muted">${songVo.albumName}</p>
 
                 <hr>
 
                 <strong><i class="fas fa-building mr-1"></i> 기획사</strong>
 
                 <p class="text-muted">
-                  Stone Music Entertainment
+                  ${songVo.publisher}
                 </p>
 
                 <hr>
 
                 <strong><i class="fas fa-record-vinyl mr-1"></i> 발매일</strong>
 
-                <p class="text-muted">2021.11.13</p>
+                <p class="text-muted">${songVo.releaseDate}</p>
               </div>
               <!-- /.card-body -->
             </div>
