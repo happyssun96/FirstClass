@@ -10,6 +10,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<typeAlias type="com.project.melon.model.SongVO" alias="songVo" />
 		<typeAlias type="com.project.melon.model.SubscribeVO" alias="subscribeVo"/>
 		<typeAlias type="com.project.melon.model.PurchaseListVO" alias="purchaseListVo" />
+		<typeAlias type="com.project.melon.model.MelonVO" alias="melonVo" />
 	</typeAliases>
 
 </configuration>
