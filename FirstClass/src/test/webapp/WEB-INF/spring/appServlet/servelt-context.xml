@@ -11,6 +11,10 @@
 	
 	<mvc:annotation-driven />
 	
+<!-- 	지우지마세요... -->
+<bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver"></bean>	
+<!-- 	지우지마세요... -->
+	
 	<mvc:resources location="/WEB-INF/resources" 
 		mapping="/resources/**"	/>
 	

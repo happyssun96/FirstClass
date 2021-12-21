@@ -69,12 +69,24 @@
    <select id="songSelectOne" parameterType="int"
    	resultMap="songResultMap">
         SELECT SONG_NO, SONG_NAME, ARTIST
-            , ALBUM_NAME, PUBLISHER, RELEASE_DATE
-            , SONG_MODIFY_DATE, MUSIC_RESOURCE_PATH, ALBUM_IMAGE_PATH
+            , ALBUM_NAME, PUBLISHER
+            , to_char(RELEASE_DATE , 'YYYY-MM-DD HH24:MM')as RELEASE_DATE
+            , to_char(SONG_MODIFY_DATE, 'YYYY-MM-DD HH24:MM')as SONG_MODIFY_DATE
+            , MUSIC_RESOURCE_PATH, ALBUM_IMAGE_PATH
         FROM SONG
         WHERE SONG_NO = #{songNo}
    </select>
 
-
+ <update id="songUpdateOne" parameterType="songVo">
+      UPDATE SONG
+      SET   <if test="songName != ''">SONG_NAME = #{songName},</if>
+      		<if test="artist != ''">ARTIST = #{artist},</if>
+            <if test="albumName != ''">ALBUM_NAME= #{albumName},</if>
+            <if test="publisher != ''">PUBLISHER = #{publisher}, </if>
+            <if test="musicResourcePath != ''">MUSIC_RESOURCE_PATH = #{musicResourcePath}, </if>
+            <if test="albumImagePath != ''">ALBUM_IMAGE_PATH = #{albumImagePath},</if>
+            SONG_MODIFY_DATE = SYSDATE
+      WHERE SONG_NO = #{songNo}
+   </update>
 
 </mapper>

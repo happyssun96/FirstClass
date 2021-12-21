@@ -42,7 +42,7 @@
   
   <jsp:include page="header.jsp" />
   
-  <jsp:include page="adminNav.jsp" />
+  <jsp:include page="nav.jsp" />
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper" style="margin-left: 300px;">

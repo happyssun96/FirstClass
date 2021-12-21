@@ -35,15 +35,19 @@
 		WHERE NICKNAME = #{nickName}
 	</select>
 	
-   <select id="memberSelectList" parameterType="map" resultMap="memberResultMap">
+	<select id="memberSelectList" parameterType="map" resultMap="memberResultMap">
       SELECT MEMBER.RNUM, MEMBER.MEMBER_NO, MEMBER.AUTH, MEMBER.NICKNAME, MEMBER.EMAIL
-      		, to_char(MEMBER.CRE_DATE , 'YYYY-MM-DD HH24:MM')as CRE_DATE
-      FROM (   SELECT ROWNUM RNUM, M.MEMBER_NO, M.AUTH, M.NICKNAME, M.EMAIL, M.CRE_DATE
-              FROM    (   SELECT MEMBER_NO, AUTH, NICKNAME, EMAIL, CRE_DATE
-                          FROM MEMBER 
-                                WHERE NICKNAME LIKE '%'||#{keyword}||'%'
-                                      OR EMAIL LIKE '%'||#{keyword}||'%'
-                          ORDER BY AUTH, CRE_DATE) M
+            , MEMBER.MEMBERCLASS, MEMBER.CASH, MEMBER.AGE, MEMBER.GENDER
+            , to_char(MEMBER.CRE_DATE , 'YYYY-MM-DD HH24:MM')as CRE_DATE
+            ,  to_char(MEMBER.MOD_DATE , 'YYYY-MM-DD HH24:MM')as MOD_DATE
+      FROM (   SELECT ROWNUM RNUM, M.MEMBER_NO, M.AUTH, M.NICKNAME, M.EMAIL, M.MEMBERCLASS
+                     ,M.CASH, M.AGE, M.GENDER ,M.CRE_DATE ,M.MOD_DATE
+              FROM(   SELECT MEMBER_NO, AUTH, NICKNAME, EMAIL, CRE_DATE, MOD_DATE
+                      ,MEMBERCLASS, CASH, AGE, GENDER
+                      FROM MEMBER 
+                      WHERE NICKNAME LIKE '%'||#{keyword}||'%'
+                      OR EMAIL LIKE '%'||#{keyword}||'%'
+                      ORDER BY AUTH, CRE_DATE) M
            ) MEMBER 
       WHERE MEMBER.RNUM BETWEEN #{start} AND #{end}
    </select>
@@ -75,9 +79,12 @@
 
    <update id="memberUpdateOne" parameterType="memberVo">
       UPDATE MEMBER
-      SET 	AUTH = #{auth}, MEMBERCLASS = #{memberClass},
-      		EMAIL = #{email}, PWD = #{password},
-         	NICKNAME = #{nickname}, MOD_DATE = SYSDATE
+      SET 	<if test="auth != ''">AUTH = #{auth},</if>
+      	    <if test="memberClass != ''">MEMBERCLASS = #{memberClass},</if>
+      		<if test="email != ''">EMAIL = #{email}, </if>
+      	    <if test="password != ''">PWD = #{password}, </if>
+         	<if test="nickName != ''">NICKNAME = #{nickName},</if>
+         	MOD_DATE = SYSDATE
       WHERE MEMBER_NO = #{no}
    </update>
 

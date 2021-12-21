@@ -11,4 +11,5 @@ public interface SongDAO {
 	public int songSelectTotalCount();
 	public void songDeleteOne(int songNo);
 	public SongVO songSelectOne(int songNo);
+	public void songUpdateOne(SongVO songVo);
 }

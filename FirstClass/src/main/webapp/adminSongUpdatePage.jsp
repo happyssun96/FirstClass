@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,7 +40,7 @@
               <div class="col-12 product-image-thumbs">
                 <div class="product-image-thumb active" 
                 	style="max-width: 20rem; margin-top: 50px; margin-left: 60px;">
-                	<img src="resources/images/music-7.jpg" 
+                	<img src="${songVo.musicResourcePath}" 
                 		alt="Product Image">
                 </div>
               </div>
@@ -77,19 +76,19 @@
 	                <hr>
 	                
 	                <strong><i class="fas fa-route"></i> &nbsp;음원경로</strong> <br>
-	                <input type="file" value='${songVo.musicResourcePath}'>                
+	                <input type="file">                
 	                <hr>
 	                
 	                <strong><i class="fas fa-route"></i> &nbsp;앨범커버경로</strong> <br>
-	                <input type="file" value='${songVo.albumImagePath}'>
+	                <input type="file">
 	                <hr>
 	
 	                <strong><i class="fas fa-record-vinyl mr-1"></i> &nbsp;등록일</strong> <br>
-	                <fmt:formatDate value="${requestScope.songVo.releaseDate}" pattern="yyyy-MM-dd hh:mm"/>	                
+	                <p class="text-muted">${songVo.modifyDate}</p>
 	                <hr>
 	                
 	                <strong><i class="fas fa-record-vinyl mr-1"></i> &nbsp;수정일</strong> <br>
-	                <p class="text-muted">2021.11.15</p>
+	                <p class="text-muted">${songVo.modifyDate}</p>
 	                
 	                <input type="submit" class="btn btn-secondary" value="수정하기">
 	                <input type="button" class="btn btn-secondary" value="삭제하기" onclick="pageMoveDeleteFnc(${songVo.no});" style="margin-left: 10px;">

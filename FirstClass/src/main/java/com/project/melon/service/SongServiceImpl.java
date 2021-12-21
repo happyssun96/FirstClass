@@ -45,5 +45,11 @@ public class SongServiceImpl implements SongService{
 		return songDao.songSelectOne(songNo);
 	}
 
+	@Override
+	public void songUpdateOne(SongVO songVo) {
+		// TODO Auto-generated method stub
+		songDao.songUpdateOne(songVo);
+	}
+
 
 }

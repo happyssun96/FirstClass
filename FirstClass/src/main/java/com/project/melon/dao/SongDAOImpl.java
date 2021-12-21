@@ -55,4 +55,11 @@ public class SongDAOImpl implements SongDAO {
 		return sqlSession.selectOne(nameSpace + "songSelectOne", songNo);
 	}
 
+	@Override
+	public void songUpdateOne(SongVO songVo) {
+		// TODO Auto-generated method stub
+		sqlSession.update(nameSpace + "songUpdateOne", songVo);
+		
+	}
+
 }

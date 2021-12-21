@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,14 +28,20 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="./index.jsp" class="nav-link">Home</a>
+        <a href="./clickHomeBtn.do" class="nav-link">Home</a>
       </li>
 <!--       <li class="nav-item d-none d-sm-inline-block"> -->
 <!--         <a href="./login.do" class="nav-link">Login</a> -->
 <!--       </li> -->
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="./songUploadForm.jsp" class="nav-link">Music Upload</a>
-      </li>
+      
+      <c:choose>
+         <c:when test="${sessionScope.member.auth eq 'admin'}">
+            <li class="nav-item d-none d-sm-inline-block">
+              <a href="./songUploadForm.jsp" class="nav-link">Music Upload</a>
+            </li>
+          </c:when>
+          <c:otherwise></c:otherwise>
+      </c:choose>
     </ul>
 
     <!-- Right navbar links -->
@@ -66,11 +73,17 @@
           <i class="fas fa-expand-arrows-alt"></i>
         </a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-          <i class="fas fa-th-large"></i>
-        </a>
-      </li>
+      
+      <c:choose>
+         <c:when test="${sessionScope.member.auth eq 'admin'}">
+               <li class="nav-item">
+                 <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
+                      <i class="fas fa-th-large"></i>
+                 </a>
+               </li>
+            </c:when>
+          <c:otherwise></c:otherwise>
+      </c:choose>
     </ul>
   </nav>
   <!-- /.navbar -->

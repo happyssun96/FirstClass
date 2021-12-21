@@ -47,7 +47,7 @@
   </div>
   
   <jsp:include page="header.jsp" /> 
-  <jsp:include page="adminNav.jsp" />
+  <jsp:include page="nav.jsp" />
 
 
   <!-- Content Wrapper. Contains page content -->

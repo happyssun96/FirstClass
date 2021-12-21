@@ -11,7 +11,7 @@
 <div class="wrapper">
 	<jsp:include page="header.jsp"/>
 
-	<jsp:include page="adminNav.jsp" />
+	<jsp:include page="nav.jsp" />
 	
 	 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -32,7 +32,7 @@
               <div class="col-12 product-image-thumbs">
                 <div class="product-image-thumb active" 
                 	style="max-width: 20rem; margin-top: 50px; margin-left: 60px;">
-                	<img src="resources/images/music-7.jpg" 
+                	<img src="${songVo.albumImagePath}" 
                 		alt="Product Image">
                 </div>
               </div>
@@ -44,7 +44,7 @@
               </div>
             </div>
             <div class="col-12 col-sm-6">
-              <h3 class="my-3">리무진 (Feat. MINO) (Prod.G...</h3>
+              <h3 class="my-3">${songVo.songName}</h3>
               <hr>
             
              <div class="card card-primary">
@@ -54,7 +54,7 @@
               	<strong><i class="fa fa-list-ol"></i> &nbsp;음원번호</strong>
 
                 <p class="text-muted">
-                1
+                ${songVo.songNo}
                 </p>
                 
                 <hr>
@@ -62,42 +62,42 @@
                 <strong><i class="fa fa-user mr-1"></i> &nbsp;아티스트</strong>
 
                 <p class="text-muted">
-                Various Artists
+                ${songVo.artist}
                 </p>
                 
                 <hr>
                 
                 <strong><i class="fas fa-guitar mr-1"></i> &nbsp;앨범 명</strong>
 
-                <p class="text-muted">쇼미더머니 10 Episode 3</p>
+                <p class="text-muted">${songVo.albumName}</p>
 
                 <hr>
 
                 <strong><i class="fas fa-building mr-1"></i> &nbsp;기획사</strong>
 
                 <p class="text-muted">
-                  Stone Music Entertainment
+                  ${songVo.publisher}
                 </p>
 
                 <hr>
 
                 <strong><i class="fas fa-record-vinyl mr-1"></i> &nbsp;등록일</strong>
-                <p class="text-muted">2021.11.13</p>
+                <p class="text-muted">${songVo.releaseDate}</p>
                 
                 <hr>
                 
                 <strong><i class="fas fa-record-vinyl mr-1"></i> &nbsp;수정일</strong>
-                <p class="text-muted">2021.11.15</p>
+                <p class="text-muted">${songVo.modifyDate}</p>
                 
                 <hr>
                 
                 <strong><i class="fas fa-route"></i> &nbsp;음원경로</strong>
-                <p class="text-muted">resources/songs/music-7.jpg</p>
+                <p class="text-muted">${songVo.musicResourcePath}</p>
                 
                 <hr>
                 
                 <strong><i class="fas fa-route"></i> &nbsp;앨범커버경로</strong>
-                <p class="text-muted">resources/images/music-7.jpg</p>
+                <p class="text-muted">${songVo.albumImagePath}</p>
               </div>
               <!-- /.card-body -->
             </div>
@@ -114,7 +114,10 @@
                 <a href="#" class="text-gray">
                   <i class="fas fa-rss-square fa-2x"></i>
                 </a>
-                <button type="button" class="btn btn-secondary" style="margin-left: 500px; font-size:15px; padding-right:10px; padding-left10px; width: 100px;" onclick="location.href='./adminSongUpdatePage.jsp'">수정하기</button>
+                <button type="button" class="btn btn-secondary" 
+                style="margin-left: 500px; font-size:15px; 
+                padding-right:10px; padding-left10px; width: 100px;" 
+                onclick="location.href='./adminSongUpdateForm.do?no=${songVo.songNo}'">수정하기</button>
               </div>
 
             </div>

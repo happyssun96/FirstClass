@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,7 +19,7 @@
 <div class="wrapper">
 	<jsp:include page="header.jsp"/>
 
-	<jsp:include page="adminNav.jsp" />
+	<jsp:include page="nav.jsp" />
 	
 	 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -41,7 +40,7 @@
               <div class="col-12 product-image-thumbs">
                 <div class="product-image-thumb active" 
                 	style="max-width: 20rem; margin-top: 50px; margin-left: 60px;">
-                	<img src="resources/images/music-7.jpg" 
+                	<img src="${songVo.albumImagePath}" 
                 		alt="Product Image">
                 </div>
               </div>
@@ -59,40 +58,44 @@
              <div class="card card-primary">
 
               <div class="card-body">
-              	<form action="./updateCtr.do" method="post">
+              	<form action="./adminSongUpdateCtr.do" method="post" enctype="multipart/form-data">
 	              	<strong><i class="fa fa-list-ol"></i> &nbsp;음원번호</strong> <br>
-	                <input type="text" value='${songVo.songNo}' readonly="readonly">	                
+	                <input type="text" value='${songVo.songNo}' name='songNo' readonly="readonly">	                
+	                <hr>
+
+	                <strong><i class="fa fa-user mr-1"></i> &nbsp;곡명</strong> <br>	
+	                <input type="text" value='${songVo.songName}' name='songName'>	                
 	                <hr>
 	              	
 	                <strong><i class="fa fa-user mr-1"></i> &nbsp;아티스트</strong> <br>	
-	                <input type="text" value='${songVo.artist}'>	                
+	                <input type="text" value='${songVo.artist}' name='artist'>	                
 	                <hr>
 	                
 	                <strong><i class="fas fa-guitar mr-1"></i> &nbsp;앨범 명</strong> <br>	
-	               	<input type="text" value='${songVo.albumName}'>	
+	               	<input type="text" value='${songVo.albumName}' name='albumName'>	
 	                <hr>
 	
 	                <strong><i class="fas fa-building mr-1"></i> &nbsp;기획사</strong> <br>	
-	                <input type="text" value='${songVo.publisher}'>
+	                <input type="text" value='${songVo.publisher}' name='publisher'>
 	                <hr>
 	                
 	                <strong><i class="fas fa-route"></i> &nbsp;음원경로</strong> <br>
-	                <input type="file" value='${songVo.musicResourcePath}'>                
+	                <input type="file" id="songItem" name='uploadSongFile'>                
 	                <hr>
 	                
 	                <strong><i class="fas fa-route"></i> &nbsp;앨범커버경로</strong> <br>
-	                <input type="file" value='${songVo.albumImagePath}'>
+	                <input type="file" id="coverItem" name='uploadSongImageFile'>
 	                <hr>
 	
 	                <strong><i class="fas fa-record-vinyl mr-1"></i> &nbsp;등록일</strong> <br>
-	                <fmt:formatDate value="${requestScope.songVo.releaseDate}" pattern="yyyy-MM-dd hh:mm"/>	                
+	                <p class="text-muted">${songVo.releaseDate}</p>
 	                <hr>
 	                
 	                <strong><i class="fas fa-record-vinyl mr-1"></i> &nbsp;수정일</strong> <br>
-	                <p class="text-muted">2021.11.15</p>
+	                <p class="text-muted">${songVo.modifyDate}</p>
 	                
 	                <input type="submit" class="btn btn-secondary" value="수정하기">
-	                <input type="button" class="btn btn-secondary" value="삭제하기" onclick="pageMoveDeleteFnc(${songVo.no});" style="margin-left: 10px;">
+	                <input type="button" class="btn btn-secondary" value="삭제하기" onclick="pageMoveDeleteFnc(${songVo.songNo});" style="margin-left: 10px;">
 					<input type="button" class="btn btn-secondary" value="뒤로가기" onclick="history.back(-1)" style="margin-left: 10px;">
 					
 	             </form>   

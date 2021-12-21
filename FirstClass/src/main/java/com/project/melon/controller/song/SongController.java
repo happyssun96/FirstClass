@@ -63,7 +63,7 @@ public class SongController {
 		if(session.getAttribute("MemberVo") != null)
 		{
 			MemberVO tempVo = (MemberVO)session.getAttribute("MemberVo");
-			if(tempVo.getAuth().equals("adminlister"))
+			if(tempVo.getAuth().equals("admin"))
 			{
 				viewUrl = "songUploadForm"; // 어드민 계정검증이 완료되었으므로 음악 업로드 폼으로 이동
 			}
@@ -79,7 +79,7 @@ public class SongController {
 		logger.info("Welcome SongController! uploadMusicCtr \n uploadSongFile =" + uploadSongFile
 				+ "\n uploadImageFile = " + uploadSongImageFile + "\n songVo =" + songVo);
 		
-		String viewUrl = "redirect :/adminMainPage.do";
+		String viewUrl = "redirect :./clickHomeBtn.do";
 		
 		String uploadSongFolder = "C:\\gitRepository\\WaterMelon\\FirstClass\\src\\main\\webapp\\resources\\song";
 		String uploadSongImageFolder = "C:\\gitRepository\\WaterMelon\\FirstClass\\src\\main\\webapp\\resources\\cover";

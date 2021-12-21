@@ -30,6 +30,18 @@
   	}
 
   </style>
+    <script type="text/javascript">
+     function searchFunc(){
+        var curPage = document.getElementById('curPage');
+        curPage.setAttribute('value', 1);   
+        var selectedOption = document.getElementById("searchOption");
+        var form = document.getElementById('pagingForm');
+        location.href = './adminSongSearchPage.do?curPage='+curPage.value
+               +'&keyword='+form.keyword.value
+               +'&searchOption='+selectedOption.options[selectedOption.selectedIndex].value;
+
+  </script>
+  
 </head>
 <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <div class="wrapper">
@@ -40,7 +52,7 @@
   </div>
   
   <jsp:include page="header.jsp" /> 
-  <jsp:include page="adminNav.jsp" />
+  <jsp:include page="nav.jsp" />
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper" style="margin-left: 300px;">
@@ -51,11 +63,6 @@
           <div class="col-sm-6">
             <h1 class="m-0">관리자 페이지</h1>&emsp; >&nbsp;&nbsp; 음원 정보
           </div><!-- /.col -->
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="./index.jsp"><i class="fas fa-home"></i></a></li>
-            </ol>
-          </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
@@ -65,6 +72,16 @@
     <br>
     <br>
 
+    <div style="margin-left: 400px;">
+       <form id='pagingForm' action="./adminSongSearchPage.do" method="post">
+          <input type="text" placeholder="검색할 내용을 입력하세요.&nbsp; (&nbsp;ex&nbsp;.&nbsp;음원 정보&nbsp;)"
+             name="keyword" value="${pagingMap.keyword}" 
+             style="width:730px; height:60px; background: #E5E1E1; border: none; border-radius: 2.0em; padding-inline-end: 44px; padding-inline-start: 52px; margin-left: 10px;">      
+          <input type="submit" value="검색" onclick="searchFunc();" style="background: #E5E1E1; border: none; border-radius: 2.0em; height:60px; width:60px; color:#212529; margin-left: 10px;">
+          <input type="hidden" id='curPage' name='curPage' 
+          value="${songpagingMap.songPaging.curPage}">
+       </form>
+    </div>
     
     <div style="margin-top: 50px; margin-left: 230px;">
 	     		    		    	
@@ -91,7 +108,8 @@
 					 	<c:forEach var="songVo" items="${songList}">
 					         <tr>
 					            <td>${songVo.songNo}</td>
-					            <td></td>
+		            			<td><a href="./adminSongDetailInformation.do?no=${songVo.songNo}"><img style="width: 65px; height: 65px;" 
+		            				src="${songVo.albumImagePath}"></a></td>
 					            <td>${songVo.songName}</td>
 					            <td>${songVo.artist}</td>
 					            <td>${songVo.albumName}</td>
