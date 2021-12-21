@@ -50,7 +50,7 @@ location.href='./index.jsp';
 			<div style="display: table-cell; vertical-align: middle;">	
 			<div style="border:1px solid #E5E1E1; border-radius: 0.4em; padding:20px; float: left; width: 500px; margin-top: 30px;">
 				<h3>선택한 충전 금액</h3>
-				<p style="font-size: 25px;">-&nbsp;&nbsp;10,000&nbsp;&nbsp;원</p>
+				<p style="font-size: 25px;">-&nbsp;&nbsp;${chosenCash}&nbsp;&nbsp;원</p>
 				<ul>
 				<li style="font-size: 15px; color: #B0ACAC;">음원 무제한 스트리밍 및 음원 업로드를 자유롭게 할 수 있는 구독권을 구매하기 위해 캐시를 충전하세요 !					
 				<br>					
@@ -61,10 +61,10 @@ location.href='./index.jsp';
 				<h3>최종 충전 정보</h3>				
 					<hr width =100% color="#E5E1E1" align="left" size=60 style="margin-top: 30px;"/>
 						<dl style="font-size: 20px;">					
-							<dt>보유 캐시 &emsp;&emsp;&emsp;&emsp;&nbsp;<strong style="text-align: justify;">&emsp;&emsp;&emsp;0&nbsp;&nbsp;원</strong></dt>							
-							<dt style="color: #FFB16C; margin-top: 20px;">충전 금액 &emsp;&emsp;&emsp;&emsp;+&nbsp;&nbsp;<strong>10,000</strong>&nbsp;&nbsp;원</dt>
+							<dt>보유 캐시 &emsp;&emsp;&emsp;&emsp;&nbsp;<strong style="text-align: justify;">&emsp;&emsp;&emsp;${member.cash}&nbsp;&nbsp;원</strong></dt>							
+							<dt style="color: #FFB16C; margin-top: 20px;">충전 금액 &emsp;&emsp;&emsp;&emsp;+&nbsp;&nbsp;<strong>${chosenCash}</strong>&nbsp;&nbsp;원</dt>
 							<hr width =100% color="#E5E1E1" align="left" size=60/>
-							<dt>충전 후 캐시 &emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;<strong>10,000</strong>&nbsp;&nbsp;원</dt>
+							<dt>충전 후 캐시 &emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;<strong>${member.cash}+${chosenCash}</strong>&nbsp;&nbsp;원</dt>
 																	
 						</dl>														
 			</div>

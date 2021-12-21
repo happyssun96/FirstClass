@@ -46,32 +46,32 @@
 			<tbody>
 			 	<tr>
          			<th>이메일</th>
-         			<td>s1@test.com</td>
+         			<td>${member.email}</td>
          		</tr>
          		
         		<tr>
          			<th>닉네임</th>
-         			<td>수박남</td>				
+         			<td>${member.nickName}</td>				
       			</tr>
       			
       			<tr>
          			<th>등급</th>
-         			<td>골드회원</td>				
+         			<td>${member.memberClass}</td>				
       			</tr>
       			
       			<tr>
          			<th>보유 캐시</th>
-         			<td>18000 캐시</td>				
+         			<td>${member.cash}</td>				
       			</tr>
       			
       			<tr>
          			<th>나이</th>
-         			<td>25</td>
+         			<td>${member.age}</td>
          		</tr>
          		
          		<tr>
          			<th>성별</th>
-         			<td>남자</td>
+         			<td>${member.gender}</td>
          		</tr>
          		
          		<tr>
@@ -81,12 +81,12 @@
          		
          		<tr>
          			<th>가입일</th>
-         			<td>2021-12-10 14:38</td>
+         			<td>${member.createDate}</td>
          		</tr>
          		
          		<tr>
          			<th>수정일</th>
-         			<td>2021-12-13 15:49</td>
+         			<td>${member.modifyDate}</td>
          		</tr>
      			      			
       		</tbody>
@@ -94,9 +94,9 @@
 		</table>
 		
 		<br>
-		<button class="btn btn-primary">프로필 수정</button>
+		<button class="btn btn-secondary" onclick="location.href=''">프로필 수정</button>
 		&nbsp;&nbsp;&nbsp;
-		<button class="btn btn-primary">내 플레이리스트 가기</button>				
+		<button class="btn btn-secondary">내 플레이리스트 가기</button>				
 	</div>
 	
 	

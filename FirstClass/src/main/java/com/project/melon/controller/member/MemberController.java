@@ -70,7 +70,7 @@ public class MemberController {
 			session.invalidate();
 			
 			//로그인창으로 리다이렉트
-			return "redirect:/login.do";
+			return "redirect:/userMainPage.do";
 		}
 		
 		//회원가입 작업을 수행하기위한 구문(회원가입 폼으로 이동)

@@ -100,7 +100,7 @@ public class MemberDAOImpl implements MemberDAO{
 		map.put("no", no);
 		map.put("chosenCash", chosenCash);
 		
-		sqlSession.update(nameSpace + "memberPurchaseCash", chosenCash);
+		sqlSession.update(nameSpace + "memberPurchaseCash", map);
 		
 	}
 

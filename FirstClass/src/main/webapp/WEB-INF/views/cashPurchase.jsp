@@ -43,7 +43,7 @@
     <br>
     
     <div>
-    	<p style="margin-left: 250px; font-size : 30px;">내 캐시 잔액 &nbsp;:&nbsp; 0원</p>
+    	<p style="margin-left: 250px; font-size : 30px;">내 캐시 잔액 &nbsp;:&nbsp; ${member.cash}원</p>
     </div>
    
     <div>
@@ -53,13 +53,15 @@
     <br>
     <div>
     	<button type="button" class="btn btn-outline-warning" style="width: 300px; height: 200px; font-size: 60px; margin-left: 250px;"
-    		onclick="location.href='./cashDecision.jsp';">₩ 10000   	
+    		onclick="location.href='./cashDecisionPage.do?chosenCash=10000';">₩ 10000   	
     		
     	</button>
-    	<button type="button" class="btn btn-outline-warning" style="width: 300px; height: 200px; font-size: 60px; margin-left: 50px;">₩ 30000  	
+    	<button type="button" class="btn btn-outline-warning" style="width: 300px; height: 200px; font-size: 60px; margin-left: 50px;"
+    		onclick="location.href='./cashDecisionPage.do?chosenCash=30000';">₩ 30000  	
     		
     	</button>	
-    	<button type="button" class="btn btn-outline-warning" style="width: 300px; height: 200px; font-size: 60px; margin-left: 50px;">₩ 50000   	
+    	<button type="button" class="btn btn-outline-warning" style="width: 300px; height: 200px; font-size: 60px; margin-left: 50px;"
+    		onclick="location.href='./cashDecisionPage.do?chosenCash=50000';">₩ 50000   	
     		
     	</button>	    	
     </div>

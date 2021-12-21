@@ -50,7 +50,7 @@
 
    <select id="memberExist" parameterType="map"
       resultMap="memberResultMap">
-      SELECT MEMBER_NO, NICKNAME, EMAIL, AUTH
+      SELECT MEMBER_NO, NICKNAME, EMAIL, AUTH, CASH
       FROM MEMBER
       WHERE EMAIL = #{email}
       AND PWD = #{password}

@@ -31,18 +31,54 @@ public class UserController {
 		@Autowired
 		private SongService songService;
 	
+		
+		@RequestMapping(value = "cashPurchasePage.do", method = RequestMethod.GET)
+		public String cashPurchasePage(int no, Model model)
+		{
+			String viewUrl = "./cashPurchase";
+			
+			MemberVO memberVo = memberService.memberSelectOne(no);
+			model.addAttribute("member", memberVo);
+			
+			return viewUrl;
+		}
+		
+		@RequestMapping(value = "cashDecisionPage.do", method = RequestMethod.GET)
+		public String cashDecisionPage(int chosenCash, HttpSession session,  Model model)
+		{
+			
+			String viewUrl = "./auth/sessionExpire";
+//			세션 정보 검증
+			 viewUrl = "./cashPurchase";
+			 
+			 if(session.getAttribute("member") != null)
+			 {
+				int no = ((MemberVO) session.getAttribute("member")).getMember_no();
+				MemberVO memberVo = memberService.memberSelectOne(no);
+				model.addAttribute("member", memberVo);
+				model.addAttribute("chosenCash", chosenCash);
+				model.addAttribute("finalCash", memberVo.getCash()+chosenCash);
+				
+				return "./cashDecision";
+			 }
+			
+			
+			
+			return viewUrl;
+		}
+		
 		@RequestMapping(value = "addCashCtr.do", method = RequestMethod.GET)
 			public String addCashCtr(HttpSession session, @RequestParam(defaultValue = "0")int chosenCash)
 			{
 				String viewUrl = "/index";
 				
 				MemberVO tempVo = (MemberVO)session.getAttribute("member");
-				
+				System.out.println("userNo =" + tempVo.getMember_no());
 				memberService.memberPurchaseCash(tempVo.getMember_no(),chosenCash);
 				
-				MemberVO userVo = memberService.memberSelectOne(tempVo.getMember_no());
+				MemberVO memberVo = memberService.memberSelectOne(tempVo.getMember_no());
 //				MemberVO userVo = memberService.memberSelectOne(2);
-				session.setAttribute("member", userVo);
+				session.setAttribute("member", memberVo);
 				
 				return viewUrl;
 			}
@@ -62,7 +98,7 @@ public class UserController {
 //					PlayListVO playListVo = playListService.selectListPlayList(tempVo.getMember_no());
 					
 //					model.addAttribute(playListVo);
-					model.addAttribute(userVo);
+					model.addAttribute("member", userVo);
 					viewUrl = "userDetailPage";
 				}
 				return viewUrl; // 비밀번호가 일치하지 않는경우 비밀번호 검증 실패 페이지로 이동
@@ -112,4 +148,6 @@ public class UserController {
 			
 			return viewUrl;
 		}
+		
+		
 }

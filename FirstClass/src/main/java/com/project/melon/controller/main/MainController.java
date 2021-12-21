@@ -45,7 +45,7 @@ public class MainController {
 		{
 			if(((MemberVO)session.getAttribute("member")).getAuth().equals("admin"))
 			{
-				viewUrl = "redirect:adminMainPage.do";
+				viewUrl = "redirect:adminUserSearchPage.do";
 			}
 		}
 
