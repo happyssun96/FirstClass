@@ -1,24 +1,32 @@
-package com.test.TestCrawlingDAO;
+package com.project.melon.controller.crawling;
 
-import java.util.ArrayList;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.project.melon.model.MelonVO;
+import com.project.melon.service.CrawlingService;
 
-public class CrawlingDAO {
-		
+@Controller
+public class CrawlingController {
 
-	public static ArrayList<MelonVO> Crawling() {
+	@Autowired
+	private CrawlingService crawlingService;
+	
+	//
+	@RequestMapping(value = "/crawling.do", method = RequestMethod.GET)
+	public String Crawling() {
 		String url = "https://www.melon.com/chart/index.htm";
 		Document doc = null;
 		Elements tmp;
 		String name_temp = null;
 		String singer_temp = null;
 		String album_temp = null;
-		ArrayList<MelonVO> list = new ArrayList<MelonVO>();
 		int mrank = 0;
 		
 		try {
@@ -58,12 +66,27 @@ public class CrawlingDAO {
 //				
 //				//arraylist에 삽입
 				MelonVO tmpVo = new MelonVO(mrank, name_temp, singer_temp, album_temp);
-				System.out.println(tmpVo.getMname() + tmpVo.getMartist() + tmpVo.getMalbum() + tmpVo.getMrank());
-//				SL.add(new SongVo(rank, name_temp, singer_temp, album_temp));
-				list.add(tmpVo);
+				System.out.println(tmpVo);
+
+				crawlingService.MelonInsert(tmpVo);
+				
+				
+				
 		}
-		System.out.println("Crawling Complete");
-		return list;
+//		System.out.println("Crawling Complete");
+		return "/login.do";
 	}
+	
+	
+	//크롤링 실행전 무조건 db초기화 시키기 위해 필요한 삭제구문
+	@RequestMapping(value = "/crawlingDelete.do", method = RequestMethod.GET)
+	public String CrawlingDelete() {
+		
+		crawlingService.MelonDelete();
+		
+		return "/login.do";
+	
+	}
+	
 	
 }

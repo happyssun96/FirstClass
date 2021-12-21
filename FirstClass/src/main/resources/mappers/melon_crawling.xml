@@ -9,5 +9,13 @@
 	   <result column="MALBUM" property="malbum" />
 	</resultMap>	
 
-
+	<insert id="melonInsert" parameterType="melonVo">
+			INSERT INTO MELONDBCRAWLING
+			(MRANK, MNAME, MARTIST, MALBUM)
+			VALUES(#{mrank}, #{mname}, #{martist}, #{malbum})
+	</insert>
+	
+	<delete id="melonDelete">
+		DELETE FROM MELONDBCRAWLING
+	</delete>
 </mapper>
