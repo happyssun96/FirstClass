@@ -51,7 +51,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">${memberVo.nickName}의 정보 수정</h1>
+            <h1 class="m-0">${member.nickName}의 정보 수정</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -63,25 +63,25 @@
     </div>
    <div>
       <form action="./adminUserUpdateCtr.do" method="post">
-      <input type="hidden" value='${memberVo.member_no}' name="member_no">
+      <input type="hidden" value='${member.member_no}' name="member_no">
       <table border="1">            
             <tr>
                   <th>회원번호</th>
-                  <td>${memberVo.member_no}</td>
+                  <td>${member.member_no}</td>
                </tr>
              <tr>
                   <th>이메일</th>
-                  <td><input type="text" name="email" value="${memberVo.email}"></td>
+                  <td><input type="text" name="email" value="${member.email}"></td>
                </tr>
                
               <tr>
                   <th>닉네임</th>
-                  <td><input type="text" name="nickName" value="${memberVo.nickName}"></td>
+                  <td><input type="text" name="nickName" value="${member.nickName}"></td>
                </tr>
                
                <tr>
                   <th>비밀번호</th>
-                  <td><input type="password" name="password" value="${memberVo.password}"></td>
+                  <td><input type="password" name="password" value="${member.password}"></td>
                </tr>
                
                <tr>
@@ -105,32 +105,32 @@
                
                <tr>
                   <th>보유 캐시</th>
-                  <td><input type="text" name="cash" value="${memberVo.cash}"></td>            
+                  <td><input type="text" name="cash" value="${member.cash}"></td>            
                </tr>
                
                <tr>
                   <th>나이</th>
-                  <td>${memberVo.age}</td>
+                  <td>${member.age}</td>
                </tr>
                
                <tr>
                   <th>성별</th>
-                  <td>${memberVo.gender}</td>
+                  <td>${member.gender}</td>
                </tr>                                         
                <tr>
                   <th>가입일</th>
-                  <td>${memberVo.createDate}</td>
+                  <td>${member.createDate}</td>
                </tr>
                
                <tr>
                   <th>수정일</th>
-                  <td>${memberVo.modifyDate}</td>
+                  <td>${member.modifyDate}</td>
                </tr>                                             
       </table>
       
       <br>
       <input type="submit" class="btn btn-secondary" value="수정하기">
-      <input type="button" class="btn btn-secondary" value="회원삭제" onclick="pageMoveDeleteFnc(${memberVo.member_no});" style="margin-left: 10px;">
+      <input type="button" class="btn btn-secondary" value="회원삭제" onclick="pageMoveDeleteFnc(${member.member_no});" style="margin-left: 10px;">
       <input type="button" class="btn btn-secondary" value="뒤로가기" onclick="history.back(-1)" style="margin-left: 10px;">
       </form>
                

@@ -43,14 +43,14 @@ public class AdminController {
 	
 	String viewUrl = "./authorityError";
 	
-	if(session.getAttribute("MemberVo") != null)
+	if(session.getAttribute("member") != null)
 	{
-		MemberVO tempVo = (MemberVO)session.getAttribute("MemberVo");
+		MemberVO tempVo = (MemberVO)session.getAttribute("member");
 		if(tempVo.getAuth().equals("admin"))
 		{
 			MemberVO memberVo = memberService.memberSelectOne(no);
 			model.addAttribute("member", memberVo);
-			viewUrl = "adminSongDetailPage"; 
+			viewUrl = "adminDetailPage"; 
 		}
 	}
 	
