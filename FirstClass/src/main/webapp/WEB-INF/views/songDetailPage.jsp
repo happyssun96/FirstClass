@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>${songVo.songName}</title>
 </head>
 <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 
@@ -37,7 +37,7 @@
                 </div>
               </div>
               <div class="mt-4 product-share" style="padding-left: 13rem;">
-                <a href="#" class="text-gray">
+                <a href="./Music.jsp" class="text-gray" target="_blank">
                   <i class="fas fa-play-circle fa-2x"></i>
                 </a>
                 

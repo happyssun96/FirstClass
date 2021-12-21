@@ -5,7 +5,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Music Player | CodingNepal</title>
+  <title>Music Player</title>
   <link rel="stylesheet" href="resources/css/music.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
@@ -17,7 +17,7 @@
       <i class="material-icons">more_horiz</i>
     </div>
     <div class="img-area">
-      <img src="resources/images/music-1.jpg" alt="">
+      <img src="../../resources/images/music-1.jpg" alt="">
     </div>
     <div class="song-details">
       <p class="name"></p>
@@ -25,7 +25,7 @@
     </div>
     <div class="progress-area">
       <div class="progress-bar">
-        <audio id="main-audio" src="resources/songs/music-1.mp3"></audio>
+        <audio id="main-audio" src="../../resources/songs/music-1.mp3"></audio>
       </div>
       <div class="song-timer">
         <span class="current-time">0:00</span>
