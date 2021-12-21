@@ -10,7 +10,7 @@ public class MainDAO {
 	public static void main(String[] args) {
 		ArrayList<SongVo> SL = new ArrayList<SongVo>();
 	
-//크롤링 하는 메서드
+//	크롤링 하는 메서드
 //	SL = CrawlingDAO.Crawling();
 
 //	//크롤링 된 정보를 db에 업로드 하는 메서드
