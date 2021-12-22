@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.project.melon.model.MemberVO;
+import com.project.melon.model.SubscribeVO;
 import com.project.melon.service.MemberService;
+import com.project.melon.service.SubscribeService;
 
 @Controller
 public class MemberController {
@@ -22,6 +24,8 @@ public class MemberController {
 		
 		@Autowired
 		private MemberService memberService;
+		@Autowired
+		private SubscribeService subscribeService;
 		
 		//login.do 로그인 폼으로 이동하기 위한 구문
 		@RequestMapping(value = "/login.do", method = RequestMethod.GET)
@@ -39,7 +43,7 @@ public class MemberController {
 			logger.info("MemberController! loginCtr" + email + ", " + password);
 	
 			MemberVO memberVo = memberService.memberExist(email, password);
-	
+			int subscribeChk = subscribeService.subscribeChk(memberVo.getMember_no());
 			//암호화 valid 기능을 통해 패스워드 검증 수행?? - 뭔소린지 모르겠음
 			
 			//로그인 정보 존재여부 확인
@@ -47,7 +51,10 @@ public class MemberController {
 	
 				//로그인 성공시 session 정보 추가
 				session.setAttribute("member", memberVo);
-				
+				if(subscribeChk >= 1)
+				{
+				session.setAttribute("subScribe", 1);
+				}
 				//회원종류(관리자, 유저)에 따라 로그인
 				if (memberVo.getAuth().equals("user")) {
 					

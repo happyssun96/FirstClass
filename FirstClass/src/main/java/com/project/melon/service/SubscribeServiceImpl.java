@@ -12,9 +12,9 @@ public class SubscribeServiceImpl implements SubscribeService{
 	public SubscribeDAO subscribeDao;
 
 	@Override
-	public int subscribeChk(SubscribeVO subscribeVo) {
+	public int subscribeChk(int memberNo) {
 		// TODO Auto-generated method stub
-		return subscribeDao.subscribeChk(subscribeVo);
+		return subscribeDao.subscribeChk(memberNo);
 	}
 
 	@Override

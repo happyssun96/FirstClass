@@ -29,10 +29,10 @@ public class SubscribeController {
 	private PurchaseListService purchaseListService;
 	//이용권 구매 버튼 클릭시
 	@RequestMapping(value = "subscribePurchasePage.do", method = RequestMethod.GET)
-		public String addSubscribeList(HttpSession session, SubscribeVO subscribeVo, Model model) {
+		public String addSubscribeList(HttpSession session, Model model) {
 		
 		logger.info("subscribeController! loginSubscribe");
-		int resultSubscribe = subscribeService.subscribeChk(subscribeVo);		
+		
 		String viewUrl = "./auth/authorityError";
 		
 		//유저계정 세션이 존재하는지 검증
@@ -41,11 +41,13 @@ public class SubscribeController {
 				
 			if (session != null && session.getAttribute("member") != null) {
 				
+				MemberVO tempVo = (MemberVO)session.getAttribute("member");
 				
+				int resultSubscribe = subscribeService.subscribeChk(tempVo.getMember_no());		
 				//유저계정 세션을 통해 이용권을 구독중인지 검증
 				//구독중인 계정일때
-				if (resultSubscribe == 1) {
-					
+				if (resultSubscribe >= 1) {
+					System.out.println(resultSubscribe);
 					//이전페이지로 리다이렉트
 					return "redirect:/userMainPage.do";
 				}
@@ -126,6 +128,7 @@ public class SubscribeController {
 					
 					MemberVO memberVo = memberService.memberSelectOne(tempVo.getMember_no());
 					session.setAttribute("member", memberVo);
+					session.setAttribute("subScribe", 1);
 					
 					return "redirect:/userMainPage.do";
 				}

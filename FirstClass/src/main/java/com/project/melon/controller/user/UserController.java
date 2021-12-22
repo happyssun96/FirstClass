@@ -83,7 +83,7 @@ public class UserController {
 				if(session.getAttribute("member") != null)
 				{
 					
-				viewUrl = "/index";
+				viewUrl = "redirect:/clickHomeBtn.do";
 				
 				MemberVO tempVo = (MemberVO)session.getAttribute("member");
 				memberService.memberPurchaseCash(tempVo.getMember_no(),chosenCash);
@@ -165,7 +165,7 @@ public class UserController {
 		
 		@RequestMapping(value = "userAccountDismiss.do", method = RequestMethod.GET)
 			public String userAccountDismiss(HttpSession session) {
-			String viewUrl = "redirect:clickHomeBtn.do";
+			String viewUrl = "redirect:/userMainPage.do";
 			
 			MemberVO tempVo = (MemberVO)session.getAttribute("member");
 			memberService.memberDeleteOne(tempVo.getMember_no());

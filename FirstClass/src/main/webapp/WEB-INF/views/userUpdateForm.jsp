@@ -155,7 +155,7 @@
       
       <br>
       <input type="submit" class="btn btn-secondary" value="수정하기">
-      <input type="button" class="btn btn-secondary" value="회원삭제" onclick="pageMoveDeleteFnc(${member.member_no});" style="margin-left: 10px;">
+      <input type="button" class="btn btn-secondary" value="회원삭제" onclick="location.href='./userAccountDismiss.do'" style="margin-left: 10px;">
       <input type="button" class="btn btn-secondary" value="뒤로가기" onclick="history.back(-1)" style="margin-left: 10px;">
       </form>
                   

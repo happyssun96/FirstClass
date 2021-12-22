@@ -14,9 +14,9 @@ public class SubscribeDAOImpl implements SubscribeDAO{
 	
 	String nameSpace = "com.project.melon.";
 	@Override
-	public int subscribeChk(SubscribeVO subscribeVo) {
+	public int subscribeChk(int memberNo) {
 		// TODO Auto-generated method stub
-		int resultSubscribeChk = sqlSession.selectOne(nameSpace + "subscribeChk", subscribeVo);
+		int resultSubscribeChk = sqlSession.selectOne(nameSpace + "subscribeChk", memberNo);
 		
 		return resultSubscribeChk;
 	}
