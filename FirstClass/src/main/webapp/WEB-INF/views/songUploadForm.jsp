@@ -102,6 +102,74 @@
       </form>
 
    </div>
+   
+<script src="http://code.jquery.com/jquery-3.5.1.min.js">
+</script>
+
+<script type="text/javascript">
+$("input[name='uploadSongFile']").on("change", function(e){
+	
+// 	alert("동작");
+	let formData = new FormData();
+	let fileInput = $('input[name="uploadSongFile"]');
+	let fileList = fileInput[0].files;
+	let fileObj = fileList[0];
+	
+	if(!songFileCheck(fileObj.name, fileObj.size))
+		{
+		$("#songItem").val("");
+		return false;
+		}
+	
+});
+
+$("input[name='uploadSongImageFile']").on("change", function(e){
+	
+// 	alert("동작");
+	let formData = new FormData();
+	let fileInput = $('input[name="uploadSongImageFile"]');
+	let fileList = fileInput[0].files;
+	let fileObj = fileList[0];
+	
+	if(!coverFileCheck(fileObj.name, fileObj.size))
+		{
+		$("#coverItem").val("");
+		return false;
+		}
+});
+
+function songFileCheck(fileName, fileSize)
+{
+	let regex = new RegExp("(.*?)\.(mp3)$");
+	let maxSize = 10485760;
+	if(fileSize >= maxSize)
+		{
+		alert("파일 용량이 초과되었습니다.");
+		return false;
+		}
+	if(!regex.test(fileName)){
+		alert("음원은 mp3 파일만 업로드할 수 있습니다.");
+		return false;
+	}
+	return true;
+}
+
+function coverFileCheck(fileName, fileSize)
+{
+	let regex = new RegExp("(.*?)\.(jpg|.png)$");
+	let maxSize = 10485760;
+	if(fileSize >= maxSize)
+		{
+		alert("파일 용량이 초과되었습니다.");
+		return false;
+		}
+	if(!regex.test(fileName)){
+		alert("앨범 이미지는 jpg 파일만 업로드 할 수 있습니다..");
+		return false;
+	}
+	return true;
+	}
+</script>
 
 </body>
 </html>
