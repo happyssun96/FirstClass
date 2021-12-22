@@ -30,16 +30,15 @@
   	}
 
   </style>
-  
-  <script type="text/javascript">
-	  function searchFunc(){
-		  var curPage = document.getElementById('curPage');
-		  curPage.setAttribute('value', 1);	
-		  var selectedOption = document.getElementById("searchOption");
-		  var form = document.getElementById('pagingForm');
-		  location.href = './adminUserSearchPage.do?curPage='+curPage.value
-		         +'&keyword='+form.keyword.value
-		         +'&searchOption='+selectedOption.options[selectedOption.selectedIndex].value;
+   <script type="text/javascript">
+     function searchFunc(){
+        var curPage = document.getElementById('curPage');
+        curPage.setAttribute('value', 1);   
+        var selectedOption = document.getElementById("searchOption");
+        var form = document.getElementById('pagingForm');
+        location.href = './adminSongSearchPage.do?curPage='+curPage.value
+               +'&keyword='+form.keyword.value
+               +'&searchOption='+selectedOption.options[selectedOption.selectedIndex].value;
 
   </script>
   
@@ -75,11 +74,11 @@
    	<div style="margin-left: 400px;">
 	    <form id='pagingForm' action="./adminUserSearchPage.do" method="post">
 	    	<input type="text" placeholder="검색할 내용을 입력하세요.&nbsp; (&nbsp;ex&nbsp;.&nbsp;유저 정보&nbsp;)"
-	    		name="keyword" value="${pagingMap.keyword}" 
+	    		name="keyword" value="${keyword}" 
 	    		style="width:730px; height:60px; background: #E5E1E1; border: none; border-radius: 2.0em; padding-inline-end: 44px; padding-inline-start: 52px; margin-left: 10px;">   	
 	    	<input type="submit" value="검색" onclick="searchFunc();" style="background: #E5E1E1; border: none; border-radius: 2.0em; height:60px; width:60px; color:#212529; margin-left: 10px;">
 	    	<input type="hidden" id='curPage' name='curPage' 
-	    	value="${memberPagingMap.memberPaging.curPage}">
+	    	value="${pagingMap.memberPaging.curPage}">
 	    </form>
     </div>
         <div style="margin-top: 50px;">
@@ -130,7 +129,7 @@
 	    
 	    <div style="margin-left:700px;">
 	    	<br>
-				<jsp:include page="./Paging.jsp">
+				<jsp:include page="./userPaging.jsp">
       				<jsp:param value="${pagingMap}" name="pagingMap"/>
    				</jsp:include>
 			</div>

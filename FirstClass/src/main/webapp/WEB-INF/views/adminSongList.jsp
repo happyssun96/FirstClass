@@ -61,7 +61,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">관리자 페이지</h1>&emsp; >&nbsp;&nbsp; 음원 정보
+            <h1 class="m-0">관리자 페이지</h1>&emsp; >&nbsp;&nbsp; 음원 정보 curPage="${pagingMap.songPaging.curPage}" curP="${pagingMap}"
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -75,11 +75,11 @@
     <div style="margin-left: 400px;">
        <form id='pagingForm' action="./adminSongSearchPage.do" method="post">
           <input type="text" placeholder="검색할 내용을 입력하세요.&nbsp; (&nbsp;ex&nbsp;.&nbsp;음원 정보&nbsp;)"
-             name="keyword" value="${pagingMap.keyword}" 
+             name="keyword" value="${keyword}" 
              style="width:730px; height:60px; background: #E5E1E1; border: none; border-radius: 2.0em; padding-inline-end: 44px; padding-inline-start: 52px; margin-left: 10px;">      
           <input type="submit" value="검색" onclick="searchFunc();" style="background: #E5E1E1; border: none; border-radius: 2.0em; height:60px; width:60px; color:#212529; margin-left: 10px;">
           <input type="hidden" id='curPage' name='curPage' 
-          value="${songpagingMap.songPaging.curPage}">
+          value="${pagingMap.songPaging.curPage}">
        </form>
     </div>
     
@@ -126,7 +126,9 @@
 				
 				<div style="margin-left:360px;">
 					<br>
-					<jsp:include page="Paging.jsp" />
+					<jsp:include page="./songPaging.jsp">
+						<jsp:param value="${pagingMap}" name="pagingMap" />
+					</jsp:include>
 				</div>	    
 	    </div>
     </div>        	    	

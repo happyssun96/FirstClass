@@ -64,13 +64,13 @@ nav > ul > li > a:hover {
 		<ul>
 			<li>
 				<a href="#" 
-					onclick="goPage(${pagingMap.memberPaging.prevBlock});">
+					onclick="goPage(${pagingMap.songPaging.prevBlock});">
 					<span>≪</span>
 				</a>
 			</li>
 			
-			<c:forEach var="num" begin="${pagingMap.memberPaging.blockBegin}"
-				end="${pagingMap.memberPaging.blockEnd}">
+			<c:forEach var="num" begin="${pagingMap.songPaging.blockBegin}"
+				end="${pagingMap.songPaging.blockEnd}">
 			<li id = 'pageButton${num}'>
 				<a href="#" onclick="goPage(${num});">
 					<c:out value="${num}"/>
@@ -80,7 +80,7 @@ nav > ul > li > a:hover {
 			
 			<li>
 				<a href="#" 
-					onclick="goPage(${pagingMap.memberPaging.nextBlock});">
+					onclick="goPage(${pagingMap.songPaging.nextBlock});">
 					<span>≫</span>
 				</a>
 			</li>
