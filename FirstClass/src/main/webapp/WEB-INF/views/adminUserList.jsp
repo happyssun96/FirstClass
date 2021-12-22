@@ -110,11 +110,38 @@
 					            <td>${memberVo.email}</td>
 					            <td>${memberVo.nickName}</td>
 					            <td>${memberVo.auth}</td>
-					            <td>${memberVo.memberClass}</td>
+					            <td>
+					            	<c:if test="${memberVo.memberClass == 0}">
+			                  			관리자
+			                  		</c:if>
+			                  		<c:if test="${memberVo.memberClass == 1}">
+			                  			브론즈
+			                  		</c:if>
+			                  		<c:if test="${memberVo.memberClass == 2}">
+			                  			실버
+			                  		</c:if>
+			                  		<c:if test="${memberVo.memberClass == 3}">
+			                  			골드
+			                  		</c:if>
+			                  		<c:if test="${memberVo.memberClass == 4}">
+			                  			플레티넘
+			                  		</c:if>
+								</td>
 					            <td>${memberVo.cash}</td>
 					            <td>${memberVo.age}</td>
-					            <td>${memberVo.gender}</td>
-					            <td>O</td>
+					            <td>
+									<c:if test="${memberVo.gender eq 'M'}">
+         							남성
+				         			</c:if>
+				         			<c:if test="${memberVo.gender eq 'F'}">
+				         			여성
+         							</c:if>
+								</td>
+					            <td>
+					            	<c:if test="${memberVo.memberClass == 0}">
+			                  			-
+			                  		</c:if>
+					            </td>
 					            <td>${memberVo.createDate}</td>
 					            <td>${memberVo.modifyDate}</td>
 					         </tr>

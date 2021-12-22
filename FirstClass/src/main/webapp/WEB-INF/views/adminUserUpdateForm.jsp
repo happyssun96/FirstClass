@@ -111,11 +111,14 @@ function pageMoveDeleteFnc(no) {
                <tr>
                   <th>등급</th>
                   <td><select name = "memberClassOption">
-                        <option value='' selected>--선택--</option>
-                        <option value='gold'>골드</option>
-                        <option value='silver'>실버</option>
-                        <option value='bronze'>브론즈</option>
-                     </select></td>            
+                        <option value='${member.memberClass}' selected>--선택--</option>
+                        <option value=0>관리자</option>
+                        <option value=1>브론즈</option>
+                        <option value=2>실버</option>
+                        <option value=3>골드</option>
+                        <option value=4>챌린저</option>
+                     </select>
+                  </td>            
                </tr>
                
                <tr>
