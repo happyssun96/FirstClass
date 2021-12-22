@@ -29,29 +29,6 @@ public class SongController {
 	
 	@Autowired
 	private SongService songService;
-//	@Autowired
-//	private SubscribeService subscribeService;
-
-	
-//	ajax 매핑으로 구현예정
-//	@RequestMapping(value = "playMusic.do", method = RequestMethod.GET)
-//	public String playMusic(int songNumber, HttpSession session)
-//	{
-//		logger.info("Welcome SongController! playMusic : songNumber =" + songNumber);
-//		if(session.getAttribute("memberVo") != null)
-//		{
-//			MemberVO tempVo = (MemberVO)session.getAttribute("memberVo");
-//			if(subscribeService.subscribeExist(tempVo.getMember_no()) != null)
-//			{
-//				songService.playFullMusic(songNumber);
-//			}
-//		}
-//		songService.playExperienceMusic(songNumber);
-//		return "";
-//	}
-	
-	
-	
 	
 	@RequestMapping(value = "uploadMusic.do", method=RequestMethod.GET)
 	public String uploadMusic(HttpSession session, Model model)
@@ -81,10 +58,10 @@ public class SongController {
 		
 		
 		
-		String viewUrl = "redirect :./clickHomeBtn.do";
+		String viewUrl = "redirect:./adminSongSearchPage.do";
 		
-		String uploadSongFolder = "C:\\gitRepository\\WaterMelon\\FirstClass\\src\\main\\webapp\\resources\\song";
-		String uploadSongImageFolder = "C:\\gitRepository\\WaterMelon\\FirstClass\\src\\main\\webapp\\resources\\cover";
+		String uploadSongFolder = "C:\\gitRepository\\WaterMelon\\FirstClass\\src\\main\\webapp\\resources\\songs";
+		String uploadSongImageFolder = "C:\\gitRepository\\WaterMelon\\FirstClass\\src\\main\\webapp\\resources\\images\\covers";
 		
 		
 		String fullSongName = uploadSongFile.getOriginalFilename();
@@ -93,8 +70,8 @@ public class SongController {
 		File uploadSong = new File(uploadSongFolder, fullSongName);
 		
 		File uploadSongImage = new File(uploadSongImageFolder, fullSongImageName);
-		String songFullPath = "resources/song" + "/" + fullSongName;
-		String songImageFullPath = "resources/cover" + "/" + fullSongImageName;
+		String songFullPath = "resources/songs/" + fullSongName;
+		String songImageFullPath = "resources/images/covers/" + fullSongImageName;
 		
 		songVo.setMusicResourcePath(songFullPath);
 		songVo.setAlbumImagePath(songImageFullPath);
@@ -143,47 +120,6 @@ public class SongController {
 			}
 		return viewUrl; 
 	}
-	
-//	/* 음원 파일 업로드 */
-//	@PostMapping("song/uploadSongAjaxAction.do")
-//	public void uploadSongAjaxActionPOST(MultipartFile uploadSongFile) {
-//		
-//		logger.info("uploadSongAjaxActionPOST..........");
-//		String uploadFolder = "C://upload";
-//		
-//		String uploadFileName = uploadSongFile.getOriginalFilename();
-//		
-//		
-//		String uuid = UUID.randomUUID().toString();
-//		
-//		uploadFileName = uuid + "_" + uploadFileName;
-//		File saveFile = new File(uploadFolder, uploadFileName);
-//		
-//		try {
-//			uploadSongFile.transferTo(saveFile);
-//		} catch (IllegalStateException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		
-//	}
-	
-//	/* 앨범 이미지 파일 업로드 */
-//	@PostMapping("song/uploadSongImageAjaxAction.do")
-//	public void uploadSongImageAjaxActionPOST(MultipartFile uploadFile) {
-//		
-//		logger.info("uploadAjaxActionPOST..........");
-//		logger.info("파일 이름 : " + uploadFile.getOriginalFilename());
-//		logger.info("파일 타입 : " + uploadFile.getContentType());
-//		logger.info("파일 크기 : " + uploadFile.getSize());
-//	
-//		
-//	}
-	
-
 	
 
 }

@@ -117,11 +117,11 @@ public class AdminController {
 		{
 			if(uploadSongFile.isEmpty() == false)
 			{
-				String uploadSongFolder = "C:\\gitRepository\\WaterMelon\\FirstClass\\src\\main\\webapp\\resources\\song";
+				String uploadSongFolder = "C:\\gitRepository\\WaterMelon\\FirstClass\\src\\main\\webapp\\resources\\songs";
 				String fullSongName = uploadSongFile.getOriginalFilename();
 				
 				File uploadSong = new File(uploadSongFolder, fullSongName);
-				String songFullPath = "resources/song" + "/" + fullSongName;
+				String songFullPath = "resources/songs/" + fullSongName;
 				songVo.setMusicResourcePath(songFullPath);
 				
 				try {
@@ -138,12 +138,12 @@ public class AdminController {
 			
 			if(uploadSongImageFile.isEmpty() == false)
 			{
-				String uploadSongImageFolder = "C:\\gitRepository\\WaterMelon\\FirstClass\\src\\main\\webapp\\resources\\cover";
+				String uploadSongImageFolder = "C:\\gitRepository\\WaterMelon\\FirstClass\\src\\main\\webapp\\resources\\images\\covers";
 				String fullSongImageName = uploadSongImageFile.getOriginalFilename();
 				
 				File uploadSongImage = new File(uploadSongImageFolder, fullSongImageName);
 				
-				String songImageFullPath = "resources/cover" + "/" + fullSongImageName;
+				String songImageFullPath = "resources/images/covers/" + fullSongImageName;
 				
 				songVo.setAlbumImagePath(songImageFullPath);
 				
@@ -160,7 +160,7 @@ public class AdminController {
 			}
 			
 			songService.songUpdateOne(songVo);
-			viewUrl = "redirect:./clickHomeBtn.do"; // 어드민 계정검증이 완료되었으므로 음악 업로드 폼으로 이동
+			viewUrl = "redirect:./adminSongSearchPage.do"; // 어드민 계정검증이 완료되었으므로 음악 업로드 폼으로 이동
 		}
 	}
 	
