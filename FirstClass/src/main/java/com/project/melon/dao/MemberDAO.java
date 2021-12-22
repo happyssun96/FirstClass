@@ -30,4 +30,6 @@ public interface MemberDAO {
 	public void memberDeleteOne(int no);
 	
 	public void memberPurchaseCash(int no, int chosenCash);
+	
+	public void memberClassSync();
 }
