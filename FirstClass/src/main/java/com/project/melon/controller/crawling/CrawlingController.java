@@ -18,7 +18,7 @@ public class CrawlingController {
 	@Autowired
 	private CrawlingService crawlingService;
 	
-	//
+	//크롤링하고 db에 insert하는 메서드
 	@RequestMapping(value = "/crawling.do", method = RequestMethod.GET)
 	public String Crawling() {
 		String url = "https://www.melon.com/chart/index.htm";
@@ -38,8 +38,8 @@ public class CrawlingController {
 			e.printStackTrace();
 		}
 		
-		//top 10 가져오기
 		
+		//top 10 가져오기
 		Elements element = doc.select("#tb_list").select("tr.lst50");
 		
 //		System.out.println(element);

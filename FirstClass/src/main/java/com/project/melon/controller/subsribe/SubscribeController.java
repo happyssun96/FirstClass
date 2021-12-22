@@ -5,6 +5,7 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -15,7 +16,7 @@ import com.project.melon.service.MemberService;
 import com.project.melon.service.PurchaseListService;
 import com.project.melon.service.SubscribeService;
 
-
+@Controller
 public class SubscribeController {
 	private static final Logger logger
 	= LoggerFactory.getLogger(SubscribeController.class);
@@ -120,4 +121,22 @@ public class SubscribeController {
 		
 		return "redirect:/addPurchaseList.do";
 	}
+	
+	
+	//남은 캐시 띄우기 remaincash
+	@RequestMapping(value = "remainCashCtr.do", method = RequestMethod.POST)
+	public String remainCash(HttpSession session, MemberVO memberVo, Model model) {
+		
+		String viewUrl = "/index";
+		
+		session.getAttribute("member");
+		MemberVO tempVo = (MemberVO)session.getAttribute("member");
+		
+		//결제전 캐시 - 구독권가격(5000)
+		int remaincash = tempVo.getCash() - 5000;
+		
+		model.addAttribute(remaincash);
+		return viewUrl;
+	}
+	
 }
