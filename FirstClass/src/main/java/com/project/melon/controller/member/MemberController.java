@@ -57,7 +57,7 @@ public class MemberController {
 					return "redirect:/adminUserSearchPage.do";
 				}				
 			}else {
-				return "redirect:/auth/LoginFail";
+				return "auth/LoginFail";
 			}
 		}
 	

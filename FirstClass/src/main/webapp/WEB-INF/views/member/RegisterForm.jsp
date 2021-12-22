@@ -89,7 +89,7 @@ $(".register-btn").click(function(){
 
 <div class="register-form">
     <form action="./addCtr.do" method="post" name="RegisterForm" id="RegisterForm">
-      <h1><a href="../index.jsp" class="brand-link">
+      <h1><a href="../clickHomeBtn.do" class="brand-link">
       <img src="../resources/images/watermelon.png" alt="AdminLTE Logo" 
       	class="brand-image img-circle elevation-3" style="opacity: .8; height: 80px;">
       </a>
