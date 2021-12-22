@@ -37,7 +37,7 @@ public class AdminController {
 	//관리자 1. 유저정보 2. 음원정보 검색 admin/searchPage.do
 	//1. 유저정보 클릭시
 	@RequestMapping(value = "adminUserDetailInformation.do", method = RequestMethod.GET)
-	public String userDetailInfoPage(@RequestParam(defaultValue = "0") int no, HttpSession session, Model model) {
+	public String userDetailInfoPage(@RequestParam(defaultValue = "0")int no, HttpSession session, Model model) {
 	//디버깅을 위한 로그 출력 로직
 	logger.info("AdminController! UserDetailInfo no =" + no);
 	
@@ -58,7 +58,7 @@ public class AdminController {
 }
 //	//2. 음원정보 클릭시
 	@RequestMapping(value = "adminSongDetailInformation.do", method = RequestMethod.GET)
-	public String musicDetailInfoPage(int no, HttpSession session, Model model) {
+	public String musicDetailInfoPage(@RequestParam(defaultValue = "0")int no, HttpSession session, Model model) {
 	//디버깅을 위한 로그 출력 로직
 	logger.info("AdminController! musicDetailInfo no = " + no);
 	
@@ -82,7 +82,7 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value = "adminSongUpdateForm.do", method = RequestMethod.GET)
-	public String musicUpdate(int no, HttpSession session, Model model) {
+	public String musicUpdate(@RequestParam(defaultValue = "0")int no, HttpSession session, Model model) {
 	//디버깅을 위한 로그 출력 로직
 	logger.info("AdminController! musicUpdate songVo = " + no);
 	
@@ -176,7 +176,7 @@ public class AdminController {
 //	
 //	//admin/update.do [어드민] 유저 세부정보 수정 프론트(회원 수정 화면으로)
 	   @RequestMapping(value = "/adminUserUpdate.do", method = RequestMethod.GET)
-	   public String userUpdate(int no, HttpSession session, Model model) {
+	   public String userUpdate(@RequestParam(defaultValue = "0")int no, HttpSession session, Model model) {
 	      
 	      logger.info("adminUserUpdate no" + no);
 	      
@@ -218,7 +218,7 @@ public class AdminController {
 	
 	//어드민 회원삭제 로직 adminAccountDeleteCtr.do
 	@RequestMapping(value = "/adminAccountDeleteCtr.do", method = RequestMethod.GET)
-	public String userAccountDelete(MemberVO memberVo, int no, HttpSession session, Model model) {
+	public String userAccountDelete(MemberVO memberVo, @RequestParam(defaultValue = "0")int no, HttpSession session, Model model) {
 		
 		logger.info("memberDeleteCtr" + no);
 		
