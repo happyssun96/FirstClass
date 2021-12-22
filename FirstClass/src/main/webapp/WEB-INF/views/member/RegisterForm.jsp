@@ -105,14 +105,6 @@ $(".register-btn").click(function(){
       
       <div class="form-group">
         
-        <select id="auth" name="auth" class="fa" required>
-        
-        	<option value='' selected>계정 유형</option>
-  			<option value='admin'>&#xf023; 관리자</option>
- 			<option value='user'>&#xf007; 일반 사용자</option>
- 			
- 			</select>
-        
        </div>
       
       <div class="form-group">

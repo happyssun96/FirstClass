@@ -80,6 +80,12 @@ public class MemberServiceImpl implements MemberService{
 		// TODO Auto-generated method stub
 		return memberDao.memberCash(no);
 	}
+
+	@Override
+	public void memberClassSync() {
+		// TODO Auto-generated method stub
+		memberDao.memberClassSync();
+	}
 	
 	
 	

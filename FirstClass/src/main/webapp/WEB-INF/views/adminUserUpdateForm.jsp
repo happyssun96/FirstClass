@@ -77,7 +77,7 @@ function pageMoveDeleteFnc(no) {
       </div><!-- /.container-fluid -->
     </div>
    <div>
-      <form action="./adminUserUpdateCtr.do" method="post">
+	 <form action="./adminUserUpdateCtr.do" method="post">
       <input type="hidden" value='${member.member_no}' name="member_no">
       <table border="1">            
             <tr>
@@ -125,12 +125,17 @@ function pageMoveDeleteFnc(no) {
                
                <tr>
                   <th>나이</th>
-                  <td>${member.age}</td>
+                  <td><input type="text" name="age" value="${member.age}"></td>
                </tr>
                
                <tr>
                   <th>성별</th>
-                  <td>${member.gender}</td>
+                  <td>
+                  <select name = "gender">
+                        <option value='' selected>--선택--</option>
+                        <option value='M'>남성</option>
+                        <option value='F'>여성</option>
+                   </select></td>
                </tr>                                         
                <tr>
                   <th>가입일</th>

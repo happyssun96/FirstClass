@@ -183,7 +183,7 @@ public class AdminController {
 				if(tempVo.getAuth().equals("admin"))
 				{
 					MemberVO memberVo = memberService.memberSelectOne(no);
-					
+					memberService.memberClassSync();
 					model.addAttribute("member", memberVo);
 					
 					viewUrl = "adminUserUpdateForm"; 
@@ -213,23 +213,19 @@ public class AdminController {
 	
 	//어드민 회원삭제 로직 adminAccountDeleteCtr.do
 	@RequestMapping(value = "/adminAccountDeleteCtr.do", method = RequestMethod.GET)
-	public String userAccountDelete(MemberVO memberVo, @RequestParam(defaultValue = "0")int no, HttpSession session, Model model) {
+	public String userAccountDelete(@RequestParam(defaultValue = "0")int no, HttpSession session, Model model) {
 		
 		logger.info("memberDeleteCtr" + no);
-
-		memberService.memberDeleteOne(no);
+		String viewUrl = "redirect:/clickHomeBtn.do";
 		
 		if (session.getAttribute("member") != null) { //세션정보있는지 확인
 			MemberVO sessionVo = (MemberVO)session.getAttribute("member");
-			if (sessionVo.getMember_no() == memberVo.getMember_no()) {
+			if (no == sessionVo.getMember_no()) {
 				session.invalidate();
-//				memberService.memberDeleteOne(no);
-				return "common/successDeletePage";
 			}
 		}
-		
-		
-		return "redirect:/adminUserSearchPage.do";
+		memberService.memberDeleteOne(no);
+		return viewUrl;
 		
 	}
 	

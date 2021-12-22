@@ -31,4 +31,6 @@ public interface MemberService {
 	
 	public void memberPurchaseCash(int no, int chosenCash);
 	
+	public void memberClassSync();
+	
 }

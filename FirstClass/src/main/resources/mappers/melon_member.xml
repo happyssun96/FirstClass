@@ -64,7 +64,7 @@
    <insert id="memberInsertOne" parameterType="memberVo">
       INSERT INTO MEMBER
       (MEMBER_NO, EMAIL, PWD, AUTH, NICKNAME, AGE, GENDER, CRE_DATE, MOD_DATE)
-      VALUES(MNO_SEQ.NEXTVAL, #{email}, #{password}, #{auth}, #{nickName}, #{age}, #{gender},
+      VALUES(MNO_SEQ.NEXTVAL, #{email}, #{password}, 'user', #{nickName}, #{age}, #{gender},
       SYSDATE, SYSDATE)
    </insert>
 
@@ -79,11 +79,14 @@
 
    <update id="memberUpdateOne" parameterType="memberVo">
       UPDATE MEMBER
-      SET    <if test="auth != ''">AUTH = #{auth},</if>
-             <if test="memberClass != ''">MEMBERCLASS = #{memberClass},</if>
+      SET   <if test="auth != ''">AUTH = #{auth},</if>
+            <if test="memberClass != ''">MEMBERCLASS = #{memberClass},</if>
             <if test="email != ''">EMAIL = #{email}, </if>
-             <if test="password != ''">PWD = #{password}, </if>
+            <if test="password != ''">PWD = #{password}, </if>
             <if test="nickName != ''">NICKNAME = #{nickName},</if>
+            <if test="cash != ''">CASH = #{cash},</if>
+            <if test="gender != ''">GENDER = #{gender},</if>
+            <if test="age != ''">AGE = #{age},</if>
             MOD_DATE = SYSDATE
       WHERE MEMBER_NO = #{member_no}
    </update>
@@ -105,6 +108,11 @@
 		UPDATE MEMBER 
 		SET CASH = CASH + #{chosenCash}
         WHERE MEMBER_NO = #{no}
+   </select>
+   
+   	<select id="memberClassSync">
+        update member set MEMBERCLASS = 0
+        where auth = 'admin'
    </select>
 
 

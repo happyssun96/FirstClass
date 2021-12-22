@@ -109,5 +109,10 @@ public class MemberDAOImpl implements MemberDAO{
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
+	@Override
+	public void memberClassSync() {
+		sqlSession.update(nameSpace + "memberClassSync");	
+	}
 	
 }
