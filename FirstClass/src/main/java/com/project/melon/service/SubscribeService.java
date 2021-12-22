@@ -7,5 +7,7 @@ public interface SubscribeService {
 	public int subscribeChk(SubscribeVO subscribeVo);
 	
 	//구독권 추가
-	public int subscribeInsertOne(SubscribeVO subscribeVo);
+	public int subscribeInsertOne(int memberNo);
+	
+	public SubscribeVO subscribeSelectOne(int memberNo);
 }

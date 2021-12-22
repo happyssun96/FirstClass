@@ -13,16 +13,20 @@
    	</resultMap>	
 
 	<select id = "subscribeChk" resultType = "int">
-		SELECT COUNT(*) FROM SUBSCRIBE
-		WHERE MEMBER_NO = #{member_no};	
+		SELECT COUNT(*) 
+		FROM SUBSCRIBE
+		WHERE MEMBER_NO = #{member_no}
 	</select>			
 
-   	<insert id="subscribeInsertOne" parameterType="subscribeVo">
-		INSERT INTO SUBSCRIBE
-		(SUBSCRIBE_NO, PURCHASE_DATE, EXPIRE_DATE)
-		VALUES(SNO_SEQ.NEXTVAL, SYSDATE, SYSDATE+30)
-		WHERE MEMBER_NO = #{member_no};	
+   	<insert id="subscribeInsertOne" >
+		INSERT INTO SUBSCRIBE(SUBSCRIBE_NO, MEMBER_NO, PURCHASE_DATE, EXPIRE_DATE, EXPIRE_RESERVATION)
+		VALUES(SNO_SEQ.NEXTVAL, #{memberNo}, SYSDATE, SYSDATE+30, 'F')
    	</insert>	
 
-
+   <select id="subscribeSelectOne" parameterType="int"
+      resultMap="subscribeResultMap">
+      SELECT SUBSCRIBE_NO, MEMBER_NO, PURCHASE_DATE, EXPIRE_DATE, EXPIRE_RESERVATION
+      FROM SUBSCRIBE
+      WHERE MEMBER_NO = #{memberNo}
+   </select>
 </mapper>

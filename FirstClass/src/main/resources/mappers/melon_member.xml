@@ -105,7 +105,13 @@
 		UPDATE MEMBER 
 		SET CASH = CASH + #{chosenCash}
         WHERE MEMBER_NO = #{no}
-   </select>
+	</select>
+   
+	<insert id="memberCash" parameterType="memberVo">
+      INSERT INTO MEMBER(CASH)
+      VALUES(#{cash})
+      WHERE MEMBER_NO = #{member_no}
+	</insert>
 
 
 </mapper>

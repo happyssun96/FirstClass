@@ -9,9 +9,9 @@
 	<result column="SUBSCRIBE_NO" property="subscribe_no"/>
 	</resultMap>
 	
-	<select id = "addPurchaseList" parameterType="purchaseListVo">
+	<select id = "addPurchaseList" parameterType="map">
         INSERT INTO PURCHASELIST(PURCHASE_NO, MEMBER_NO, SUBSCRIBE_NO)
-        VALUES (PURCHASELIST_SEQ.nextval, #{memberNo} #{purchaseNo})
+        VALUES (PURCHASELIST_SEQ.nextval, #{memberNo}, #{subscribeNo})
 	</select>
 
 </mapper>

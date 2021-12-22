@@ -160,7 +160,7 @@
                with font-awesome or any other icon font library -->
 		<li class="nav-header">사용자 메뉴</li>
           <li class="nav-item">
-            <a href="./subscribePurchase.jsp" class="nav-link">
+            <a href="./subscribePurchasePage.do?no=${sessionScope.member.member_no}" class="nav-link">
             
               <i class="nav-icon fas fa-th"></i>
               <p>

@@ -1,6 +1,8 @@
 package com.project.melon.dao;
 
+import com.project.melon.model.SubscribeVO;
+
 public interface PurchaseListDAO {
-	public void addPurchaseList(int memberNo, int subscribeNo);
+	public void addPurchaseList(SubscribeVO subscribeVo);
 
 }

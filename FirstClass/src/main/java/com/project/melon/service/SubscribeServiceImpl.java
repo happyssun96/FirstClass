@@ -18,8 +18,14 @@ public class SubscribeServiceImpl implements SubscribeService{
 	}
 
 	@Override
-	public int subscribeInsertOne(SubscribeVO subscribeVo) {
+	public int subscribeInsertOne(int memberNo) {
 		// TODO Auto-generated method stub
-		return subscribeDao.subscribeInsertOne(subscribeVo);
+		return subscribeDao.subscribeInsertOne(memberNo);
+	}
+
+	@Override
+	public SubscribeVO subscribeSelectOne(int memberNo) {
+		// TODO Auto-generated method stub
+		return subscribeDao.subscribeSelectOne(memberNo);
 	}	
 }

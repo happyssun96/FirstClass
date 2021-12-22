@@ -107,7 +107,7 @@ public class MemberDAOImpl implements MemberDAO{
 	@Override
 	public int memberCash(int no) {
 		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.update(nameSpace + "memberCash", no);
 	}
 	
 }
