@@ -2,9 +2,6 @@ package com.project.melon.controller.admin;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -21,9 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.project.melon.model.MemberVO;
 import com.project.melon.model.SongVO;
 import com.project.melon.service.MemberServiceImpl;
-import com.project.melon.service.SongService;
 import com.project.melon.service.SongServiceImpl;
-import com.project.melon.util.Paging;
 
 @Controller
 public class AdminController {
@@ -221,17 +216,20 @@ public class AdminController {
 	public String userAccountDelete(MemberVO memberVo, @RequestParam(defaultValue = "0")int no, HttpSession session, Model model) {
 		
 		logger.info("memberDeleteCtr" + no);
+
+		memberService.memberDeleteOne(no);
 		
 		if (session.getAttribute("member") != null) { //세션정보있는지 확인
 			MemberVO sessionVo = (MemberVO)session.getAttribute("member");
 			if (sessionVo.getMember_no() == memberVo.getMember_no()) {
 				session.invalidate();
-				memberService.memberDeleteOne(no);
-				return "redirect:/login.do";
+//				memberService.memberDeleteOne(no);
+				return "common/successDeletePage";
 			}
 		}
-		memberService.memberDeleteOne(no);
-		return "redirect:/member/list.do";
+		
+		
+		return "redirect:/adminUserSearchPage.do";
 		
 	}
 	

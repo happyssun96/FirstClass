@@ -30,6 +30,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>회원정보수정</title>
 
+<script>
+function pageMoveDeleteFnc(no) {
+	if(confirm("삭제하시겠습니까?")){
+		alert("삭제를 완료하였습니다!")
+		var url = './adminAccountDeleteCtr.do?no=' + no;
+		location.href = url;
+		return true;
+	} else {
+		alert("취소하였습니다.")
+		return false;
+	}
+	
+}
+</script>
+
 </head>
 <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <div class="user-detail-page">

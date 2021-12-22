@@ -6,7 +6,7 @@
 <meta http-equiv="Refresh" content="3;url=./clickHomeBtn.do">
 <title>권한 부족🍉</title>
 <style type="text/css">
-.LoginFail {
+.authorityError {
 	text-align: center;
 }
 </style>
