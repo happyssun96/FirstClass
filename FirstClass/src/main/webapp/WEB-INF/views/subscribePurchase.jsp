@@ -43,9 +43,9 @@
     <br>
     <div>
     	<button type="button" class="btn btn-outline-secondary" style="width: 300px; font-size: 30px; margin-left: 250px; padding-top: 20px;"
-    		onclick="location.href='./purchaseDecision.jsp';"><h1>1개월 구독</h1>   	
+    		onclick="location.href='./subscribePurchaseDelayDecision.do?subscribePrice=5000';"><h1>1개월 구독</h1>   	
     		<p style="font-size: 20px;"><img src="resources/images/watermelon.png" style="height: 20px;">WaterMelon에서 1개월간<br>음원 무제한 스트리밍 및 <br>음원 업로드 가능</p>
-    		<h2>₩ 8,400</h2>
+    		<h2>₩ 5,000</h2>
     	</button>
     	<button type="button" class="btn btn-outline-secondary" style="width: 300px; font-size: 30px; margin-left: 50px; padding-top: 20px;"><h1>3개월 구독</h1>   	
     		<p style="font-size: 20px;"><img src="resources/images/watermelon.png" style="height: 20px;">WaterMelon에서 3개월간<br>음원 무제한 스트리밍 및 <br>음원 업로드 가능</p>
@@ -53,7 +53,7 @@
     	</button>	
     	<button type="button" class="btn btn-outline-secondary" style="width: 300px; font-size: 30px; margin-left: 50px; padding-top: 20px;"><h1>정기 구독</h1>   	
     		<p style="font-size: 20px;"><img src="resources/images/watermelon.png" style="height: 20px;">WaterMelon에서 매달<br>음원 무제한 스트리밍 및 <br>음원 업로드 가능</p>
-    		<h2>₩ 8,000</h2>
+    		<h2>₩ 4,500</h2>
     	</button>	    	
     </div>
     

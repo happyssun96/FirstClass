@@ -7,6 +7,9 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.project.melon.model.PurchaseListVO;
+import com.project.melon.model.SubscribeVO;
+
 @Repository
 public class PurchaseListDAOImpl implements PurchaseListDAO{
 
@@ -17,11 +20,11 @@ public class PurchaseListDAOImpl implements PurchaseListDAO{
 
 	
 	@Override
-	public void addPurchaseList(int memberNo, int subscribeNo) {
+	public void addPurchaseList(SubscribeVO subscribeVo) {
 		// TODO Auto-generated method stub
 		Map<String, Object> map = new HashMap<>();
-		map.put("purchaseNo", memberNo);
-		map.put("purchaseUserNo", subscribeNo);
+		map.put("memberNo", subscribeVo.getMember_no());
+		map.put("subscribeNo", subscribeVo.getSubscribe_no());
 		
 		sqlSession.insert(nameSpace + "addPurchaseList", map);
 		

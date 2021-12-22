@@ -8,10 +8,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>결제 창</title>
 <script type="text/javascript">
-function commitbtn(){	
-alert('결제가 완료되었습니다!');
-location.href='./index.jsp';
-}
 </script>
 </head>
 <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
@@ -50,7 +46,7 @@ location.href='./index.jsp';
 				<p>음원 무제한 스트리밍 및 음원 업로드를 자유롭게 해보세요!</p>
 				<ul>
 				<li>1개월 구독권
-					<strong style="font-size: 15px;">월 8,400원</strong>
+					<strong style="font-size: 15px;">월 5,000원</strong>
 					<br>
 					<span>
 						<em style="font-size: 7px; color: #B0ACAC;">
@@ -65,10 +61,10 @@ location.href='./index.jsp';
 				<h3>최종 결제 정보</h3>				
 					<hr width =100% color="#E5E1E1" align="left" size=60 style="margin-top: 30px;"/>
 						<dl style="font-size: 20px;">					
-							<dt>보유 캐시 &emsp;&emsp;&emsp;&emsp;&nbsp;<strong>10,000</strong>&nbsp;&nbsp;원</dt>							
-							<dt style="color: #FFB16C; margin-top: 20px;">상품 금액 &emsp;&emsp;&emsp;&emsp;-&nbsp;&nbsp;<strong>8,400</strong>&nbsp;&nbsp;원</dt>
+							<dt>보유 캐시 &emsp;&emsp;&emsp;&emsp;&nbsp;<strong>${currentCash}</strong>&nbsp;&nbsp;원</dt>							
+							<dt style="color: #FFB16C; margin-top: 20px;">상품 금액 &emsp;&emsp;&emsp;&emsp;-&nbsp;&nbsp;<strong>${subscribePrice}</strong>&nbsp;&nbsp;원</dt>
 							<hr width =100% color="#E5E1E1" align="left" size=60/>
-							<dt>잔여 캐시 &emsp;&emsp;&emsp;&emsp;&emsp;<strong>1600</strong>&nbsp;&nbsp;원</dt>
+							<dt>잔여 캐시 &emsp;&emsp;&emsp;&emsp;&nbsp;<strong>${remainCash}</strong>&nbsp;&nbsp;원</dt>
 							<p style="font-size: 13px; color: #B0ACAC; text-align: center;">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;(VAT 별도)</p>										
 						</dl>														
 			</div>
@@ -83,8 +79,8 @@ location.href='./index.jsp';
 			<br>
 			<br>
 			<br>
-			<button type="button" class="btn btn-primary" style="margin-left: 350px; font-size:30px;" onclick="commitbtn();">결제하기</button>
-			<button type="button" class="btn btn-secondary" style="margin-left: 30px; font-size:20px; padding:11px;" onclick="location.href='./subscribePurchase.jsp'">뒤로가기</button>
+			<button type="button" class="btn btn-primary" style="margin-left: 350px; font-size:30px;" onclick="location.href='./subscribePurchaseDecision.do?subscribePrice=${subscribePrice}'">결제하기</button>
+			<button type="button" class="btn btn-secondary" style="margin-left: 30px; font-size:20px; padding:11px;" onclick="history.back()">뒤로가기</button>
 			</div>							
 	 	</div> 
   </div>		

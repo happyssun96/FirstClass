@@ -25,16 +25,16 @@ public class PurchaseListController {
 	@Autowired
 	private PurchaseListService purchaseListService;
 	
-	@RequestMapping(value = "addPurchaseListCtr.do", method = RequestMethod.GET)
-		public String addPurchaseListCtr(HttpSession session, int purchaseNo, int purchaseUserNo)
-		{
-		String viewUrl = "sessionExpire";
-			if(session.getAttribute("member") != null)
-			{
-				purchaseListService.addPurchaseList(purchaseNo, purchaseUserNo);
-				viewUrl = "redirect:/userMainPage.do";
-			}	
-		return viewUrl;
-		}
+//	@RequestMapping(value = "addPurchaseListCtr.do", method = RequestMethod.GET)
+//		public String addPurchaseListCtr(HttpSession session, int purchaseNo, int purchaseUserNo)
+//		{
+//		String viewUrl = "sessionExpire";
+//			if(session.getAttribute("member") != null)
+//			{
+//				purchaseListService.addPurchaseList(purchaseNo, purchaseUserNo);
+//				viewUrl = "redirect:/userMainPage.do";
+//			}	
+//		return viewUrl;
+//		}
 
 }
