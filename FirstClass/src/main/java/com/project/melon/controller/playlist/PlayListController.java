@@ -21,6 +21,17 @@ public class PlayListController {
 	@Autowired
 	private PlayListServiceImpl playListService;
 	
+	//플레이리스트로 이동
+	@RequestMapping(value = "musicPlay.do", method=RequestMethod.GET)
+	public String uploadMusic(HttpSession sesseion, Model model)
+	{
+		logger.info("Welcome SongController! uploadMusic");
+		
+		return "player/musicPlayer";
+		
+	}
+	
+	
 	//플레이리스트 음악 추가
 	@RequestMapping(value = "playList/addPlayList.do", method = RequestMethod.GET)
 		public String addPlayList(HttpSession session, PlayListVO playListVo, Model model) {

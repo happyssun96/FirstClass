@@ -37,7 +37,7 @@
                 </div>
               </div>
               <div class="mt-4 product-share" style="padding-left: 13rem;">
-                <a href="./Music.jsp" class="text-gray" target="_blank">
+                <a href="./musicPlay.do" class="text-gray" target="_blank">
                   <i class="fas fa-play-circle fa-2x"></i>
                 </a>
                 
