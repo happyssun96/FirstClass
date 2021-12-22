@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,8 +38,8 @@
    }
    
    function pageMoveUpdateFnc(member_no) {
-	   var url = './userUpdateCtr.do?no=' + no;
-	      location.href = url;
+      var url = './userUpdateCtr.do?no=' + no;
+         location.href = url;
    }
 </script>
 
@@ -103,7 +104,23 @@
                
                <tr>
                   <th>등급</th>
-                  <td>${member.memberClass}</td>            
+                  <td>
+                        <c:if test="${member.memberClass == 0}">
+                           관리자
+                        </c:if>
+                        <c:if test="${member.memberClass == 1}">
+                           브론즈
+                        </c:if>
+                        <c:if test="${member.memberClass == 2}">
+                           실버
+                        </c:if>
+                        <c:if test="${member.memberClass == 3}">
+                           골드
+                        </c:if>
+                        <c:if test="${member.memberClass == 4}">
+                           챌린저
+                        </c:if>
+                  </td>            
                </tr>
                
                <tr>
