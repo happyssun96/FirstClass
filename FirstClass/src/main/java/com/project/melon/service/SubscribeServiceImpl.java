@@ -1,10 +1,12 @@
 package com.project.melon.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.project.melon.dao.SubscribeDAO;
 import com.project.melon.model.SubscribeVO;
 
+@Service
 public class SubscribeServiceImpl implements SubscribeService{
 	@Autowired
 	public SubscribeDAO subscribeDao;
