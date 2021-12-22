@@ -53,16 +53,16 @@ public class SongController {
 	
 	
 	
-	@RequestMapping(value = "song/uploadMusic.do", method=RequestMethod.GET)
+	@RequestMapping(value = "uploadMusic.do", method=RequestMethod.GET)
 	public String uploadMusic(HttpSession session, Model model)
 	{
 		logger.info("Welcome SongController! uploadMusic");
 		
-		String viewUrl = "authorityError";
+		String viewUrl = "./auth/authorityError";
 		
-		if(session.getAttribute("MemberVo") != null)
+		if(session.getAttribute("member") != null)
 		{
-			MemberVO tempVo = (MemberVO)session.getAttribute("MemberVo");
+			MemberVO tempVo = (MemberVO)session.getAttribute("member");
 			if(tempVo.getAuth().equals("admin"))
 			{
 				viewUrl = "songUploadForm"; // 어드민 계정검증이 완료되었으므로 음악 업로드 폼으로 이동
@@ -72,12 +72,14 @@ public class SongController {
 		
 	}
 	
-	@RequestMapping(value = "song/uploadMusicCtr.do", method= { RequestMethod.POST })
+	@RequestMapping(value = "uploadMusicCtr.do", method= { RequestMethod.POST })
 	public String uploadMusicCtr(SongVO songVo, MultipartFile uploadSongFile
 			, MultipartFile uploadSongImageFile )
 	{
 		logger.info("Welcome SongController! uploadMusicCtr \n uploadSongFile =" + uploadSongFile
 				+ "\n uploadImageFile = " + uploadSongImageFile + "\n songVo =" + songVo);
+		
+		
 		
 		String viewUrl = "redirect :./clickHomeBtn.do";
 		
@@ -114,13 +116,13 @@ public class SongController {
 		return viewUrl;
 	}
 	
-	@RequestMapping(value = "song/DeleteMusicCtr.do", method=RequestMethod.GET)
+	@RequestMapping(value = "DeleteMusicCtr.do", method=RequestMethod.GET)
 	public String deleteMusic(int songNo, HttpSession session)
 	{
 		String viewUrl = "authorityError";
-		if(session.getAttribute("MemberVo") != null)
+		if(session.getAttribute("member") != null)
 		{
-			MemberVO tempVo = (MemberVO)session.getAttribute("MemberVo");
+			MemberVO tempVo = (MemberVO)session.getAttribute("member");
 			if(tempVo.getAuth().equals("adminlister"))
 			{
 				SongVO songTempVo = songService.songSelectOne(songNo);

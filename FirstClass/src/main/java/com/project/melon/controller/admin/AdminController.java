@@ -63,7 +63,7 @@ public class AdminController {
 	logger.info("AdminController! musicDetailInfo no = " + no);
 	
 	
-	String viewUrl = "authorityError";
+	String viewUrl = "./auth/authorityError";
 	
 	if(session.getAttribute("member") != null)
 	{
@@ -87,7 +87,7 @@ public class AdminController {
 	logger.info("AdminController! musicUpdate songVo = " + no);
 	
 	
-	String viewUrl = "authorityError";
+	String viewUrl = "./auth/authorityError";
 	
 	if(session.getAttribute("member") != null)
 	{
@@ -180,7 +180,7 @@ public class AdminController {
 	      
 	      logger.info("adminUserUpdate no" + no);
 	      
-			String viewUrl = "authorityError";
+			String viewUrl = "./auth/authorityError";
 			
 			if(session.getAttribute("member") != null)
 			{

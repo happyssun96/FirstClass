@@ -142,7 +142,7 @@
             </ul>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="./songUploadForm.jsp" class="nav-link">
+                <a href="./uploadMusic.do" class="nav-link">
                   &emsp;<i class="far fa-circle nav-icon"></i>
                   <p>음원 업로드</p>
                 </a>

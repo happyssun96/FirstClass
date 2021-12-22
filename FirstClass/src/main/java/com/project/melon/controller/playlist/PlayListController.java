@@ -67,7 +67,7 @@ public class PlayListController {
 				return "redirect:/member/PlayList";
 			}else {
 				//로그인 안되어있을시 에러 페이지 혹은 로그인 페이지로 날리기
-				return "auth/playListErr";
+				return "auth/authorityError";
 			}
 			
 		} catch (Exception e) {

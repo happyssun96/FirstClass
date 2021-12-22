@@ -37,7 +37,7 @@
       <c:choose>
          <c:when test="${sessionScope.member.auth eq 'admin'}">
             <li class="nav-item d-none d-sm-inline-block">
-              <a href="./songUploadForm.jsp" class="nav-link">Music Upload</a>
+              <a href="./uploadMusic.do" class="nav-link">Music Upload</a>
             </li>
           </c:when>
           <c:otherwise></c:otherwise>

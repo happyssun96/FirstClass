@@ -117,43 +117,55 @@ public class MainController {
    @RequestMapping(value = "adminMainPage.do", method = RequestMethod.GET)
    public String adminMainPage(@RequestParam(defaultValue = "1")int memberCurPage
          , @RequestParam(defaultValue = "1")int songCurPage
-         , Model model)
+         , HttpSession session, Model model)
    {
          logger.info("Welcome MainController! adminMainPage memberCurpage =" + memberCurPage
                + "\n songCurPage = " + songCurPage);
          
-        String viewUrl = "adminPage"; 
+     	String viewUrl = "./auth/authorityError";
+    	
+    	if(session.getAttribute("member") != null)
+    	{
+    		MemberVO tempVo = (MemberVO)session.getAttribute("member");
+    		if(tempVo.getAuth().equals("admin"))
+    		{
+    			
+    			int songTotalCount = songService.songSelectTotalCount();
+    			int memberTotalCount = memberService.memberSelectTotalCount(); 
+    			System.out.println(memberTotalCount);
+    			System.out.println(songTotalCount);
+    			
+    			Paging memberPaing = new Paging(memberTotalCount, memberCurPage);
+    			int memberStart = memberPaing.getPageBegin();
+    			int memberEnd = memberPaing.getPageEnd();
+    			
+    			Paging songPaging = new Paging(songTotalCount, songCurPage);
+    			int songStart = songPaging.getPageBegin();
+    			int songEnd = songPaging.getPageEnd();
+    			
+    			List<SongVO> songList = songService.songSelectList("", songStart, songEnd);
+    			System.out.println("songList =" + songService.songSelectList("", songStart, songEnd));
+    			List<MemberVO> memberList = memberService.memberSelectList("", memberStart, memberEnd);
+    			
+    			Map<String, Object> songPagingMap = new HashMap<String, Object>();
+    			songPagingMap.put("songTotalCount", songTotalCount);
+    			songPagingMap.put("songPaging", songPaging);
+    			
+    			Map<String, Object> memberPagingMap = new HashMap<String, Object>();
+    			memberPagingMap.put("memberTotalCount", memberTotalCount);
+    			memberPagingMap.put("memberPaging", memberPaing);
+    			
+    			model.addAttribute("memberList", memberList);
+    			model.addAttribute("songList", songList);
+    			
+    			model.addAttribute("pagingMap", songPagingMap);
+    			model.addAttribute("memberPagingMap", memberPagingMap);
+    			
+    			
+    			viewUrl = "adminPage"; 
+    		}
+    	}
          
-       int songTotalCount = songService.songSelectTotalCount();
-       int memberTotalCount = memberService.memberSelectTotalCount(); 
-       System.out.println(memberTotalCount);
-       System.out.println(songTotalCount);
-       
-       Paging memberPaing = new Paging(memberTotalCount, memberCurPage);
-       int memberStart = memberPaing.getPageBegin();
-       int memberEnd = memberPaing.getPageEnd();
-       
-      Paging songPaging = new Paging(songTotalCount, songCurPage);
-      int songStart = songPaging.getPageBegin();
-      int songEnd = songPaging.getPageEnd();
-      
-      List<SongVO> songList = songService.songSelectList("", songStart, songEnd);
-      System.out.println("songList =" + songService.songSelectList("", songStart, songEnd));
-      List<MemberVO> memberList = memberService.memberSelectList("", memberStart, memberEnd);
-      
-      Map<String, Object> songPagingMap = new HashMap<String, Object>();
-      songPagingMap.put("songTotalCount", songTotalCount);
-      songPagingMap.put("songPaging", songPaging);
-      
-      Map<String, Object> memberPagingMap = new HashMap<String, Object>();
-      memberPagingMap.put("memberTotalCount", memberTotalCount);
-      memberPagingMap.put("memberPaging", memberPaing);
-      
-      model.addAttribute("memberList", memberList);
-      model.addAttribute("songList", songList);
-      
-      model.addAttribute("pagingMap", songPagingMap);
-      model.addAttribute("memberPagingMap", memberPagingMap);
       
       return viewUrl;
    }
@@ -166,48 +178,68 @@ public class MainController {
     */
    @RequestMapping(value = "adminUserSearchPage.do", method = {RequestMethod.GET, RequestMethod.POST})
    public String adminUserSearchList(@RequestParam(defaultValue = "1") int curPage
-         ,@RequestParam(defaultValue = "")String keyword, Model model)
+         ,@RequestParam(defaultValue = "")String keyword, HttpSession session, Model model)
    {
-      String viewUrl = "adminUserList";
-      
-      int totalCount = memberService.memberSelectTotalCount();
-      Paging memberPaging = new Paging(totalCount, curPage);
-      int start = memberPaging.getPageBegin();
-      int end = memberPaging.getPageEnd();
-      
-      List<MemberVO> memberList = memberService.memberSelectList(keyword, start, end);
-      
-      Map<String, Object> pagingMap = new HashMap<String, Object>();
-      pagingMap.put("totalCount", totalCount);
-      pagingMap.put("memberPaging", memberPaging);
-      
-      model.addAttribute("keyword", keyword);
-      model.addAttribute("memberList", memberList);
-      model.addAttribute("pagingMap", pagingMap);
-      
+		String viewUrl = "./auth/authorityError";
+		
+		if(session.getAttribute("member") != null)
+		{
+			MemberVO tempVo = (MemberVO)session.getAttribute("member");
+			if(tempVo.getAuth().equals("admin"))
+			{
+				
+				int totalCount = memberService.memberSelectTotalCount();
+				Paging memberPaging = new Paging(totalCount, curPage);
+				int start = memberPaging.getPageBegin();
+				int end = memberPaging.getPageEnd();
+				
+				List<MemberVO> memberList = memberService.memberSelectList(keyword, start, end);
+				
+				Map<String, Object> pagingMap = new HashMap<String, Object>();
+				pagingMap.put("totalCount", totalCount);
+				pagingMap.put("memberPaging", memberPaging);
+				
+				model.addAttribute("keyword", keyword);
+				model.addAttribute("memberList", memberList);
+				model.addAttribute("pagingMap", pagingMap);
+				
+				viewUrl = "adminUserList";
+			}
+		}
+	   
       return viewUrl;
    }
    
    @RequestMapping(value = "adminSongSearchPage.do", method = {RequestMethod.GET, RequestMethod.POST})
    public String adminSongSearchList(@RequestParam(defaultValue = "1") int curPage
-         ,@RequestParam(defaultValue = "")String keyword, Model model)
+         ,@RequestParam(defaultValue = "")String keyword, HttpSession session, Model model)
    {
-      String viewUrl = "adminSongList";
-      
-      int totalCount = songService.songSelectTotalCount();
-      Paging songPaging = new Paging(totalCount, curPage);
-      int start = songPaging.getPageBegin();
-      int end = songPaging.getPageEnd();
-      
-      List<SongVO> songList = songService.songSelectList(keyword, start, end);
-      
-      Map<String, Object> pagingMap = new HashMap<String, Object>();
-      pagingMap.put("totalCount", totalCount);
-      pagingMap.put("songPaging", songPaging);
-      
-      model.addAttribute("keyword", keyword);
-      model.addAttribute("songList", songList);
-      model.addAttribute("pagingMap", pagingMap);
+	   
+		String viewUrl = "./auth/authorityError";
+		
+		if(session.getAttribute("member") != null)
+		{
+			MemberVO tempVo = (MemberVO)session.getAttribute("member");
+			if(tempVo.getAuth().equals("admin"))
+			{
+				int totalCount = songService.songSelectTotalCount();
+				Paging songPaging = new Paging(totalCount, curPage);
+				int start = songPaging.getPageBegin();
+				int end = songPaging.getPageEnd();
+				
+				List<SongVO> songList = songService.songSelectList(keyword, start, end);
+				
+				Map<String, Object> pagingMap = new HashMap<String, Object>();
+				pagingMap.put("totalCount", totalCount);
+				pagingMap.put("songPaging", songPaging);
+				
+				model.addAttribute("keyword", keyword);
+				model.addAttribute("songList", songList);
+				model.addAttribute("pagingMap", pagingMap);
+				
+				viewUrl = "adminSongList";		
+			}
+		}
       
       return viewUrl;
    }
