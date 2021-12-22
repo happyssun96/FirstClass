@@ -12,9 +12,9 @@
   - 데이터베이스 : Oracle
   - 서버 : Tomcat 8.0
 - 깃 허브 주소 : [https://github.com/happyssun96/WaterMelon](https://github.com/happyssun96/WaterMelon)
-- 브라우저 실행환경 : chrome, edge, 웨일브라우저
+- 브라우저 실행환경 : Chrome, Edge, 웨일브라우저
 - 팀원
-  - 이대근(조장)
+  - 이대근
   - 윤병훈
   - 윤성민
   - 이선우
