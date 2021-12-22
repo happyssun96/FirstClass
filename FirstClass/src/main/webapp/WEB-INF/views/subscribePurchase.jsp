@@ -28,11 +28,7 @@
           <div class="col-sm-6">
             <h1 class="m-0">이용권 구매</h1>
           </div><!-- /.col -->
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="./index.jsp"><i class="fas fa-home"></i></a></li>
-            </ol>
-          </div><!-- /.col -->
+          
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>

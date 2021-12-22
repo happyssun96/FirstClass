@@ -43,12 +43,13 @@
 
   <!-- Preloader -->
   <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__wobble" src="resources/images/watermelon.png" alt="AdminLTELogo" height="60" width="60">
-  </div>
+	<img class="animation__wobble" src="resources/images/watermelon.png"
+		alt="watermelonLogo" height="60" width="60">
+	</div>
   
   <jsp:include page="header.jsp" /> 
+  
   <jsp:include page="nav.jsp" />
-
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper" style="margin-left: 300px;">
@@ -59,11 +60,7 @@
           <div class="col-sm-6">
             <h1 class="m-0">관리자 페이지</h1>
           </div><!-- /.col -->
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="./index.jsp"><i class="fas fa-home"></i></a></li>
-            </ol>
-          </div><!-- /.col -->
+          <!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
